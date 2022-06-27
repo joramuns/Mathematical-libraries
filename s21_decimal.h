@@ -26,7 +26,7 @@ void    s21_print_decimal(s21_decimal number);
 void    s21_print_dec_long(s21_decimal number);
 int     s21_get_sign(s21_decimal decimal);
 int     s21_get_scale(s21_decimal decimal);
-void    s21_set_bit(int *bit, int index);
+void    s21_set_bit(s21_decimal* decimal, int bit_index);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */
