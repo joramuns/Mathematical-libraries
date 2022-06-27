@@ -3,7 +3,6 @@
 //  Decimal
 //
 
-#include <stdio.h>
 #include "../s21_decimal.h"
 
 void s21_print_decimal(s21_decimal number) {

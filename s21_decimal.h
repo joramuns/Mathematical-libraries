@@ -20,8 +20,10 @@ typedef struct {
 
 /*                          Supportive operations                               */
 int s21_get_bit(int block, int num_bit);
+int s21_get_bit_long(s21_decimal decimal, int bit_index);
 char *s21_get_block(int block);
 void s21_print_decimal(s21_decimal number);
+void s21_print_dec_long(s21_decimal number);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */
