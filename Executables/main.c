@@ -12,8 +12,12 @@ int main(int argc, const char * argv[]) {
     s21_decimal test;
     test.LOWBIT = 17;
     test.MEDBIT = 128;
-    test.HIGHBIT = UINT_MAX;
+    test.HIGHBIT = 999999;
+    test.bits[3] = 0;
     s21_print_decimal(test);
-    s21_print_dec_long(test);
+//    s21_print_dec_long(test);
+//    printf("Sign = %d\n", s21_get_sign(test));
+    s21_set_bit(&test.bits[3], 28);
+    s21_print_decimal(test);
     return 0;
 }
