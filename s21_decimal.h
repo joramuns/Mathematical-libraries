@@ -19,9 +19,14 @@ typedef struct {
 } s21_decimal;
 
 /*                          Supportive operations                               */
-int s21_get_bit(int block, int num_bit);
-char *s21_get_block(int block);
-void s21_print_decimal(s21_decimal number);
+int     s21_get_bit(int block, int num_bit);
+int     s21_get_bit_long(s21_decimal decimal, int bit_index);
+char*   s21_get_block(int block);
+void    s21_print_decimal(s21_decimal number);
+void    s21_print_dec_long(s21_decimal number);
+int     s21_get_sign(s21_decimal decimal);
+int     s21_get_scale(s21_decimal decimal);
+void    s21_set_bit(int *bit, int index);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */

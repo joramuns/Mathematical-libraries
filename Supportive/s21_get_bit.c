@@ -3,7 +3,6 @@
 //  Decimal
 //
 
-#include <stdio.h>
 #include "../s21_decimal.h"
 
 int s21_get_bit(int block, int num_bit) {

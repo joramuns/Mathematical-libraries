@@ -11,6 +11,11 @@
 		B77E7BB52869DD81007CBBCF /* s21_get_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB42869DD81007CBBCF /* s21_get_bit.c */; };
 		B77E7BB72869DD91007CBBCF /* s21_get_block.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB62869DD91007CBBCF /* s21_get_block.c */; };
 		B77E7BB92869DDA3007CBBCF /* s21_print_decimal.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB82869DDA3007CBBCF /* s21_print_decimal.c */; };
+		B77E7BBC286A0C0B007CBBCF /* s21_get_bit_long.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BBB286A0C0B007CBBCF /* s21_get_bit_long.c */; };
+		B77E7BBE286A105B007CBBCF /* s21_print_dec_long.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BBD286A105B007CBBCF /* s21_print_dec_long.c */; };
+		B77E7BC0286A14B9007CBBCF /* s21_get_sign.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BBF286A14B9007CBBCF /* s21_get_sign.c */; };
+		B77E7BC2286A165E007CBBCF /* s21_get_scale.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BC1286A165E007CBBCF /* s21_get_scale.c */; };
+		B77E7BC6286A1763007CBBCF /* s21_set_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BC5286A1763007CBBCF /* s21_set_bit.c */; };
 		B7CC6B202860F679003DB569 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CC6B1F2860F679003DB569 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +56,11 @@
 		B77E7BB42869DD81007CBBCF /* s21_get_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_get_bit.c; sourceTree = "<group>"; };
 		B77E7BB62869DD91007CBBCF /* s21_get_block.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_get_block.c; sourceTree = "<group>"; };
 		B77E7BB82869DDA3007CBBCF /* s21_print_decimal.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_print_decimal.c; sourceTree = "<group>"; };
+		B77E7BBB286A0C0B007CBBCF /* s21_get_bit_long.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_get_bit_long.c; sourceTree = "<group>"; };
+		B77E7BBD286A105B007CBBCF /* s21_print_dec_long.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_print_dec_long.c; sourceTree = "<group>"; };
+		B77E7BBF286A14B9007CBBCF /* s21_get_sign.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_get_sign.c; sourceTree = "<group>"; };
+		B77E7BC1286A165E007CBBCF /* s21_get_scale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_get_scale.c; sourceTree = "<group>"; };
+		B77E7BC5286A1763007CBBCF /* s21_set_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_set_bit.c; sourceTree = "<group>"; };
 		B7CC6B1C2860F679003DB569 /* Decimal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Decimal; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CC6B1F2860F679003DB569 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,8 +134,13 @@
 			isa = PBXGroup;
 			children = (
 				B77E7BB42869DD81007CBBCF /* s21_get_bit.c */,
+				B77E7BBB286A0C0B007CBBCF /* s21_get_bit_long.c */,
 				B77E7BB62869DD91007CBBCF /* s21_get_block.c */,
 				B77E7BB82869DDA3007CBBCF /* s21_print_decimal.c */,
+				B77E7BBD286A105B007CBBCF /* s21_print_dec_long.c */,
+				B77E7BBF286A14B9007CBBCF /* s21_get_sign.c */,
+				B77E7BC1286A165E007CBBCF /* s21_get_scale.c */,
+				B77E7BC5286A1763007CBBCF /* s21_set_bit.c */,
 			);
 			path = Supportive;
 			sourceTree = "<group>";
@@ -221,7 +236,12 @@
 			files = (
 				B7CC6B202860F679003DB569 /* main.c in Sources */,
 				B77E7BB12869DB89007CBBCF /* check_main.c in Sources */,
+				B77E7BC2286A165E007CBBCF /* s21_get_scale.c in Sources */,
+				B77E7BC6286A1763007CBBCF /* s21_set_bit.c in Sources */,
 				B77E7BB52869DD81007CBBCF /* s21_get_bit.c in Sources */,
+				B77E7BC0286A14B9007CBBCF /* s21_get_sign.c in Sources */,
+				B77E7BBC286A0C0B007CBBCF /* s21_get_bit_long.c in Sources */,
+				B77E7BBE286A105B007CBBCF /* s21_print_dec_long.c in Sources */,
 				B77E7BB92869DDA3007CBBCF /* s21_print_decimal.c in Sources */,
 				B77E7BB72869DD91007CBBCF /* s21_get_block.c in Sources */,
 			);
