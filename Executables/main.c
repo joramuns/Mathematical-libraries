@@ -14,6 +14,6 @@ int main(int argc, const char * argv[]) {
     test.MEDBIT = 128;
     test.HIGHBIT = UINT_MAX;
     s21_print_decimal(test);
-    printf("uintmax = %u\n", (UINT_MAX));
+    s21_print_dec_long(test);
     return 0;
 }
