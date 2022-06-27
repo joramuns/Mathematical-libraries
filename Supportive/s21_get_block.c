@@ -3,7 +3,6 @@
 //  Decimal
 //
 
-#include <stdio.h>
 #include "../s21_decimal.h"
 
 char *s21_get_block(int block) {
