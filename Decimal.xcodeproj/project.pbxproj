@@ -26,6 +26,7 @@
 		B7741F72286B83C1002CAC6D /* s21_sub.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B942869D2A0007CBBCF /* s21_sub.c */; };
 		B7741F73286B83C1002CAC6D /* s21_div.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B962869D2F8007CBBCF /* s21_div.c */; };
 		B7741F74286B83C1002CAC6D /* s21_mul.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B952869D2E6007CBBCF /* s21_mul.c */; };
+		B7741F76286B8A9A002CAC6D /* s21_zero_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */; };
 		B77E7BB12869DB89007CBBCF /* check_main.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB02869DB89007CBBCF /* check_main.c */; };
 		B77E7BB52869DD81007CBBCF /* s21_get_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB42869DD81007CBBCF /* s21_get_bit.c */; };
 		B77E7BB72869DD91007CBBCF /* s21_get_block.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB62869DD91007CBBCF /* s21_get_block.c */; };
@@ -54,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_zero_bit.c; sourceTree = "<group>"; };
 		B77E7B922869C9D5007CBBCF /* s21_decimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = s21_decimal.h; sourceTree = "<group>"; };
 		B77E7B932869D282007CBBCF /* s21_add.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_add.c; sourceTree = "<group>"; };
 		B77E7B942869D2A0007CBBCF /* s21_sub.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sub.c; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				B77E7BC7286A2ABB007CBBCF /* s21_set_sign.c */,
 				B7E8009A286B1C7E00B51F8B /* s21_shift_bit.c */,
 				B7E8009C286B761700B51F8B /* s21_last_non_zero.c */,
+				B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */,
 			);
 			path = Supportive;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				B77E7BC6286A1763007CBBCF /* s21_set_bit.c in Sources */,
 				B77E7BB52869DD81007CBBCF /* s21_get_bit.c in Sources */,
 				B77E7BC0286A14B9007CBBCF /* s21_get_sign.c in Sources */,
+				B7741F76286B8A9A002CAC6D /* s21_zero_bit.c in Sources */,
 				B7741F60286B80F3002CAC6D /* s21_is_greater.c in Sources */,
 				B7741F6D286B83B6002CAC6D /* s21_from_float_to_decimal.c in Sources */,
 				B7741F57286B80C6002CAC6D /* s21_add.c in Sources */,
