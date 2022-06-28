@@ -10,22 +10,15 @@
 int main(int argc, const char * argv[]) {
     // insert code here...
     s21_decimal test;
-    test.LOWBIT = 17;
-    test.MEDBIT = 128;
-    test.HIGHBIT = 999999;
+    test.LOWBIT = 2;
+    test.MEDBIT = 3;
+    test.HIGHBIT = 0;
     test.bits[3] = 0;
+    s21_print_dec_long(test);
+    printf("%d\n", s21_get_bit(test.LOWBIT, 3));
+    s21_shift_bit(&test, 64);
+//    s21_set_bit(&test, 32);
+    s21_print_dec_long(test);
     s21_print_decimal(test);
-//    s21_print_dec_long(test);
-//    printf("Sign = %d\n", s21_get_sign(test));
-//    s21_set_bit(&test, 120);
-//    s21_set_bit(&test, 119);
-//    s21_set_bit(&test, 118);
-//    s21_set_bit(&test, 117);
-    s21_set_bit(&test, 116);
-    s21_set_bit(&test, 115);
-    s21_set_bit(&test, 114);
-//    s21_set_bit(&test, 113);
-    s21_print_decimal(test);
-    printf("Scale = %d\n", s21_get_scale(test));
     return 0;
 }
