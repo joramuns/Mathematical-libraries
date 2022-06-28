@@ -13,7 +13,7 @@ int s21_from_int_to_decimal(int src, s21_decimal *dst) {
     } else {
         src = -src;
         dst->bits[0] = src;
-        s21_set_Sign(dst);
+        s21_set_sign(dst);
     }
     return error;
 }
