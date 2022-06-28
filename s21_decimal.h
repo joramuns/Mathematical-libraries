@@ -29,6 +29,7 @@ int     s21_get_scale(s21_decimal decimal);
 void    s21_set_bit(s21_decimal *decimal, int bit_index);
 void    s21_set_sign(s21_decimal *src);
 int     s21_shift_bit(s21_decimal *decimal, int step);
+int     s21_last_non_zero(s21_decimal decimal);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */
