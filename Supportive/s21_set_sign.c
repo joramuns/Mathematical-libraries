@@ -9,5 +9,5 @@
 #include "../s21_decimal.h"
 
 void s21_set_sign(s21_decimal *src) {
-    src->bits[3] = src->bits[3]|(1 << 31);
+    src->bits[3] |= 1U << 31;
 }
