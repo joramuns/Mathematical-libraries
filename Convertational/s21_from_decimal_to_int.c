@@ -14,7 +14,7 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
         *dst = (int)src.bits[0];
         if(s21_get_scale(src)) {
             *dst = ~*dst;
-            s21_set_bit(dst, 31);
+            *dst |= 1 << 31;
         }
     }
     return error;
