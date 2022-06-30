@@ -2,6 +2,7 @@
 //  s21_is_equal.c
 //  Decimal
 //  без учета scale
+// ±0
 
 #include "../s21_decimal.h"
 
