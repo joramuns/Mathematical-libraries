@@ -15,7 +15,7 @@ int s21_sum_bit(int i, s21_decimal *result, int add_bit) {
         s21_zero_bit(result, i);
         if ((i + 1) < 96) {
             s21_set_bit(result, i + 1);
-        } else {
+        } else if (!s21_get_sign(*result)){
             ex_code = 1;
             s21_set_inf(result);
         }
