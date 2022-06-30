@@ -42,6 +42,7 @@
 		B7E8009D286B761700B51F8B /* s21_last_non_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E8009C286B761700B51F8B /* s21_last_non_zero.c */; };
 		B7EBCDAE286DF8FD000F7C5A /* s21_set_inf.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */; };
 		B7EBCDB0286DF946000F7C5A /* s21_sum_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */; };
+		B7EBCDB2286E0C74000F7C5A /* s21_dec_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +95,7 @@
 		B7E8009C286B761700B51F8B /* s21_last_non_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_last_non_zero.c; sourceTree = "<group>"; };
 		B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_set_inf.c; sourceTree = "<group>"; };
 		B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sum_bit.c; sourceTree = "<group>"; };
+		B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_dec_zero.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */,
 				B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */,
 				B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */,
+				B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */,
 			);
 			path = Supportive;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				B7741F6F286B83B6002CAC6D /* s21_from_decimal_to_float.c in Sources */,
 				B7741F72286B83C1002CAC6D /* s21_sub.c in Sources */,
 				B77E7BB92869DDA3007CBBCF /* s21_print_decimal.c in Sources */,
+				B7EBCDB2286E0C74000F7C5A /* s21_dec_zero.c in Sources */,
 				B7741F66286B80FF002CAC6D /* s21_round.c in Sources */,
 				B7741F61286B80F3002CAC6D /* s21_is_greater_or_equal.c in Sources */,
 				B7741F6B286B83A4002CAC6D /* s21_truncate.c in Sources */,
