@@ -52,7 +52,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
         int mantissa = s21_get_float_mantissa(src);
         dst->bits[0] = mantissa;
         s21_set_bit(dst, 23);
-        s21_shift_bit(dst, exp - 23);
+        s21_left_shift_bit(dst, exp - 23);
     } else if (exp >= 96) {
         ex_code = 1;
     }
