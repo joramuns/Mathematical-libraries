@@ -23,13 +23,14 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             s21_dec_zero(result);
         } else {
             s21_set_bit(result, 0);
+            s21_set_sign(result);
             if (s21_is_greater(value_1, value_2)) {
                 s21_invert_bit_long(&value_2);
                 s21_add(value_1, value_2, result);
+                s21_zero_bit(result, 127);
             } else {
                 s21_invert_bit_long(&value_1);
                 s21_add(value_2, value_1, result);
-                s21_set_sign(result);
             }
         }
     } else if (sign_1) {
