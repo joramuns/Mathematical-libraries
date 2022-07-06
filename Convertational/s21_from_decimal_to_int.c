@@ -12,9 +12,9 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
     }
     if (error == 0) {
         *dst = (int)src.bits[0];
-        if(s21_get_scale(src)) {
+        if (s21_get_scale(src)) {
             *dst = ~*dst;
-            *dst |= 1 << 31;
+            *dst |= 1U << 31;
         }
     }
     return error;
