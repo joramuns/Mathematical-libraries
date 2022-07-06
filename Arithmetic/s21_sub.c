@@ -16,8 +16,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int sign_1 = s21_get_sign(value_1), sign_2 = s21_get_sign(value_2);
 
     if (sign_1 && sign_2) {
-        s21_add(value_1, value_2, result);
-        s21_set_sign(result);
+        s21_zero_bit(&value_1, 127);
+        s21_zero_bit(&value_2, 127);
+        s21_sub(value_2, value_1, result);
     } else if (!sign_1 && !sign_2) {
         if (s21_is_equal(value_1, value_2)) {
             s21_dec_zero(result);
@@ -35,12 +36,11 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         }
     } else if (sign_1) {
         s21_zero_bit(&value_1, 127);
-        s21_sub(value_1, value_2, result);
+        s21_add(value_1, value_2, result);
         s21_set_sign(result);
     } else if (sign_2) {
         s21_zero_bit(&value_2, 127);
-        s21_sub(value_1, value_2, result);
-        s21_set_sign(result);
+        s21_add(value_1, value_2, result);
     }
 
     return 0;
