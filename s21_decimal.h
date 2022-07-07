@@ -36,8 +36,9 @@ void    s21_zero_bit(s21_decimal *decimal, int bit_index);
 void    s21_set_inf(s21_decimal *result);
 int     s21_sum_bit(int i, s21_decimal *result, int add_bit);
 void    s21_dec_zero(s21_decimal *decimal);
-int    s21_mul_ten(s21_decimal *value, int scale);
+int     s21_mul_ten(s21_decimal *value, int scale);
 void    s21_dec_copy(s21_decimal src, s21_decimal *dest);
+int     s21_div_ten(s21_decimal *value, int scale);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */
