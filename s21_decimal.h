@@ -15,11 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "s21_decimal_types.h"
 #include "Supportive/Extradecimal/s21_decimal_extra.h"
-
-typedef struct {
-    unsigned int bits[4];
-} s21_decimal;
 
 /*                          Supportive operations                               */
 int     s21_get_bit(int block, int num_bit);
