@@ -28,9 +28,9 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         ex_code = s21_sum_dec(value_1, value_2, result);
         if (sign_1 && sign_2) s21_set_sign(result);
     } else if (sign_1) {
-        s21_sub(value_2, value_1, result);
+        ex_code = s21_sub(value_2, value_1, result);
     } else if (sign_2) {
-        s21_sub(value_1, value_2, result);
+        ex_code = s21_sub(value_1, value_2, result);
     }
 
     return ex_code;
