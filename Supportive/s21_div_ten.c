@@ -6,6 +6,14 @@
 
 #include "s21_decimal.h"
 
+void s21_div_ten_aproximation(s21_decimal *value1, s21_decimal *value2, s21_decimal *value3, int i) {
+    s21_dec_copy(*value1, value2);
+    s21_dec_copy(*value1, value3);
+    s21_right_shift_bit(value3, i);
+    s21_dec_zero(value1);
+    s21_add(*value2, *value3, value1);
+}
+
 int s21_div_ten(s21_decimal *value, int scale) {
 //    int ex_code = 0;
     s21_decimal value1, value2, value3, value_r;
@@ -24,47 +32,21 @@ int s21_div_ten(s21_decimal *value, int scale) {
 /*                          value1 = value2 + (value3 >> 4)                     */
 /*                                  q = q + (q >> 4)                            */
 /*                      q = 3n/4+(3n/4)/16 = 3n/4+3n/64 = 51n/64                */
-    s21_dec_copy(value1, &value2);
-    s21_dec_copy(value1, &value3);
-    s21_right_shift_bit(&value3, 4);
-    s21_dec_zero(&value1);
-    s21_add(value2, value3, &value1);
-
 /*                          value1 = value2 + (value3 >> 8)                     */
 /*                                  q = q + (q >> 8)                            */
 /*           q = 51n/64+(51n/64)/256 = 51n/64 + 51n/16384 = 13107n/16384        */
-    s21_dec_copy(value1, &value2);
-    s21_dec_copy(value1, &value3);
-    s21_right_shift_bit(&value3, 8);
-    s21_dec_zero(&value1);
-    s21_add(value2, value3, &value1);
-
 /*                          value1 = value2 + (value3 >> 16)                    */
 /*                                  q = q + (q >> 16)                           */
 /*                      q = 13107n/16384+(13107n/16384)/65536 =                 */
 /*                13107n/16348+13107n/1073741824 = 858993458n/1073741824        */
 /*                             note: q is now roughly 0.8n                      */
-    s21_dec_copy(value1, &value2);
-    s21_dec_copy(value1, &value3);
-    s21_right_shift_bit(&value3, 16);
-    s21_dec_zero(&value1);
-    s21_add(value2, value3, &value1);
-
 /*                          value1 = value2 + (value3 >> 32)                    */
 /*                                  q = q + (q >> 32)                           */
-    s21_dec_copy(value1, &value2);
-    s21_dec_copy(value1, &value3);
-    s21_right_shift_bit(&value3, 32);
-    s21_dec_zero(&value1);
-    s21_add(value2, value3, &value1);
-
 /*                          value1 = value2 + (value3 >> 64)                    */
 /*                                  q = q + (q >> 64)                           */
-    s21_dec_copy(value1, &value2);
-    s21_dec_copy(value1, &value3);
-    s21_right_shift_bit(&value3, 64);
-    s21_dec_zero(&value1);
-    s21_add(value2, value3, &value1);
+    for (int i = 4; i <= 64; i *= 2) {
+        s21_div_ten_aproximation(&value1, &value2, &value3, i);
+    }
 
 /*                                      value1 >> 3                             */
 /*                                      q = q >> 3                              */
@@ -96,5 +78,9 @@ int s21_div_ten(s21_decimal *value, int scale) {
         s21_dec_copy(value1, value);
     }
     value->bits[3] = save_scale;
+
+    if (--scale) {
+        s21_div_ten(value, scale);
+    }
     return 0;
 }
