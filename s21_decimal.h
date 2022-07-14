@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "Supportive/Extradecimal/s21_decimal_extra.h"
 
 typedef struct {
     unsigned int bits[4];
