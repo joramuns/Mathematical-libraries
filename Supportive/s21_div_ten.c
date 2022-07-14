@@ -15,11 +15,12 @@ void s21_div_ten_aproximation(s21_decimal *value1, s21_decimal *value2, s21_deci
 }
 
 int s21_div_ten(s21_decimal *value, int scale) {
-//    int ex_code = 0;
-    s21_decimal value1, value2, value3, value_r;
+    int ex_code = 0;
+    s21_decimal value1, value2, value3, value_r, zero;
     int save_scale = value->bits[3];
     s21_dec_zero(&value_r);
     s21_dec_zero(&value1);
+    s21_dec_zero(&zero);
 /*                       value1 = (value2 >> 1) + (value3 >> 2)                 */
 /*                                q = (n >> 1) + (n >> 2)                       */
 /*                                 q=n/2+n/4 = 3n/4                             */
@@ -27,7 +28,7 @@ int s21_div_ten(s21_decimal *value, int scale) {
     s21_dec_copy(*value, &value3);
     s21_right_shift_bit(&value2, 1);
     s21_right_shift_bit(&value3, 2);
-    s21_add(value2, value3, &value1);
+    ex_code = s21_add(value2, value3, &value1);
 
 /*                          value1 = value2 + (value3 >> 4)                     */
 /*                                  q = q + (q >> 4)                            */
@@ -61,26 +62,30 @@ int s21_div_ten(s21_decimal *value, int scale) {
     s21_dec_copy(value1, &value2);
     s21_dec_copy(value1, &value3);
     s21_left_shift_bit(&value2, 2);
-    s21_add(value2, value3, &value_r);
+    ex_code = s21_add(value2, value3, &value_r);
     s21_left_shift_bit(&value_r, 1);
     s21_dec_zero(&value2);
-    s21_sub(*value, value_r, &value2);
+    ex_code = s21_sub(*value, value_r, &value2);
 
 /*                                 return q + (r > 9)                           */
 /*                          adjust answer by error term                         */
     s21_dec_zero(&value3);
     value3.bits[0] = 9;
-    if (s21_is_greater(value2, value3)) {
-        value3.bits[0] = 1;
-        s21_dec_zero(value);
-        s21_add(value1, value3, value);
-    } else {
-        s21_dec_copy(value1, value);
+    if (!ex_code) {
+        if (s21_is_greater(value2, value3)) {
+            value3.bits[0] = 1;
+            s21_dec_zero(value);
+            s21_add(value1, value3, value);
+        } else if (s21_is_not_equal(value1, zero)) {
+            s21_dec_copy(value1, value);
+        } else {
+            ex_code = 1;
+        }
     }
-    value->bits[3] = save_scale;
+    if (save_scale) value->bits[3] = save_scale;
 
-    if (--scale) {
+    if (--scale && !ex_code) {
         s21_div_ten(value, scale);
     }
-    return 0;
+    return ex_code;
 }
