@@ -1,7 +1,7 @@
 //
 //  s21_get_scale.c
 //  Decimal
-//
+//  more shifts!
 
 #include "../s21_decimal.h"
 
