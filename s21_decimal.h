@@ -10,6 +10,7 @@
 #define MEDBIT bits[1]
 #define HIGHBIT bits[2]
 #define BITSIZE 32
+#define MAXSCALE 28
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,6 +40,7 @@ void    s21_dec_zero(s21_decimal *decimal);
 int     s21_mul_ten(s21_decimal *value, int scale);
 void    s21_dec_copy(s21_decimal src, s21_decimal *dest);
 int     s21_div_ten(s21_decimal *value, int scale);
+int     s21_set_scale(s21_decimal *decimal, int scale);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */

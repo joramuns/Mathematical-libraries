@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7098AEC28805925006E1ABF /* s21_set_scale.c in Sources */ = {isa = PBXBuildFile; fileRef = B7098AEB28805925006E1ABF /* s21_set_scale.c */; };
 		B747690D28760CC20082D5CE /* s21_mul_ten.c in Sources */ = {isa = PBXBuildFile; fileRef = B747690C28760CC20082D5CE /* s21_mul_ten.c */; };
 		B747690F28760F6F0082D5CE /* s21_dec_copy.c in Sources */ = {isa = PBXBuildFile; fileRef = B747690E28760F6F0082D5CE /* s21_dec_copy.c */; };
 		B7741F57286B80C6002CAC6D /* s21_add.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B932869D282007CBBCF /* s21_add.c */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B7098AEB28805925006E1ABF /* s21_set_scale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_set_scale.c; sourceTree = "<group>"; };
 		B747690C28760CC20082D5CE /* s21_mul_ten.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_mul_ten.c; sourceTree = "<group>"; };
 		B747690E28760F6F0082D5CE /* s21_dec_copy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_dec_copy.c; sourceTree = "<group>"; };
 		B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_zero_bit.c; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				B747690C28760CC20082D5CE /* s21_mul_ten.c */,
 				B747690E28760F6F0082D5CE /* s21_dec_copy.c */,
 				B784BCB128770ACE003688AC /* s21_div_ten.c */,
+				B7098AEB28805925006E1ABF /* s21_set_scale.c */,
 			);
 			path = Supportive;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				B77E7BC2286A165E007CBBCF /* s21_get_scale.c in Sources */,
 				B77E7BC6286A1763007CBBCF /* s21_set_bit.c in Sources */,
 				B747690F28760F6F0082D5CE /* s21_dec_copy.c in Sources */,
+				B7098AEC28805925006E1ABF /* s21_set_scale.c in Sources */,
 				B77E7BB52869DD81007CBBCF /* s21_get_bit.c in Sources */,
 				B77E7BC0286A14B9007CBBCF /* s21_get_sign.c in Sources */,
 				B7EBCDB0286DF946000F7C5A /* s21_sum_bit.c in Sources */,
