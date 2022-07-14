@@ -25,8 +25,11 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             s21_left_shift_bit(&value_1, 1);
             s21_right_shift_bit(&value_2, 1);
         } else {
-            ex_code = 1;
-            s21_set_inf(result);
+            s21_div_ten(&value_1, 1);
+            s21_div_ten(&value_2, 1);
+            s21_div_ten(result, 1);
+//            ex_code = 1;
+//            s21_set_inf(result);
         }
     }
 
