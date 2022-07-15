@@ -79,6 +79,7 @@ int s21_div_ten_extra(s21_decimal_extra *value, int scale) {
             s21_dec_copy_extra(value1, value);
         } else {
             ex_code = 1;
+            s21_dec_zero_extra(value);
         }
     }
 
