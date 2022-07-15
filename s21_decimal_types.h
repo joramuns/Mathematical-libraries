@@ -10,6 +10,7 @@
 #define EXTRASIZE 10
 #define EXTRALASTBIT 319
 #define DECIMSIZE 4
+#define LASTBIT 95
 
 typedef struct {
     unsigned int bits[DECIMSIZE];
