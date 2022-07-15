@@ -8,7 +8,7 @@
 #include "s21_decimal_extra.h"
 
 int s21_last_non_zero_extra(s21_decimal_extra decimal) {
-    int bit_index = 191;
+    int bit_index = EXTRALASTBIT;
 
     for (; bit_index >= 0; bit_index--) {
         if (s21_get_bit_long_extra(decimal, bit_index)) break;

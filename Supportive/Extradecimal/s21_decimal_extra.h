@@ -25,5 +25,9 @@ int     s21_last_non_zero_extra(s21_decimal_extra decimal);
 void    s21_zero_bit_extra(s21_decimal_extra *decimal, int bit_index);
 void    s21_print_decimal_extra(s21_decimal_extra number);
 char    *s21_get_block_extra(int block);
+int     s21_div_ten_extra(s21_decimal_extra *value, int scale);
+int     s21_is_zero_extra(s21_decimal_extra decimal);
+int     s21_sub_extra(s21_decimal_extra value_1, s21_decimal_extra value_2, s21_decimal_extra *result);
+int     s21_exdec_to_dec(s21_decimal_extra src, s21_decimal *dest);
 
 #endif /* s21_decimal_extra_h */

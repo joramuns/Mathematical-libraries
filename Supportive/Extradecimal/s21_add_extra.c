@@ -15,7 +15,7 @@ int s21_sum_bit_extra(int i, s21_decimal_extra *result, int add_bit) {
         s21_set_bit_extra(result, i);
     } else if (add_bit & res_bit) {
         s21_zero_bit_extra(result, i);
-        if ((i + 1) < 192) {
+        if ((i + 1) < (EXTRALASTBIT + 1)) {
             s21_set_bit_extra(result, i + 1);
         } else {
             ex_code = 1;

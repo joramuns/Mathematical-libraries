@@ -10,8 +10,12 @@
 int s21_dec_to_exdec(s21_decimal src, s21_decimal_extra *dest) {
     int ex_code = 0;
 
-    for (int i = 0; i < 3; i++) {
-        dest->bits[i] = src.bits[i];
+    for (int i = 0; i < EXTRASIZE; i++) {
+        if (i < 3) {
+            dest->bits[i] = src.bits[i];
+        } else {
+            dest->bits[i] = 0;
+        }
     }
 
     return ex_code;

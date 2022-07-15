@@ -8,7 +8,7 @@
 #include "s21_decimal_extra.h"
 
 void s21_dec_zero_extra(s21_decimal_extra *decimal) {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < EXTRASIZE; i++) {
         decimal->bits[i] = 0;
     }
 }
