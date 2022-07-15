@@ -14,7 +14,7 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_dec_to_exdec(value_2, &value_2_extra);
 
-    while (!s21_is_greater_extra(value_2_extra, zero) && !ex_code) {
+    while (s21_is_greater_extra(value_2_extra, zero) && !ex_code) {
         if (s21_get_bit_long_extra(value_2_extra, 0)) {
             s21_dec_copy_extra(result_extra, &temp);
             s21_dec_zero_extra(&result_extra);

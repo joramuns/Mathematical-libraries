@@ -12,11 +12,11 @@
 #define DECIMSIZE 4
 
 typedef struct {
-    unsigned int bits[4];
+    unsigned int bits[DECIMSIZE];
 } s21_decimal;
 
 typedef struct {
-    unsigned int bits[10];
+    unsigned int bits[EXTRASIZE];
 } s21_decimal_extra;
 
 #endif /* s21_decimal_types_h */

@@ -69,9 +69,9 @@ int s21_div_ten_extra(s21_decimal_extra *value, int scale) {
 /*                                 return q + (r > 9)                           */
 /*                          adjust answer by error term                         */
     s21_dec_zero_extra(&value3);
-    value3.bits[0] = 9;
+    value3.bits[0] = 6;  // Adjusting 9 to 6 because of extra?
     if (!ex_code) {
-        if (!s21_is_greater_extra(value2, value3)) {
+        if (s21_is_greater_extra(value2, value3)) {
             value3.bits[0] = 1;
             s21_dec_zero_extra(value);
             s21_add_extra(value1, value3, value);

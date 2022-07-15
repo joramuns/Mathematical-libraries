@@ -8,7 +8,7 @@
 int s21_get_bit_long(s21_decimal decimal, int bit_index) {
     int i = bit_index / 32;
     bit_index %= 32;
-    return (decimal.bits[i] & (1 << bit_index)) ? 1 : 0;
+    return (decimal.bits[i] & (1U << bit_index)) ? 1 : 0;
 }
 
 
