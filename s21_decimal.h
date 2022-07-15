@@ -59,8 +59,8 @@ int s21_mod(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 
 /*                        Comparative operations                                */
 /* Return codes:                                                                */
-/* 0 - True                                                                     */
-/* 1 - False                                                                    */
+/* 0 - False                                                                    */
+/* 1 - True                                                                     */
 /* <                                                                            */
 int s21_is_less(s21_decimal, s21_decimal);
 /* =<                                                                           */
