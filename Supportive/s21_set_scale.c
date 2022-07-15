@@ -8,7 +8,7 @@
 int s21_set_scale(s21_decimal *decimal, int scale) {
     int ex_code = 0;
 
-    if (scale < 29) {
+    if (scale > 0 && scale < 29) {
         scale <<= 16;
         decimal->bits[3] |= scale;
     } else {
