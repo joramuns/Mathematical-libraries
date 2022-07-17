@@ -7,7 +7,7 @@
 #include "../s21_decimal.h"
 
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
-    int error = 0;
+    int ex_code = 0;
     if (src >= 0) {
         dst->bits[0] = src;
     } else {
@@ -15,5 +15,5 @@ int s21_from_int_to_decimal(int src, s21_decimal *dst) {
         dst->bits[0] = src;
         s21_set_sign(dst);
     }
-    return error;
+    return ex_code;
 }

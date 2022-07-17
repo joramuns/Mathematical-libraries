@@ -7,7 +7,7 @@
 #include "../s21_decimal.h"
 
 int s21_from_decimal_to_float(s21_decimal src, float *dst) {
-    int error = 0;
+    int ex_code = 0;
     *dst = 0;
     for (int i = 95; i > -1; i--) {
         *dst += s21_get_bit_long(src, i) * pow(2, i);
@@ -18,5 +18,5 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
     for (int i = s21_get_scale(src); i > 0; i--) {
         *dst /= 10;
     }
-    return error;
+    return ex_code;
 }

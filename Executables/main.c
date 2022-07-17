@@ -17,38 +17,41 @@ int main(int argc, const char * argv[]) {
     s21_decimal res, val1, val2;
     s21_dec_zero(&res);
     //
-    s21_set_scale(&val1, 4);
-    val1.LOWBIT = 404059;
-    val1.MEDBIT = 8;
+    s21_set_scale(&val1, 0);
+    val1.LOWBIT = 0;
+    val1.MEDBIT = 0;
     val1.HIGHBIT = 0;
 //    val1.bits[3] = 0;
 //    s21_set_sign(&val1);
     
-    s21_set_scale(&val2, 1);
-    val2.LOWBIT = 4;
-    val2.MEDBIT = 8;
-    val2.HIGHBIT = 0;
+    float a = 9.2345678910;
+    
+//    s21_set_scale(&val2, 1);
+//    val2.LOWBIT = 4;
+//    val2.MEDBIT = 8;
+//    val2.HIGHBIT = 0;
 //    val2.bits[3] = 0;
 //    s21_set_sign(&val2);
 //    s21_print_dec_long(res);
-    printf("..\n");
-    s21_print_decimal(val1);
-    printf("*\n");
-    s21_print_decimal(val2);
+//    printf("..\n");
+//    s21_print_decimal(val1);
+//    printf("*\n");
+//    s21_print_decimal(val2);
     
-    printf("%Lf\n", DecimalToFloat(val1));
+    
+//    printf("%Lf\n", DecimalToFloat(val1));
     
 // 123 -> mul ten by 27 is overflow, 1 -> mul ten by 29 is overflow
-    int ex_code = s21_scale_equalize(&val1, &val2);
-    
+//    int ex_code = s21_scale_equalize(&val1, &val2);
+    int ex_code = s21_from_float_to_decimal(a, &val1);
     
     printf("=\n");
     s21_print_decimal(val1);
     printf("%d\n", s21_get_scale(val1));
 
-    printf("=\n");
-    s21_print_decimal(val2);
-    printf("%d\n", s21_get_scale(val2));
+//    printf("=\n");
+//    s21_print_decimal(val2);
+//    printf("%d\n", s21_get_scale(val2));
     
     printf("%Lf\n", DecimalToFloat(val1));
     
