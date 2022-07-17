@@ -5,7 +5,7 @@
 
 #include "s21_decimal.h"
 
-int s21_mul_ten(s21_decimal *value, int scale) {
+int s21_mul_ten(s21_decimal *value) {
     int sign = 0, ex_code = 0;
     s21_decimal mul_2, mul_8, mul_res;
     s21_dec_copy(*value, &mul_res);
@@ -25,15 +25,17 @@ int s21_mul_ten(s21_decimal *value, int scale) {
         ex_code = 1;
     }
     if (!ex_code) {
+        int scale = s21_get_scale(*value);
         s21_dec_copy(mul_res, value);
         if (sign) {
             s21_set_sign(value);
         }
-        if (--scale) {
-            s21_mul_ten(value, scale);
-        }
+        scale += 1;
+        s21_set_scale(value, scale);
+//        if (--scale) {
+//            s21_mul_ten(value, scale);
+//        }
     }
-
     return ex_code;
 }
 
