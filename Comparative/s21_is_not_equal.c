@@ -1,7 +1,7 @@
 //
 //  s21_is_not_equal.c
 //  Decimal
-//  без учета scale
+//  
 
 #include "../s21_decimal.h"
 
