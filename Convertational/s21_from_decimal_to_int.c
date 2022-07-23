@@ -8,8 +8,11 @@
 int s21_from_decimal_to_int(s21_decimal src, int *dst) {
     int ex_code = 0;
     
-    s21_decimal temp = {UINT_MAX, UINT_MAX, UINT_MAX, 0};
-    ex_code = s21_scale_equalize(&src, &temp);
+    int scale = s21_get_scale(src);
+    while (scale > 0) {
+        s21_div_ten(&src);
+        scale--;
+    }
     
     if (src.bits[2] != 0 || src.bits[1] != 0 || s21_get_bit(src.bits[0], 31) == 1) {
         ex_code = 1;
