@@ -29,5 +29,6 @@ int     s21_div_ten_extra(s21_decimal_extra *value, int scale);
 int     s21_is_zero_extra(s21_decimal_extra decimal);
 int     s21_sub_extra(s21_decimal_extra value_1, s21_decimal_extra value_2, s21_decimal_extra *result);
 int     s21_exdec_to_dec(s21_decimal_extra src, s21_decimal *dest);
+int     s21_mul_ten_extra(s21_decimal_extra *value, int scale);
 
 #endif /* s21_decimal_extra_h */
