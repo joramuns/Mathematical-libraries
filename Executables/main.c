@@ -13,22 +13,23 @@ int bsub(int x, int y);
 
 
 int main(int argc, const char * argv[]) {
-    unsigned int a = 97, b = 0, c = 0;
+    int ex_code = 0;
+    unsigned int a = 4, b = 2, c = 0;
     s21_decimal res, val1, val2;
     s21_dec_zero(&res);
 
-//    s21_set_scale(&val1, 0);
     val1.LOWBIT = a;
     val1.MEDBIT = 0;
     val1.HIGHBIT = 0;
     val1.bits[3] = 0;
+    s21_set_scale(&val1, 0);
 //    s21_set_sign(&val1);
 //
-//    s21_set_scale(&val2, 0);
     val2.LOWBIT = b;
     val2.MEDBIT = 0;
     val2.HIGHBIT = 0;
     val2.bits[3] = 0;
+//    s21_set_scale(&val2, 0);
 //    s21_set_sign(&val2);
 //    s21_print_dec_long(res);
 //    printf("..\n");
@@ -36,7 +37,7 @@ int main(int argc, const char * argv[]) {
     printf("/\n");
     s21_print_decimal(val2);
 // 123 -> mul ten by 27 is overflow, 1 -> mul ten by 29 is overflow
-    int ex_code = s21_div(val1, val2, &res);
+    ex_code = s21_div(val1, val2, &res);
 //    int ex_code = s21_div_ten(&val1, 99999);
     printf("=\n");
 //    s21_print_dec_long(res);
@@ -50,14 +51,10 @@ int main(int argc, const char * argv[]) {
 }
 
 unsigned int bdiv(unsigned int dividend, unsigned int divisor) {
-    unsigned int quotient = 0, remainder = 0, scale = 0;
+    unsigned int quotient = 0, remainder = 0;
 
     if (divisor == 0) { printf("div by zero\n"); return 0; }
-//    while ((dividend * 10) > dividend) {
-//        dividend *= 10;
-//        scale++;
-//    }
-//
+
     for(int i = 31 ; i >= 0 ; i--) {
         quotient <<= 1;
         remainder <<= 1;
@@ -69,7 +66,6 @@ unsigned int bdiv(unsigned int dividend, unsigned int divisor) {
         }
     }
 
-    printf("Scale = %u\n", scale);
     return quotient;
 }
 
