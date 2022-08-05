@@ -23,5 +23,6 @@ int s21_truncate_zero(s21_decimal *value) {
     } else {
         ex_code = 1;
     }
+
     return ex_code;
 }
