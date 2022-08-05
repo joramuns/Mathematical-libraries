@@ -4,7 +4,7 @@
 //
 // MODULO!!! no sign
 
-#include "s21_decimal.h"
+#include "../s21_decimal.h"
 
 void s21_div_ten_aproximation(s21_decimal *value1, s21_decimal *value2, s21_decimal *value3, int i) {
     s21_dec_copy(*value1, value2);

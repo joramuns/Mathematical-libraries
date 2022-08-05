@@ -5,7 +5,7 @@
 //  Created by Alyssa Ivana on 7/16/22.
 //
 
-#include "s21_decimal.h"
+#include "../s21_decimal.h"
 
 int s21_scale_equalize(s21_decimal *value_1, s21_decimal *value_2) {
     int ex_code = 0, first_more = 1;

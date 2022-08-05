@@ -3,7 +3,7 @@
 //  Decimal
 //
 
-#include "s21_decimal.h"
+#include "../s21_decimal.h"
 
 int s21_set_scale(s21_decimal *decimal, int scale) {
     int ex_code = 0;
