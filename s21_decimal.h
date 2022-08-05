@@ -41,6 +41,9 @@ int     s21_div_ten(s21_decimal *value);
 int     s21_set_scale(s21_decimal *decimal, int scale);
 int     s21_scale_equalize(s21_decimal *value_1, s21_decimal *value_2);
 int     s21_truncate_zero(s21_decimal *value);
+int     s21_is_greater_noscale(s21_decimal value_1, s21_decimal value_2);
+int     s21_is_not_equal_noscale(s21_decimal value_1, s21_decimal value_2);
+int     s21_is_equal_noscale(s21_decimal value_1, s21_decimal value_2);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */

@@ -73,11 +73,11 @@ int s21_div_ten(s21_decimal *value) {
     s21_dec_zero(&value3);
     value3.bits[0] = 9;
     if (!ex_code) {
-        if (s21_is_greater(value2, value3)) {
+        if (s21_is_greater_noscale(value2, value3)) {
             value3.bits[0] = 1;
             s21_dec_zero(value);
             s21_add(value1, value3, value);
-        } else if (s21_is_not_equal(value1, zero)) {
+        } else if (s21_is_not_equal_noscale(value1, zero)) {
             s21_dec_copy(value1, value);
         } else {
             ex_code = 1;
