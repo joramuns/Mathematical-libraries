@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "s21_decimal_types.h"
-#include "Supportive/Extradecimal/s21_decimal_extra.h"
+#include "Extradecimal/s21_decimal_extra.h"
 
 /*                          Supportive operations                               */
 int     s21_get_bit(int block, int num_bit);

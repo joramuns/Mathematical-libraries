@@ -7,7 +7,7 @@
 
 #ifndef s21_decimal_extra_h
 #define s21_decimal_extra_h
-#include "../../s21_decimal_types.h"
+#include "../s21_decimal_types.h"
 #include <stdlib.h>
 #include <stdio.h>
 
