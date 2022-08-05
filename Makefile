@@ -8,7 +8,7 @@ TEST_SRC_DIRS := ./Executables
 
 SRCS := $(shell find $(SRC_DIRS) -name 's21_*.c')
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
-TESTS_SRCS := $(shell find $(TEST_SRC_DIRS) -name '*.c')
+TEST_SRCS := $(shell find $(TEST_SRC_DIRS) -name '*.c')
 TEST_OBJS := $(TEST_SRCS:%=$(BUILD_DIR)/%.o)
 
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
@@ -21,8 +21,8 @@ $(TARGET_LIB): $(OBJS)
 test: $(BUILD_DIR)/$(TARGET_EXEC)
 	$(BUILD_DIR)/$(TARGET_EXEC)
     
-$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS) $(TEST_OBJS)
-	$(CC) $(OBJS) -o $@
+$(BUILD_DIR)/$(TARGET_EXEC): $(TARGET_LIB) $(TEST_OBJS)
+	$(CC) $(TEST_OBJS) $(TARGET_LIB) -o $@
     
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
