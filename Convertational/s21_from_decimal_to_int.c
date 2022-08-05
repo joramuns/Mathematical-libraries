@@ -19,7 +19,7 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
     }
     if (ex_code == 0) {
         *dst = (int)src.bits[0];
-        if (s21_get_scale(src)) {
+        if (s21_get_sign(src)) {
             *dst = -*dst;
         }
     }
