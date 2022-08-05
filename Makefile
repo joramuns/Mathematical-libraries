@@ -13,16 +13,17 @@ TEST_OBJS := $(TEST_SRCS:%=$(BUILD_DIR)/%.o)
 
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+TEST_FLAGS := `pkg-config --cflags --libs check`
 
 $(TARGET_LIB): $(OBJS)
 	ar -rc $@ $(BUILD_DIR)/*/*.o
 	ranlib $@
 
-test: $(BUILD_DIR)/$(TARGET_EXEC)
-	$(BUILD_DIR)/$(TARGET_EXEC)
+$(TARGET_EXEC): $(BUILD_DIR)/$(TARGET_EXEC)
+	-$(BUILD_DIR)/$(TARGET_EXEC)
     
 $(BUILD_DIR)/$(TARGET_EXEC): $(TARGET_LIB) $(TEST_OBJS)
-	$(CC) $(TEST_OBJS) $(TARGET_LIB) -o $@
+	$(CC) $(TEST_OBJS) $(TARGET_LIB) -o $@ $(TEST_FLAGS)
     
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
