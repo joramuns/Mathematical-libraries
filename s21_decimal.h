@@ -40,6 +40,7 @@ void    s21_dec_copy(s21_decimal src, s21_decimal *dest);
 int     s21_div_ten(s21_decimal *value);
 int     s21_set_scale(s21_decimal *decimal, int scale);
 int     s21_scale_equalize(s21_decimal *value_1, s21_decimal *value_2);
+int     s21_truncate_zero(s21_decimal *value);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */
