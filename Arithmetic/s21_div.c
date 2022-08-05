@@ -40,9 +40,6 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     scale += s21_get_scale(value_2);
     s21_dec_to_exdec(value_2, &value_2_extra);
 
-//    while (!s21_mul_ten(&value_1, 1)) {
-//        scale++;
-//    }
     for (int i = EXTRALASTBIT; i >= 0; i--) {
         s21_left_shift_bit_extra(&res_extra, 1);
         s21_left_shift_bit_extra(&remainder, 1);
