@@ -14,10 +14,11 @@ void s21_div_ten_aproximation(s21_decimal *value1, s21_decimal *value2, s21_deci
     s21_add(*value2, *value3, value1);
 }
 
-int s21_div_ten(s21_decimal *value, int scale) {
+int s21_div_ten(s21_decimal *value) {
     int ex_code = 0;
     s21_decimal value1, value2, value3, value_r, zero;
-    int save_scale = value->bits[3];
+    int save_scale = s21_get_scale(*value);
+    int save_sign = s21_get_sign(*value);
     s21_dec_zero(&value_r);
     s21_dec_zero(&value1);
     s21_dec_zero(&zero);
@@ -82,10 +83,11 @@ int s21_div_ten(s21_decimal *value, int scale) {
             ex_code = 1;
         }
     }
-    if (save_scale) value->bits[3] = save_scale;
+    if (save_scale) s21_set_scale(value, --save_scale);
+    if (save_sign) s21_set_sign(value);
 
-    if (--scale && !ex_code) {
-        s21_div_ten(value, scale);
-    }
+//    if (--scale && !ex_code) {
+//        s21_div_ten(value, scale);
+//    }
     return ex_code;
 }
