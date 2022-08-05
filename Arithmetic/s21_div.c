@@ -62,12 +62,12 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             res_extra = s21_dec_or(res_extra, one);
         }
     }
-    // Truncate zeros
     if (scale > 28) {
         s21_div_ten_extra(&res_extra, scale - 28);
     }
     s21_exdec_to_dec(res_extra, result);
     s21_set_scale(result, 28);
+    while (!s21_truncate_zero(result)) {}
 
     return ex_code;
 }

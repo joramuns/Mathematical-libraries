@@ -3,7 +3,7 @@
 //  Decimal
 //
 
-#include "s21_decimal.h"
+#include "../s21_decimal.h"
 
 int s21_mul_ten(s21_decimal *value) {
     int sign = 0, ex_code = 0;
