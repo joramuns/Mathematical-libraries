@@ -37,6 +37,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_mul_ten_extra(&value_1_extra, scale);
     scale = s21_get_scale(value_1) - s21_get_scale(value_2) + 28;
+    int dif_sign = s21_get_sign(value_1) ^ s21_get_sign(value_2);
     s21_dec_to_exdec(value_2, &value_2_extra);
 
     for (int i = EXTRALASTBIT; i >= 0; i--) {
@@ -71,6 +72,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 //    }
     s21_set_scale(result, scale);
     s21_truncate_zero(result);
+    if (dif_sign) s21_set_sign(result);
 
     return ex_code;
 }
