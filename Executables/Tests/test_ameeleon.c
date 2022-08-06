@@ -811,6 +811,8 @@ END_TEST
 
 START_TEST(s21_equal_null) {
     s21_decimal dec1, dec2;
+    s21_dec_zero(&dec1);
+    s21_dec_zero(&dec2);
     s21_from_int_to_decimal(0, &dec1);
     s21_from_int_to_decimal(0, &dec2);
     dec1.bits[3] = 0;
