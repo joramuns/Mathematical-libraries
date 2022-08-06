@@ -29,7 +29,7 @@ s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_
     return result;
 }
 
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, scale = 28;
     s21_decimal_extra remainder, one, res_dec, res_extra, value_1_extra, value_2_extra;
     s21_dec_zero_extra(&res_extra);
@@ -71,6 +71,20 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 //    }
     s21_set_scale(result, scale);
     s21_truncate_zero(result);
+
+    return ex_code;
+}
+
+int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+    int ex_code = 0;
+    s21_decimal zero;
+    s21_dec_zero(&zero);
+
+    if (s21_is_equal_noscale(value_2, zero)) {
+        ex_code = 3;
+    } else {
+        s21_div_bit(value_1, value_2, result);
+    }
 
     return ex_code;
 }
