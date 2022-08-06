@@ -26,11 +26,16 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_zero_bit(&value_2, 127);
     if ((!sign_1 && !sign_2) || (sign_1 && sign_2)) {
         ex_code = s21_sum_dec(value_1, value_2, result);
+        if (ex_code && s21_get_sign(*result)) ex_code = 0;
         if (sign_1 && sign_2) s21_set_sign(result);
     } else if (sign_1) {
         ex_code = s21_sub(value_2, value_1, result);
     } else if (sign_2) {
         ex_code = s21_sub(value_1, value_2, result);
+    }
+    if (ex_code) {
+        if (s21_get_sign(*result)) ex_code = 2;
+        s21_dec_zero(result);
     }
 
     return ex_code;
