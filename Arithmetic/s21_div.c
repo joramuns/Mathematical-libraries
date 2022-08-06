@@ -36,8 +36,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_dec_zero_extra(&remainder);
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_mul_ten_extra(&value_1_extra, scale);
-    scale += s21_get_scale(value_1);
-    scale += s21_get_scale(value_2);
+    scale = s21_get_scale(value_1) - s21_get_scale(value_2) + 28;
     s21_dec_to_exdec(value_2, &value_2_extra);
 
     for (int i = EXTRALASTBIT; i >= 0; i--) {
@@ -62,12 +61,26 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             res_extra = s21_dec_or(res_extra, one);
         }
     }
-    if (scale > 28) {
-        s21_div_ten_extra(&res_extra, scale - 28);
+    scale -= s21_exdec_to_dec(res_extra, result);
+    while (scale > 28) {
+        s21_div_ten(result);
+        scale--;
     }
-    s21_exdec_to_dec(res_extra, result);
-    s21_set_scale(result, 28);
-    while (!s21_truncate_zero(result)) {}
+//    if (s21_is_less(value_1, value_2)) {
+//        s21_div_ten(result);
+//    }
+    s21_set_scale(result, scale);
+    s21_truncate_zero(result);
 
     return ex_code;
 }
+
+//1 / 3
+//1 / 30
+//4 / 3
+//10 / 3
+//11 / 3
+//4 / 2
+//40/2
+//4/20
+//scales 0-1 1-0 1-1 10-10 28-28 28-0 0-28 0-0
