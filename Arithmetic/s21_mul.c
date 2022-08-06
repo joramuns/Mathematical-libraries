@@ -8,6 +8,7 @@
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, scale_1 = s21_get_scale(value_1), scale_2 = s21_get_scale(value_2);
     int dif_scale = scale_1 + scale_2;
+    int dif_sign = s21_get_sign(value_1) ^ s21_get_sign(value_2);
     s21_decimal_extra zero, temp, value_1_extra, value_2_extra, result_extra;
     s21_dec_zero_extra(&zero);
     s21_dec_zero_extra(&result_extra);
@@ -29,7 +30,16 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 //    }
 //    convertation issue in convertation function - needs to be tested!
     s21_exdec_to_dec(result_extra, result);
+//    while (dif_scale > 28 && !ex_code) {
+//        ex_code = s21_div_ten(result);
+//        dif_scale = (ex_code) ? 28 : dif_scale - 1;
+//    }
+    while (dif_scale > 28) {
+        s21_div_ten(result);
+        dif_scale--;
+    }
     s21_set_scale(result, dif_scale);
+    if (dif_sign) s21_set_sign(result);
 
     return ex_code;
 }
