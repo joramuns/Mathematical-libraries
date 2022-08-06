@@ -27,9 +27,10 @@ int s21_scale_equalize(s21_decimal *value_1, s21_decimal *value_2) {
         while (scale_1 != scale_2 && !ex_code) {
             ex_code = s21_mul_ten(&temp_dec);
             scale_2++;
-        }
-        if (!ex_code) {
-            s21_dec_copy(temp_dec, (first_more) ? value_2 : value_1);
+            if (!ex_code) {
+                s21_dec_copy(temp_dec, (first_more) ? value_2 : value_1);
+                s21_set_scale((first_more) ? value_2 : value_1, scale_2);
+            }
         }
             
         if (ex_code) {
