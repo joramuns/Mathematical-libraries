@@ -80,7 +80,8 @@ int s21_div_ten(s21_decimal *value) {
         } else if (s21_is_not_equal_noscale(value1, zero)) {
             s21_dec_copy(value1, value);
         } else {
-            ex_code = 1;
+            value->LOWBIT = (value->LOWBIT < 5) ? 0 : 1;
+            ex_code = 2;
         }
     }
     if (save_scale) s21_set_scale(value, --save_scale);
