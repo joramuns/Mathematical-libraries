@@ -16,7 +16,7 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
     
     s21_decimal min_int = {2147483648, 0, 0, 2147483648};
     
-    if (src.bits[2] != 0 || src.bits[1] != 0 || (s21_get_bit(src.bits[0], 31) == 1 && s21_is_not_equal_noscale(src, min_int)) ) {
+    if (src.bits[2] != 0 || src.bits[1] != 0 || (s21_get_bit(src.bits[0], 31) == 1 && s21_is_not_equal(src, min_int)) ) {
         ex_code = 1;
     }
     
