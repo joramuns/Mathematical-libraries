@@ -20,6 +20,7 @@ int s21_div_ten(s21_decimal *value) {
     int save_scale = s21_get_scale(*value);
     int save_sign = s21_get_sign(*value);
     s21_set_scale(value, 0);
+    s21_zero_bit(value, 127);
     s21_dec_zero(&value_r);
     s21_dec_zero(&value1);
     s21_dec_zero(&zero);

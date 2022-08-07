@@ -79,8 +79,12 @@ int s21_scale_eq_div(s21_decimal *value, int scale_present, int scale_target) {
     s21_decimal temp_dec = *value;
 
     while (scale_present > scale_target) {
-        ex_code = s21_div_ten(&temp_dec);
-        s21_dec_copy(temp_dec, value);
+        if ((scale_present - scale_target) > 1) {
+            ex_code = s21_div_ten(&temp_dec);
+            s21_dec_copy(temp_dec, value);
+        } else {
+            s21_bank_rounding(value);
+        }
         scale_present--;
     }
 

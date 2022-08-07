@@ -11,6 +11,7 @@ int s21_mul_ten(s21_decimal *value) {
     s21_decimal mul_2, mul_8, mul_res;
 
     s21_set_scale(value, 0);
+    s21_zero_bit(value, 127);
     s21_dec_copy(*value, &mul_res);
     if (s21_last_non_zero(mul_res) < 93) {
         s21_dec_copy(mul_res, &mul_2);

@@ -42,8 +42,14 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int sign_1 = s21_get_sign(value_1), sign_2 = s21_get_sign(value_2);
     int scale_1 = s21_get_scale(value_1), scale_2 = s21_get_scale(value_2);
     if (scale_1 != scale_2) {
-        dif_scale = (scale_1 > scale_2) ? scale_1 : scale_2;
         s21_scale_equalize(&value_1, &value_2);
+        scale_1 = s21_get_scale(value_1);
+        scale_2 = s21_get_scale(value_2);
+        if (scale_1 == scale_2) {
+            dif_scale = scale_1;
+        } else {
+            ex_code = 99;  // THIS IS SPARTA
+        }
     }
 
     s21_zero_bit(&value_1, 127);
