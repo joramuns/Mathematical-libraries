@@ -32,5 +32,6 @@ int     s21_exdec_to_dec(s21_decimal_extra src, s21_decimal *dest);
 int     s21_mul_ten_extra(s21_decimal_extra *value, int scale);
 int     s21_is_equal_extra(s21_decimal_extra value_1, s21_decimal_extra value_2);
 int     s21_is_less_extra(s21_decimal_extra value_1, s21_decimal_extra value_2);
+int     s21_sum_bit_extra(int i, s21_decimal_extra *result, int add_bit);
 
 #endif /* s21_decimal_extra_h */

@@ -18,6 +18,25 @@ int s21_sum_dec(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     return ex_code;
 }
 
+int s21_sum_dec_extra(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+    int ex_code = 0;
+    s21_decimal_extra value_1_extra = {0}, value_2_extra = {0}, result_extra = {0};
+
+    s21_dec_to_exdec(value_1, &value_1_extra);
+    s21_dec_to_exdec(value_2, &value_2_extra);
+    int len = (s21_last_non_zero_extra(value_1_extra) >= s21_last_non_zero_extra(value_2_extra)) ? \
+    s21_last_non_zero_extra(value_1_extra) : s21_last_non_zero_extra(value_2_extra);
+
+    for (int i = 0; (i <= len) && !ex_code; i++) {
+        ex_code = s21_sum_bit_extra(i, &result_extra, s21_get_bit_long_extra(value_1_extra, i));
+        if (!ex_code) ex_code = s21_sum_bit_extra(i, &result_extra, s21_get_bit_long_extra(value_2_extra, i));
+    }
+//    if (s21_get_sub_flag(*result)) s21_right_shift_bit_extra(&result_extra, 1);
+    s21_exdec_to_dec(result_extra, result);
+
+    return ex_code;
+}
+
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, dif_scale = 0;
     int sign_1 = s21_get_sign(value_1), sign_2 = s21_get_sign(value_2);

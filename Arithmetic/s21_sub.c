@@ -27,11 +27,15 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             s21_set_sign(result);
             if (s21_is_greater_noscale(value_1, value_2)) {
                 s21_invert_bit_long(&value_2);
+                s21_set_sub_flag(result);
                 s21_add(value_1, value_2, result);
                 s21_zero_bit(result, 127);
+                s21_zero_sub_flag(result);
             } else {
                 s21_invert_bit_long(&value_1);
+                s21_set_sub_flag(result);
                 s21_add(value_2, value_1, result);
+                s21_zero_sub_flag(result);
             }
         }
     } else if (sign_1) {

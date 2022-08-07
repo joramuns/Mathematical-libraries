@@ -118,6 +118,10 @@
 		B788CB38289BE9580054584D /* s21_mul_ten_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B788CB37289BE9580054584D /* s21_mul_ten_extra.c */; };
 		B788CB3B289BF4820054584D /* s21_is_equal_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B788CB3A289BF4820054584D /* s21_is_equal_extra.c */; };
 		B788CB3D289BFC380054584D /* s21_is_less_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B788CB3C289BFC380054584D /* s21_is_less_extra.c */; };
+		B7B56FD9289FDAD1009B6367 /* s21_sum_bit_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7B56FD8289FDAD1009B6367 /* s21_sum_bit_extra.c */; };
+		B7B56FDA289FDAD1009B6367 /* s21_sum_bit_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7B56FD8289FDAD1009B6367 /* s21_sum_bit_extra.c */; };
+		B7B56FDC289FE4E0009B6367 /* s21_sub_flag.c in Sources */ = {isa = PBXBuildFile; fileRef = B7B56FDB289FE4E0009B6367 /* s21_sub_flag.c */; };
+		B7B56FDD289FE4E0009B6367 /* s21_sub_flag.c in Sources */ = {isa = PBXBuildFile; fileRef = B7B56FDB289FE4E0009B6367 /* s21_sub_flag.c */; };
 		B7CC6B202860F679003DB569 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CC6B1F2860F679003DB569 /* main.c */; };
 		B7CD11A0289D63B600FB4F2E /* s21_is_greater_noscale.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CD119F289D63B600FB4F2E /* s21_is_greater_noscale.c */; };
 		B7CD11A1289D63B600FB4F2E /* s21_is_greater_noscale.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CD119F289D63B600FB4F2E /* s21_is_greater_noscale.c */; };
@@ -215,6 +219,8 @@
 		B788CB37289BE9580054584D /* s21_mul_ten_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_mul_ten_extra.c; sourceTree = "<group>"; };
 		B788CB3A289BF4820054584D /* s21_is_equal_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_equal_extra.c; sourceTree = "<group>"; };
 		B788CB3C289BFC380054584D /* s21_is_less_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_less_extra.c; sourceTree = "<group>"; };
+		B7B56FD8289FDAD1009B6367 /* s21_sum_bit_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sum_bit_extra.c; sourceTree = "<group>"; };
+		B7B56FDB289FE4E0009B6367 /* s21_sub_flag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sub_flag.c; sourceTree = "<group>"; };
 		B7CC6B1C2860F679003DB569 /* Decimal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Decimal; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CC6B1F2860F679003DB569 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		B7CD119F289D63B600FB4F2E /* s21_is_greater_noscale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_greater_noscale.c; sourceTree = "<group>"; };
@@ -272,6 +278,7 @@
 				B788CB37289BE9580054584D /* s21_mul_ten_extra.c */,
 				B788CB3A289BF4820054584D /* s21_is_equal_extra.c */,
 				B788CB3C289BFC380054584D /* s21_is_less_extra.c */,
+				B7B56FD8289FDAD1009B6367 /* s21_sum_bit_extra.c */,
 			);
 			path = Extradecimal;
 			sourceTree = "<group>";
@@ -357,6 +364,7 @@
 				B7098AEB28805925006E1ABF /* s21_set_scale.c */,
 				831A921F2882DDD700AAB198 /* s21_scale_equalize.c */,
 				B7108A9A289D588D00150E69 /* s21_truncate_zero.c */,
+				B7B56FDB289FE4E0009B6367 /* s21_sub_flag.c */,
 			);
 			path = Supportive;
 			sourceTree = "<group>";
@@ -498,6 +506,7 @@
 				B7108A99289D3AF800150E69 /* s21_negate.c in Sources */,
 				B7108A5F289D3AEE00150E69 /* s21_shift_bit_extra.c in Sources */,
 				B7108A60289D3AEE00150E69 /* s21_get_bit_long_extra.c in Sources */,
+				B7B56FDD289FE4E0009B6367 /* s21_sub_flag.c in Sources */,
 				B7108A61289D3AEE00150E69 /* s21_get_bit_extra.c in Sources */,
 				B7108A62289D3AEE00150E69 /* s21_set_bit_extra.c in Sources */,
 				B7108A63289D3AEE00150E69 /* s21_dec_zero_extra.c in Sources */,
@@ -518,6 +527,7 @@
 				B7108A72289D3AEE00150E69 /* s21_is_less_extra.c in Sources */,
 				B7108A73289D3AEE00150E69 /* s21_get_bit.c in Sources */,
 				B7108A74289D3AEE00150E69 /* s21_get_bit_long.c in Sources */,
+				B7B56FDA289FDAD1009B6367 /* s21_sum_bit_extra.c in Sources */,
 				B7108A75289D3AEE00150E69 /* s21_get_block.c in Sources */,
 				B7108A76289D3AEE00150E69 /* s21_print_decimal.c in Sources */,
 				B7108A77289D3AEE00150E69 /* s21_print_dec_long.c in Sources */,
@@ -555,6 +565,7 @@
 				B784BCB228770ACE003688AC /* s21_div_ten.c in Sources */,
 				B7741F5F286B80F3002CAC6D /* s21_is_not_equal.c in Sources */,
 				B7108A9B289D588D00150E69 /* s21_truncate_zero.c in Sources */,
+				B7B56FDC289FE4E0009B6367 /* s21_sub_flag.c in Sources */,
 				B7CC6B202860F679003DB569 /* main.c in Sources */,
 				B70D55C6288095C3005B288C /* s21_get_bit_long_extra.c in Sources */,
 				B7741F71286B83C1002CAC6D /* s21_mod.c in Sources */,
@@ -568,6 +579,7 @@
 				B70D55D92880AA4C005B288C /* s21_zero_bit_extra.c in Sources */,
 				B7741F5D286B80F3002CAC6D /* s21_is_less_or_equal.c in Sources */,
 				B70D55C8288096EC005B288C /* s21_get_bit_extra.c in Sources */,
+				B7B56FD9289FDAD1009B6367 /* s21_sum_bit_extra.c in Sources */,
 				B77E7BC2286A165E007CBBCF /* s21_get_scale.c in Sources */,
 				B77E7BC6286A1763007CBBCF /* s21_set_bit.c in Sources */,
 				B70D55CA2880972E005B288C /* s21_set_bit_extra.c in Sources */,

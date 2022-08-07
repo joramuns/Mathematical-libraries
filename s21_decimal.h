@@ -44,6 +44,9 @@ int     s21_truncate_zero(s21_decimal *value);
 int     s21_is_greater_noscale(s21_decimal value_1, s21_decimal value_2);
 int     s21_is_not_equal_noscale(s21_decimal value_1, s21_decimal value_2);
 int     s21_is_equal_noscale(s21_decimal value_1, s21_decimal value_2);
+void    s21_set_sub_flag(s21_decimal *value);
+void    s21_zero_sub_flag(s21_decimal *value);
+int     s21_get_sub_flag(s21_decimal value);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */

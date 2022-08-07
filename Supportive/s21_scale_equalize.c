@@ -66,10 +66,10 @@ int s21_scale_eq_mul(s21_decimal *value, int scale_present, int scale_target) {
             s21_dec_copy(temp_dec, value);
             scale_present++;
         } else {
-            ex_code = scale_present;
             break;
         }
     }
+    ex_code = scale_present;
 
     return ex_code;
 }
@@ -93,12 +93,12 @@ int s21_scale_equalize(s21_decimal *value_1, s21_decimal *value_2) {
 
     if (scale_1 < scale_2) {
         scale_1 = s21_scale_eq_mul(value_1, scale_1, scale_2);
-        if (scale_1 != scale_2 && scale_1) {
+        if (scale_1 != scale_2) {
             ex_code = s21_scale_eq_div(value_2, scale_2, scale_1);
         }
     } else if (scale_1 > scale_2) {
         scale_2 = s21_scale_eq_mul(value_2, scale_2, scale_1);
-        if (scale_2 != scale_1 && scale_2) {
+        if (scale_2 != scale_1) {
             ex_code = s21_scale_eq_div(value_1, scale_1, scale_2);
         }
     }

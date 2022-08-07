@@ -11,21 +11,21 @@ int main(int argc, const char * argv[]) {
     int ex_code = 0;
     s21_decimal res, val1, val2;
     s21_dec_zero(&res);
-    printf("uintmax = %d", 2147483647);
     val1.LOWBIT = UINT_MAX;
     val1.MEDBIT = UINT_MAX;
     val1.HIGHBIT = 2147483647;
-    val1.bits[3] = 0;
-    s21_set_scale(&val1, 25);
+    val1.bits[3] = 1638400;
+//    s21_set_scale(&val1, 0);
 
     val2.LOWBIT = UINT_MAX;
     val2.MEDBIT = UINT_MAX;
     val2.HIGHBIT = 0;
-    val2.bits[3] = 0;
-    s21_set_scale(&val2, 15);
+    val2.bits[3] = 2148466688;
+//    s21_set_scale(&val2, 15);
 
 //    s21_set_sign(&val1);
-    s21_set_sign(&val2);
+//    s21_set_sign(&val2);
+//    s21_zero_bit(&val2, 127);
 
     s21_print_decimal(val1);
     printf("+\n");
