@@ -29,7 +29,7 @@ s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_
     return result;
 }
 
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, scale = 28;
     s21_decimal_extra remainder, one, res_dec, res_extra, value_1_extra, value_2_extra;
     s21_dec_zero_extra(&res_extra);
@@ -37,6 +37,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_mul_ten_extra(&value_1_extra, scale);
     scale = s21_get_scale(value_1) - s21_get_scale(value_2) + 28;
+    int dif_sign = s21_get_sign(value_1) ^ s21_get_sign(value_2);
     s21_dec_to_exdec(value_2, &value_2_extra);
 
     for (int i = EXTRALASTBIT; i >= 0; i--) {
@@ -62,6 +63,9 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         }
     }
     scale -= s21_exdec_to_dec(res_extra, result);
+    if (scale < 0) {
+        ex_code = dif_sign ? 2 : 1;
+    }
     while (scale > 28) {
         s21_div_ten(result);
         scale--;
@@ -71,6 +75,21 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 //    }
     s21_set_scale(result, scale);
     s21_truncate_zero(result);
+    if (dif_sign) s21_set_sign(result);
+
+    return ex_code;
+}
+
+int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
+    int ex_code = 0;
+    s21_decimal zero;
+    s21_dec_zero(&zero);
+
+    if (s21_is_equal_noscale(value_2, zero)) {
+        ex_code = 3;
+    } else {
+        ex_code = s21_div_bit(value_1, value_2, result);
+    }
 
     return ex_code;
 }

@@ -55,7 +55,6 @@
 		B7108A7C289D3AEE00150E69 /* s21_shift_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E8009A286B1C7E00B51F8B /* s21_shift_bit.c */; };
 		B7108A7D289D3AEE00150E69 /* s21_last_non_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E8009C286B761700B51F8B /* s21_last_non_zero.c */; };
 		B7108A7E289D3AEE00150E69 /* s21_zero_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */; };
-		B7108A7F289D3AEE00150E69 /* s21_set_inf.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */; };
 		B7108A80289D3AEE00150E69 /* s21_sum_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */; };
 		B7108A81289D3AEE00150E69 /* s21_dec_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */; };
 		B7108A82289D3AEE00150E69 /* s21_mul_ten.c in Sources */ = {isa = PBXBuildFile; fileRef = B747690C28760CC20082D5CE /* s21_mul_ten.c */; };
@@ -132,7 +131,6 @@
 		B7DA048928818CFC002E8214 /* s21_exdec_to_dec.c in Sources */ = {isa = PBXBuildFile; fileRef = B7DA048828818CFC002E8214 /* s21_exdec_to_dec.c */; };
 		B7E8009B286B1C7E00B51F8B /* s21_shift_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E8009A286B1C7E00B51F8B /* s21_shift_bit.c */; };
 		B7E8009D286B761700B51F8B /* s21_last_non_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E8009C286B761700B51F8B /* s21_last_non_zero.c */; };
-		B7EBCDAE286DF8FD000F7C5A /* s21_set_inf.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */; };
 		B7EBCDB0286DF946000F7C5A /* s21_sum_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */; };
 		B7EBCDB2286E0C74000F7C5A /* s21_dec_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */; };
 /* End PBXBuildFile section */
@@ -228,7 +226,6 @@
 		B7DA048828818CFC002E8214 /* s21_exdec_to_dec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_exdec_to_dec.c; sourceTree = "<group>"; };
 		B7E8009A286B1C7E00B51F8B /* s21_shift_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_shift_bit.c; sourceTree = "<group>"; };
 		B7E8009C286B761700B51F8B /* s21_last_non_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_last_non_zero.c; sourceTree = "<group>"; };
-		B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_set_inf.c; sourceTree = "<group>"; };
 		B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sum_bit.c; sourceTree = "<group>"; };
 		B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_dec_zero.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -352,7 +349,6 @@
 				B7E8009A286B1C7E00B51F8B /* s21_shift_bit.c */,
 				B7E8009C286B761700B51F8B /* s21_last_non_zero.c */,
 				B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */,
-				B7EBCDAD286DF8FD000F7C5A /* s21_set_inf.c */,
 				B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */,
 				B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */,
 				B747690C28760CC20082D5CE /* s21_mul_ten.c */,
@@ -532,7 +528,6 @@
 				B7108A7C289D3AEE00150E69 /* s21_shift_bit.c in Sources */,
 				B7108A7D289D3AEE00150E69 /* s21_last_non_zero.c in Sources */,
 				B7108A7E289D3AEE00150E69 /* s21_zero_bit.c in Sources */,
-				B7108A7F289D3AEE00150E69 /* s21_set_inf.c in Sources */,
 				B7108A80289D3AEE00150E69 /* s21_sum_bit.c in Sources */,
 				B7108A81289D3AEE00150E69 /* s21_dec_zero.c in Sources */,
 				B7108A82289D3AEE00150E69 /* s21_mul_ten.c in Sources */,
@@ -555,7 +550,6 @@
 				B70D55D72880A984005B288C /* s21_last_non_zero_extra.c in Sources */,
 				B747690D28760CC20082D5CE /* s21_mul_ten.c in Sources */,
 				B7CD11A0289D63B600FB4F2E /* s21_is_greater_noscale.c in Sources */,
-				B7EBCDAE286DF8FD000F7C5A /* s21_set_inf.c in Sources */,
 				B70D55C42880952D005B288C /* s21_shift_bit_extra.c in Sources */,
 				B7E8009D286B761700B51F8B /* s21_last_non_zero.c in Sources */,
 				B784BCB228770ACE003688AC /* s21_div_ten.c in Sources */,

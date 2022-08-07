@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../s21_decimal.h"
+#include "../../s21_decimal.h"
 #define BIT_SIZE 4294967295
 
 START_TEST(s21_add_int_1) {
@@ -811,6 +811,8 @@ END_TEST
 
 START_TEST(s21_equal_null) {
     s21_decimal dec1, dec2;
+    s21_dec_zero(&dec1);
+    s21_dec_zero(&dec2);
     s21_from_int_to_decimal(0, &dec1);
     s21_from_int_to_decimal(0, &dec2);
     dec1.bits[3] = 0;
@@ -1708,7 +1710,7 @@ int main(void) {
     tcase_add_test(tc1_1, s21_from_float_to_decimal_8);
     tcase_add_test(tc1_1, s21_from_float_to_decimal_9);
     tcase_add_test(tc1_1, s21_from_float_to_decimal_big);
-    
+
     tcase_add_test(tc1_1, s21_from_decimal_to_float_1);
     tcase_add_test(tc1_1, s21_from_decimal_to_float_2);
     tcase_add_test(tc1_1, s21_from_decimal_to_float_3);
