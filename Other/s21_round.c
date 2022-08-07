@@ -8,6 +8,8 @@
 
 int s21_round(s21_decimal value, s21_decimal *result) {
     
+    s21_dec_zero(result);
+    
     int sign = s21_get_sign(value);
     if (sign) s21_zero_bit(&value, 127);
     
