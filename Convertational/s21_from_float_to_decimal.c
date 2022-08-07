@@ -24,6 +24,7 @@ int s21_get_float_mantissa(float src) {
 }
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst) {
+    s21_dec_zero(dst);
     int ex_code = 0;
     int exp = s21_get_float_exp(src);
     int scale = 0;
