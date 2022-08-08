@@ -20,7 +20,7 @@ int s21_sum_dec(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 
 int s21_sum_dec_extra(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0;
-    s21_decimal_extra value_1_extra = {0}, value_2_extra = {0}, result_extra = {0};
+    s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA, result_extra = INITDECEXTRA;
 
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_dec_to_exdec(value_2, &value_2_extra);

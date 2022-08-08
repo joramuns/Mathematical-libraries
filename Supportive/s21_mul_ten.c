@@ -8,7 +8,7 @@
 int s21_mul_ten(s21_decimal *value) {
     int ex_code = 0;
     int sign = s21_get_sign(*value), scale = s21_get_scale(*value);
-    s21_decimal mul_2, mul_8, mul_res;
+    s21_decimal mul_2 = INITDEC, mul_8 = INITDEC, mul_res = INITDEC;
 
     s21_set_scale(value, 0);
     s21_zero_bit(value, 127);

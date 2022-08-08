@@ -8,8 +8,7 @@
 #include "../s21_decimal.h"
 
 s21_decimal_extra s21_dec_and(s21_decimal_extra value_1, s21_decimal_extra value_2) {
-    s21_decimal_extra result;
-    s21_dec_zero_extra(&result);
+    s21_decimal_extra result = INITDECEXTRA;
 
     for (int i = 0; i < EXTRASIZE; i++) {
         result.bits[i] = value_1.bits[i] & value_2.bits[i];
@@ -19,8 +18,7 @@ s21_decimal_extra s21_dec_and(s21_decimal_extra value_1, s21_decimal_extra value
 }
 
 s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_2) {
-    s21_decimal_extra result;
-    s21_dec_zero_extra(&result);
+    s21_decimal_extra result = INITDECEXTRA;
 
     for (int i = 0; i < EXTRASIZE; i++) {
         result.bits[i] = value_1.bits[i] | value_2.bits[i];
@@ -31,9 +29,7 @@ s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_
 
 int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, scale = 28;
-    s21_decimal_extra remainder, one, res_dec, res_extra, value_1_extra, value_2_extra;
-    s21_dec_zero_extra(&res_extra);
-    s21_dec_zero_extra(&remainder);
+    s21_decimal_extra remainder = INITDECEXTRA, one = INITDECEXTRA, res_dec = INITDECEXTRA, res_extra = INITDECEXTRA, value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA;
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_mul_ten_extra(&value_1_extra, scale);
     scale = s21_get_scale(value_1) - s21_get_scale(value_2) + 28;
@@ -82,8 +78,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0;
-    s21_decimal zero;
-    s21_dec_zero(&zero);
+    s21_decimal zero = INITDECEXTRA;
 
     if (s21_is_equal_noscale(value_2, zero)) {
         ex_code = 3;

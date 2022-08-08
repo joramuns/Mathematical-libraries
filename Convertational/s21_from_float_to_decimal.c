@@ -32,8 +32,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
         ex_code = 1;
         s21_dec_zero(dst);
     } else if (exp > -96 && exp <= 0) {
-        float new_src;
-        new_src = src * 10000000;
+        float new_src = src * 10000000;
         scale = 7;
         s21_from_int_to_decimal(new_src, dst);
         s21_set_scale(dst, scale);

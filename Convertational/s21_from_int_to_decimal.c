@@ -8,6 +8,7 @@
 
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
     int ex_code = 0;
+
     s21_dec_zero(dst);
     if (src >= 0) {
         dst->bits[0] = src;
@@ -16,5 +17,6 @@ int s21_from_int_to_decimal(int src, s21_decimal *dst) {
         dst->bits[0] = src;
         s21_set_sign(dst);
     }
+
     return ex_code;
 }
