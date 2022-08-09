@@ -7,6 +7,9 @@
 
 int s21_is_greater(s21_decimal value_1, s21_decimal value_2) {
     int ex_code = -1;
+
+    if(s21_last_non_zero(value_1) == -1) s21_zero_bit(&value_1, 127);
+    if(s21_last_non_zero(value_2) == -1) s21_zero_bit(&value_2, 127);
     if (s21_get_sign(value_1) != s21_get_sign(value_2)) {
         ex_code = s21_get_sign(value_1) ? 0 : 1;
     }
