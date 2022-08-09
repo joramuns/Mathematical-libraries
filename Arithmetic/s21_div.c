@@ -78,7 +78,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0;
-    s21_decimal zero = INITDECEXTRA;
+    s21_decimal zero = INITDEC;
 
     if (s21_is_equal_noscale(value_2, zero)) {
         ex_code = 3;
