@@ -33,5 +33,9 @@ int     s21_mul_ten_extra(s21_decimal_extra *value, int scale);
 int     s21_is_equal_extra(s21_decimal_extra value_1, s21_decimal_extra value_2);
 int     s21_is_less_extra(s21_decimal_extra value_1, s21_decimal_extra value_2);
 int     s21_sum_bit_extra(int i, s21_decimal_extra *result, int add_bit);
+s21_decimal_extra s21_dec_and(s21_decimal_extra value_1, s21_decimal_extra value_2);
+s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_2);
+s21_decimal_extra s21_dec_xor(s21_decimal_extra value_1, s21_decimal_extra value_2);
+s21_decimal_extra s21_invert_dec_extra(s21_decimal_extra value);
 
 #endif /* s21_decimal_extra_h */

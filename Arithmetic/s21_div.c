@@ -7,26 +7,6 @@
 #include <stdio.h>
 #include "../s21_decimal.h"
 
-s21_decimal_extra s21_dec_and(s21_decimal_extra value_1, s21_decimal_extra value_2) {
-    s21_decimal_extra result = INITDECEXTRA;
-
-    for (int i = 0; i < EXTRASIZE; i++) {
-        result.bits[i] = value_1.bits[i] & value_2.bits[i];
-    }
-
-    return result;
-}
-
-s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_2) {
-    s21_decimal_extra result = INITDECEXTRA;
-
-    for (int i = 0; i < EXTRASIZE; i++) {
-        result.bits[i] = value_1.bits[i] | value_2.bits[i];
-    }
-
-    return result;
-}
-
 int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, scale = 28;
     s21_decimal_extra remainder = INITDECEXTRA, one = INITDECEXTRA, res_dec = INITDECEXTRA, res_extra = INITDECEXTRA, value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA;
