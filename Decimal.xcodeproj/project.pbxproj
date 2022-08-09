@@ -86,6 +86,7 @@
 		B747690F28760F6F0082D5CE /* s21_dec_copy.c in Sources */ = {isa = PBXBuildFile; fileRef = B747690E28760F6F0082D5CE /* s21_dec_copy.c */; };
 		B757EC3228A2B558007D2E39 /* s21_bitwise_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B757EC3128A2B558007D2E39 /* s21_bitwise_extra.c */; };
 		B757EC3328A2B558007D2E39 /* s21_bitwise_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B757EC3128A2B558007D2E39 /* s21_bitwise_extra.c */; };
+		B757EC3428A2E1AD007D2E39 /* s21_truncate_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7108A9A289D588D00150E69 /* s21_truncate_zero.c */; };
 		B7741F57286B80C6002CAC6D /* s21_add.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B932869D282007CBBCF /* s21_add.c */; };
 		B7741F5C286B80F3002CAC6D /* s21_is_less.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B982869D3A4007CBBCF /* s21_is_less.c */; };
 		B7741F5D286B80F3002CAC6D /* s21_is_less_or_equal.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B992869D3B5007CBBCF /* s21_is_less_or_equal.c */; };
@@ -491,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B757EC3428A2E1AD007D2E39 /* s21_truncate_zero.c in Sources */,
 				B7108A87289D3AF800150E69 /* s21_add.c in Sources */,
 				B7108A88289D3AF800150E69 /* s21_sub.c in Sources */,
 				B7108A89289D3AF800150E69 /* s21_mul.c in Sources */,
