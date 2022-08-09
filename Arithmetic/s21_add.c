@@ -5,25 +5,8 @@
 
 #include "../s21_decimal.h"
 
-int s21_sum_dec(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
-    int ex_code = 0;
-    int len = (s21_last_non_zero(value_1) >= s21_last_non_zero(value_2)) ? \
-    s21_last_non_zero(value_1) : s21_last_non_zero(value_2);
-
-    for (int i = 0; (i <= len) && !ex_code; i++) {
-        ex_code = s21_sum_bit(i, result, s21_get_bit_long(value_1, i));
-        if (!ex_code) {
-            ex_code = s21_sum_bit(i, result, s21_get_bit_long(value_2, i));
-        } else if (s21_get_sub_flag(*result) && (i == len)) {
-            s21_set_bit(result, i);
-        }
-    }
-
-    return ex_code;
-}
-
 int s21_sum_dec_extra(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
-    int ex_code = 0;
+    int ex_code = 0, dif_scale = 0;
     s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA, result_extra = INITDECEXTRA;
 
     s21_dec_to_exdec(value_1, &value_1_extra);
@@ -35,13 +18,16 @@ int s21_sum_dec_extra(s21_decimal value_1, s21_decimal value_2, s21_decimal *res
         ex_code = s21_sum_bit_extra(i, &result_extra, s21_get_bit_long_extra(value_1_extra, i));
         if (!ex_code) {
             ex_code = s21_sum_bit_extra(i, &result_extra, s21_get_bit_long_extra(value_2_extra, i));
-        } else if (s21_get_sub_flag(*result) && (i == len)) {
+        } else {
             s21_set_bit_extra(&result_extra, i);
         }
     }
-//    if (s21_get_sub_flag(*result)) s21_right_shift_bit_extra(&result_extra, 1);
-    int dif_scale = s21_exdec_to_dec(result_extra, result);
-    s21_set_scale(result, dif_scale);
+    dif_scale -= s21_exdec_to_dec(result_extra, result);
+    if (dif_scale < 0) {
+        ex_code = 1;
+    } else {
+        s21_set_scale(result, dif_scale);
+    }
 
     return ex_code;
 }
@@ -64,7 +50,7 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_zero_bit(&value_1, 127);
     s21_zero_bit(&value_2, 127);
     if ((!sign_1 && !sign_2) || (sign_1 && sign_2)) {
-        ex_code = s21_sum_dec(value_1, value_2, result);
+        ex_code = s21_sum_dec_extra(value_1, value_2, result);
         if (ex_code && s21_get_sign(*result)) ex_code = 0;
         if (sign_1 && sign_2) s21_set_sign(result);
     } else if (sign_1) {

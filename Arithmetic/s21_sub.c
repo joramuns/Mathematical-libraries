@@ -7,7 +7,7 @@
 #include "../s21_decimal.h"
 
 int s21_sub_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
-    int ex_code = 0;
+    int ex_code = 0, dif_scale = 0;
     s21_decimal_extra zero_extra = INITDECEXTRA;
     s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA;
     s21_dec_to_exdec(value_1, &value_1_extra);
@@ -21,7 +21,12 @@ int s21_sub_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         value_2_extra = borrow;
     }
 
-    s21_exdec_to_dec(value_1_extra, result);
+    dif_scale -= s21_exdec_to_dec(value_1_extra, result);
+    if (dif_scale < 0) {
+        ex_code = 1;
+    } else {
+        s21_set_scale(result, dif_scale);
+    }
 
     return ex_code;
 }
@@ -57,9 +62,9 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 //            s21_set_bit(result, 0);
 //            s21_set_sign(result);
             if (s21_is_greater_noscale(value_1, value_2)) {
-                s21_sub_bit(value_1, value_2, result);
+                ex_code = s21_sub_bit(value_1, value_2, result);
             } else {
-                s21_sub_bit(value_2, value_1, result);
+                ex_code = s21_sub_bit(value_2, value_1, result);
                 s21_set_sign(result);
             }
         }
