@@ -16,7 +16,7 @@ void s21_div_ten_aproximation(s21_decimal *value1, s21_decimal *value2, s21_deci
 
 int s21_div_ten(s21_decimal *value) {
     int ex_code = 0;
-    s21_decimal value1 = INITDEC, value2 = INITDEC, value3 = INITDEC, value_r = INITDEC, zero = INITDEC;
+    s21_decimal value1 = INITDEC, value2 = INITDEC, value3 = INITDEC, value_r = INITDEC;
     int save_scale = s21_get_scale(*value);
     int save_sign = s21_get_sign(*value);
     s21_set_scale(value, 0);
@@ -62,10 +62,10 @@ int s21_div_ten(s21_decimal *value) {
     s21_dec_copy(value1, &value2);
     s21_dec_copy(value1, &value3);
     s21_left_shift_bit(&value2, 2);
-    ex_code = s21_add(value2, value3, &value_r);
+    if (!ex_code) ex_code = s21_add(value2, value3, &value_r);
     s21_left_shift_bit(&value_r, 1);
     s21_dec_zero(&value2);
-    ex_code = s21_sub(*value, value_r, &value2);
+    if (!ex_code) ex_code = s21_sub(*value, value_r, &value2);
 
 /*                                 return q + (r > 9)                           */
 /*                          adjust answer by error term                         */
