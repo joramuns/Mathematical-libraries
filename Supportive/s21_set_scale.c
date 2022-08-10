@@ -10,7 +10,7 @@ int s21_set_scale(s21_decimal *decimal, int scale) {
     int sign = s21_get_sign(*decimal);
     int sub_flag = s21_get_sub_flag(*decimal);
     decimal->bits[3] = 0;
-    
+
     if (scale >= 0 && scale < 29) {
         scale <<= 16;
         decimal->bits[3] |= scale;

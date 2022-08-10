@@ -9,7 +9,11 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0, scale_1 = s21_get_scale(value_1), scale_2 = s21_get_scale(value_2);
     int dif_scale = scale_1 + scale_2;
     int dif_sign = s21_get_sign(value_1) ^ s21_get_sign(value_2);
-    s21_decimal_extra zero = INITDECEXTRA, temp = INITDECEXTRA, value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA, result_extra = INITDECEXTRA;
+    s21_decimal_extra   zero = INITDECEXTRA, \
+                        temp = INITDECEXTRA, \
+                        value_1_extra = INITDECEXTRA, \
+                        value_2_extra = INITDECEXTRA, \
+                        result_extra = INITDECEXTRA;
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_dec_to_exdec(value_2, &value_2_extra);
 

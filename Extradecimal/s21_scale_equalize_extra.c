@@ -42,7 +42,8 @@ int s21_scale_eq_div_extra(s21_decimal_extra *value, int scale_present, int scal
     return ex_code;
 }
 
-int s21_scale_equalize_extra(s21_decimal_extra *value_1, s21_decimal_extra *value_2, int scale_1, int scale_2) {
+int s21_scale_equalize_extra(s21_decimal_extra *value_1, s21_decimal_extra *value_2, \
+                             int scale_1, int scale_2) {
     int ex_code = 0;
 
     if (scale_1 < scale_2) {

@@ -8,10 +8,10 @@
 
 int s21_round(s21_decimal value, s21_decimal *result) {
     s21_dec_zero(result);
-    
+
     int sign = s21_get_sign(value);
     if (sign) s21_zero_bit(&value, 127);
-    
+
     s21_decimal value_truncate = INITDEC;
     s21_truncate(value, &value_truncate);
     s21_decimal diff = INITDEC;
@@ -25,6 +25,6 @@ int s21_round(s21_decimal value, s21_decimal *result) {
     }
 
     if (sign) s21_set_sign(result);
-    
+
     return 0;
 }

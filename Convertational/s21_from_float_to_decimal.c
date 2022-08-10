@@ -48,12 +48,12 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
             new_src = new_src/10;
             scale--;
         }
-        
+
         new_src = src * pow(10, scale);
         s21_from_int_to_decimal(new_src, dst);
         s21_set_scale(dst, scale);
         if (sign) s21_set_sign(dst);
-        
+
     } else if (exp < 96 && exp > 22) {
         int mantissa = s21_get_float_mantissa(src);
         dst->bits[0] = mantissa;

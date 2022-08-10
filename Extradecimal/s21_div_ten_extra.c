@@ -7,7 +7,8 @@
 
 #include "s21_decimal_extra.h"
 
-void s21_div_ten_aprox_extra(s21_decimal_extra *value1, s21_decimal_extra *value2, s21_decimal_extra *value3, int i) {
+void s21_div_ten_aprox_extra(s21_decimal_extra *value1, \
+                             s21_decimal_extra *value2, s21_decimal_extra *value3, int i) {
     s21_dec_copy_extra(*value1, value2);
     s21_dec_copy_extra(*value1, value3);
     s21_right_shift_bit_extra(value3, i);

@@ -45,12 +45,21 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B764B47928A406ED005F0B93"
+            BuildableName = "check_main"
+            BlueprintName = "check_main"
+            ReferencedContainer = "container:Decimal.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7CC6B1B2860F679003DB569"
             BuildableName = "Decimal"
             BlueprintName = "Decimal"
             ReferencedContainer = "container:Decimal.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
