@@ -134,6 +134,8 @@
 		B7CD11A4289D642500FB4F2E /* s21_is_not_equal_noscale.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CD11A2289D642500FB4F2E /* s21_is_not_equal_noscale.c */; };
 		B7CD11A6289D646A00FB4F2E /* s21_is_equal_noscale.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CD11A5289D646A00FB4F2E /* s21_is_equal_noscale.c */; };
 		B7CD11A7289D646A00FB4F2E /* s21_is_equal_noscale.c in Sources */ = {isa = PBXBuildFile; fileRef = B7CD11A5289D646A00FB4F2E /* s21_is_equal_noscale.c */; };
+		B7D0D77628A3C259005BACB1 /* s21_scale_equalize_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7D0D77528A3C259005BACB1 /* s21_scale_equalize_extra.c */; };
+		B7D0D77728A3C259005BACB1 /* s21_scale_equalize_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7D0D77528A3C259005BACB1 /* s21_scale_equalize_extra.c */; };
 		B7DA048328816A05002E8214 /* s21_div_ten_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7DA048228816A05002E8214 /* s21_div_ten_extra.c */; };
 		B7DA048528816AD3002E8214 /* s21_is_zero_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7DA048428816AD3002E8214 /* s21_is_zero_extra.c */; };
 		B7DA048728817D40002E8214 /* s21_sub_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7DA048628817D40002E8214 /* s21_sub_extra.c */; };
@@ -142,6 +144,8 @@
 		B7E8009D286B761700B51F8B /* s21_last_non_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7E8009C286B761700B51F8B /* s21_last_non_zero.c */; };
 		B7EBCDB0286DF946000F7C5A /* s21_sum_bit.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */; };
 		B7EBCDB2286E0C74000F7C5A /* s21_dec_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */; };
+		B7F5BBB328A39EF6008DD4FF /* s21_bank_rounding_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7F5BBB228A39EF6008DD4FF /* s21_bank_rounding_extra.c */; };
+		B7F5BBB428A39EF6008DD4FF /* s21_bank_rounding_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B7F5BBB228A39EF6008DD4FF /* s21_bank_rounding_extra.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -233,6 +237,7 @@
 		B7CD119F289D63B600FB4F2E /* s21_is_greater_noscale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_greater_noscale.c; sourceTree = "<group>"; };
 		B7CD11A2289D642500FB4F2E /* s21_is_not_equal_noscale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_not_equal_noscale.c; sourceTree = "<group>"; };
 		B7CD11A5289D646A00FB4F2E /* s21_is_equal_noscale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_equal_noscale.c; sourceTree = "<group>"; };
+		B7D0D77528A3C259005BACB1 /* s21_scale_equalize_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_scale_equalize_extra.c; sourceTree = "<group>"; };
 		B7DA048228816A05002E8214 /* s21_div_ten_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_div_ten_extra.c; sourceTree = "<group>"; };
 		B7DA048428816AD3002E8214 /* s21_is_zero_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_is_zero_extra.c; sourceTree = "<group>"; };
 		B7DA048628817D40002E8214 /* s21_sub_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sub_extra.c; sourceTree = "<group>"; };
@@ -241,6 +246,7 @@
 		B7E8009C286B761700B51F8B /* s21_last_non_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_last_non_zero.c; sourceTree = "<group>"; };
 		B7EBCDAF286DF946000F7C5A /* s21_sum_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_sum_bit.c; sourceTree = "<group>"; };
 		B7EBCDB1286E0C74000F7C5A /* s21_dec_zero.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_dec_zero.c; sourceTree = "<group>"; };
+		B7F5BBB228A39EF6008DD4FF /* s21_bank_rounding_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_bank_rounding_extra.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,8 @@
 				B788CB3C289BFC380054584D /* s21_is_less_extra.c */,
 				B7B56FD8289FDAD1009B6367 /* s21_sum_bit_extra.c */,
 				B757EC3128A2B558007D2E39 /* s21_bitwise_extra.c */,
+				B7F5BBB228A39EF6008DD4FF /* s21_bank_rounding_extra.c */,
+				B7D0D77528A3C259005BACB1 /* s21_scale_equalize_extra.c */,
 			);
 			path = Extradecimal;
 			sourceTree = "<group>";
@@ -515,6 +523,7 @@
 				B7CD11A1289D63B600FB4F2E /* s21_is_greater_noscale.c in Sources */,
 				B7108A99289D3AF800150E69 /* s21_negate.c in Sources */,
 				B7108A5F289D3AEE00150E69 /* s21_shift_bit_extra.c in Sources */,
+				B7F5BBB428A39EF6008DD4FF /* s21_bank_rounding_extra.c in Sources */,
 				B7108A60289D3AEE00150E69 /* s21_get_bit_long_extra.c in Sources */,
 				B7B56FDD289FE4E0009B6367 /* s21_sub_flag.c in Sources */,
 				B7108A61289D3AEE00150E69 /* s21_get_bit_extra.c in Sources */,
@@ -545,6 +554,7 @@
 				B7108A78289D3AEE00150E69 /* s21_get_sign.c in Sources */,
 				B7108A79289D3AEE00150E69 /* s21_get_scale.c in Sources */,
 				B7108A7A289D3AEE00150E69 /* s21_set_bit.c in Sources */,
+				B7D0D77728A3C259005BACB1 /* s21_scale_equalize_extra.c in Sources */,
 				B7108A7B289D3AEE00150E69 /* s21_set_sign.c in Sources */,
 				B7B56FE028A01E01009B6367 /* s21_bank_rounding.c in Sources */,
 				B7108A7C289D3AEE00150E69 /* s21_shift_bit.c in Sources */,
@@ -569,6 +579,7 @@
 				B7741F73286B83C1002CAC6D /* s21_div.c in Sources */,
 				B7741F67286B80FF002CAC6D /* s21_negate.c in Sources */,
 				B7741F70286B83B6002CAC6D /* s21_from_decimal_to_int.c in Sources */,
+				B7F5BBB328A39EF6008DD4FF /* s21_bank_rounding_extra.c in Sources */,
 				B70D55D72880A984005B288C /* s21_last_non_zero_extra.c in Sources */,
 				B747690D28760CC20082D5CE /* s21_mul_ten.c in Sources */,
 				B7CD11A0289D63B600FB4F2E /* s21_is_greater_noscale.c in Sources */,
@@ -627,6 +638,7 @@
 				B7741F61286B80F3002CAC6D /* s21_is_greater_or_equal.c in Sources */,
 				B7741F6B286B83A4002CAC6D /* s21_truncate.c in Sources */,
 				831A92202882DDD700AAB198 /* s21_scale_equalize.c in Sources */,
+				B7D0D77628A3C259005BACB1 /* s21_scale_equalize_extra.c in Sources */,
 				B77E7BB72869DD91007CBBCF /* s21_get_block.c in Sources */,
 				B788CB3D289BFC380054584D /* s21_is_less_extra.c in Sources */,
 				B7741F6E286B83B6002CAC6D /* s21_from_int_to_decimal.c in Sources */,

@@ -32,7 +32,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         if (!s21_is_less_extra(remainder, value_2_extra)) {
             s21_dec_copy_extra(remainder, &res_dec);
             s21_dec_zero_extra(&remainder);
-            ex_code = s21_sub_extra(res_dec, value_2_extra, &remainder);
+            remainder = s21_sub_bit_extra(res_dec, value_2_extra);
             s21_dec_zero_extra(&one);
             one.bits[0] = 1;
             res_extra = s21_dec_or(res_extra, one);
