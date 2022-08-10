@@ -50,9 +50,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     if (scale < 0) {
         ex_code = dif_sign ? 2 : 1;
     }
-//    if (s21_is_less(value_1, value_2)) {
-//        s21_div_ten(result);
-//    }
+
     s21_set_scale(result, scale);
     s21_truncate_zero(result);
     if (dif_sign) s21_set_sign(result);
