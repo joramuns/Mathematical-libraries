@@ -21,7 +21,7 @@ s21_decimal_extra s21_sum_dec_extra(s21_decimal_extra value_1_extra, s21_decimal
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     // Convert to extradecimal
-    s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA, result_extra = INITDECEXTRA;
+    s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA;
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_dec_to_exdec(value_2, &value_2_extra);
     //
@@ -35,7 +35,7 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     s21_zero_bit(&value_1, 127);
     s21_zero_bit(&value_2, 127);
     if ((!sign_1 && !sign_2) || (sign_1 && sign_2)) {
-        result_extra = s21_sum_dec_extra(value_1_extra, value_2_extra);
+        s21_decimal_extra result_extra = s21_sum_dec_extra(value_1_extra, value_2_extra);
         if (ex_code && s21_get_sign(*result)) ex_code = 0;
         if (sign_1 && sign_2) s21_set_sign(result);
         dif_scale -= s21_exdec_to_dec(result_extra, result);

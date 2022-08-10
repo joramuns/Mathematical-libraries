@@ -26,7 +26,7 @@ void s21_invert_bit_long(s21_decimal *value) {
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     // Convert to extradecimal
-    s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA, result_extra = INITDECEXTRA;
+    s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA;
     s21_dec_to_exdec(value_1, &value_1_extra);
     s21_dec_to_exdec(value_2, &value_2_extra);
     //
@@ -44,6 +44,7 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         if (s21_is_equal_extra(value_1_extra, value_2_extra)) {
             s21_dec_zero(result);
         } else {
+            s21_decimal_extra result_extra;
             if (s21_is_greater_extra(value_1_extra, value_2_extra)) {
                 result_extra = s21_sub_bit_extra(value_1_extra, value_2_extra);
             } else {
