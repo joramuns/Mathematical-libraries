@@ -38,13 +38,17 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             res_extra = s21_dec_or(res_extra, one);
         }
     }
+    while (scale > 28) {
+        if (scale == 29) {
+            s21_bank_rounding_extra(&res_extra);
+        } else {
+            s21_div_ten_extra(&res_extra, 1);
+        }
+        scale--;
+    }
     scale -= s21_exdec_to_dec(res_extra, result);
     if (scale < 0) {
         ex_code = dif_sign ? 2 : 1;
-    }
-    while (scale > 28) {
-        s21_div_ten(result);
-        scale--;
     }
 //    if (s21_is_less(value_1, value_2)) {
 //        s21_div_ten(result);

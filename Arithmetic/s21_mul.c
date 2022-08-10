@@ -22,13 +22,17 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
             s21_left_shift_bit_extra(&value_1_extra, 1);
             s21_right_shift_bit_extra(&value_2_extra, 1);
     }
+    while (dif_scale > 28) {
+        if (dif_scale == 29) {
+            s21_bank_rounding_extra(&result_extra);
+        } else {
+            s21_div_ten_extra(&result_extra, 1);
+        }
+        dif_scale--;
+    }
     dif_scale -= s21_exdec_to_dec(result_extra, result);
     if (dif_scale < 0) {
         ex_code = dif_sign ? 2 : 1;
-    }
-    while (dif_scale > 28) {
-        s21_div_ten(result);
-        dif_scale--;
     }
     s21_set_scale(result, dif_scale);
     if (dif_sign) s21_set_sign(result);

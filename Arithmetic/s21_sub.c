@@ -41,7 +41,7 @@ int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
         s21_zero_bit(&value_2, 127);
         ex_code = s21_sub(value_2, value_1, result);
     } else if (!sign_1 && !sign_2) {
-        if (s21_is_equal_noscale(value_1, value_2)) {
+        if (s21_is_equal_extra(value_1_extra, value_2_extra)) {
             s21_dec_zero(result);
         } else {
             if (s21_is_greater_extra(value_1_extra, value_2_extra)) {
