@@ -58,7 +58,7 @@ int s21_scale_equalize_extra(s21_decimal_extra *value_1, s21_decimal_extra *valu
         }
     }
     if (scale_1 == scale_2) {
-        ex_code = scale_1;
+        if (!ex_code) ex_code = scale_1;
     } else {
         ex_code = 99;
     }

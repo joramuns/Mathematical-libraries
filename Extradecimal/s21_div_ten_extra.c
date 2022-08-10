@@ -18,9 +18,10 @@ void s21_div_ten_aprox_extra(s21_decimal_extra *value1, \
 
 int s21_div_ten_extra(s21_decimal_extra *value, int scale) {
     int ex_code = 0;
-    s21_decimal_extra value1, value2, value3, value_r;
-    s21_dec_zero_extra(&value_r);
-    s21_dec_zero_extra(&value1);
+    s21_decimal_extra   value1 = INITDECEXTRA, \
+                        value2 = INITDECEXTRA, \
+                        value3 = INITDECEXTRA, \
+                        value_r = INITDECEXTRA;
 /*                       value1 = (value2 >> 1) + (value3 >> 2)                 */
 /*                                q = (n >> 1) + (n >> 2)                       */
 /*                                 q=n/2+n/4 = 3n/4                             */
@@ -62,10 +63,10 @@ int s21_div_ten_extra(s21_decimal_extra *value, int scale) {
     s21_dec_copy_extra(value1, &value2);
     s21_dec_copy_extra(value1, &value3);
     s21_left_shift_bit_extra(&value2, 2);
-    ex_code = s21_add_extra(value2, value3, &value_r);
+    if (!ex_code) ex_code = s21_add_extra(value2, value3, &value_r);
     s21_left_shift_bit_extra(&value_r, 1);
     s21_dec_zero_extra(&value2);
-    ex_code = s21_sub_extra(*value, value_r, &value2);
+    if (!ex_code) ex_code = s21_sub_extra(*value, value_r, &value2);
 //
 /*                                 return q + (r > 9)                           */
 /*                          adjust answer by error term                         */
