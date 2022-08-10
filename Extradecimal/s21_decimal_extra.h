@@ -38,7 +38,7 @@ s21_decimal_extra s21_dec_and(s21_decimal_extra value_1, s21_decimal_extra value
 s21_decimal_extra s21_dec_or(s21_decimal_extra value_1, s21_decimal_extra value_2);
 s21_decimal_extra s21_dec_xor(s21_decimal_extra value_1, s21_decimal_extra value_2);
 s21_decimal_extra s21_invert_dec_extra(s21_decimal_extra value);
-void    s21_bank_rounding_extra(s21_decimal_extra *value);
+int    s21_bank_rounding_extra(s21_decimal_extra *value);
 s21_decimal_extra s21_sub_bit_extra(s21_decimal_extra value_1_extra, s21_decimal_extra value_2_extra);
 int s21_scale_equalize_extra(s21_decimal_extra *value_1, s21_decimal_extra *value_2, int scale_1, int scale_2);
 

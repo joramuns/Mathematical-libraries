@@ -8,7 +8,7 @@
 #include "s21_decimal_extra.h"
 
 int s21_exdec_to_dec(s21_decimal_extra src, s21_decimal *dest) {
-    int ex_code = 0;
+    int ex_code = 0, counter = 0;
     s21_decimal_extra temp = INITDECEXTRA;
     s21_dec_copy_extra(src, &temp);
 
@@ -17,14 +17,14 @@ int s21_exdec_to_dec(s21_decimal_extra src, s21_decimal *dest) {
         while (src.bits[DECIMSIZE - 1] || src.bits[DECIMSIZE] || src.bits[DECIMSIZE + 1]) {
             s21_div_ten_extra(&src, 1);
             s21_div_ten_extra(&temp, 1);
-            ex_code++;
+            counter++;
         }
-        s21_bank_rounding_extra(&temp);
-        ex_code++;
+        ex_code = s21_bank_rounding_extra(&temp);
+        counter++;
     }
     for (int i = 0; i < DECIMSIZE - 1; i++) {
         dest->bits[i] = temp.bits[i];
     }
 
-    return ex_code;
+    return ex_code ? 30 : counter;
 }

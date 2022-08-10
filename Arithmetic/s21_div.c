@@ -40,7 +40,7 @@ int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     }
     while (scale > 28) {
         if (scale == 29) {
-            s21_bank_rounding_extra(&res_extra);
+            ex_code = s21_bank_rounding_extra(&res_extra);
         } else {
             s21_div_ten_extra(&res_extra, 1);
         }

@@ -24,7 +24,7 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     }
     while (dif_scale > 28) {
         if (dif_scale == 29) {
-            s21_bank_rounding_extra(&result_extra);
+            ex_code = s21_bank_rounding_extra(&result_extra);
         } else {
             s21_div_ten_extra(&result_extra, 1);
         }
