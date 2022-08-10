@@ -12,6 +12,7 @@
 #define DECIMSIZE 4
 #define LASTBIT 95
 #define INITDEC {0, 0, 0, 0}
+#define INITDECONE {1, 0, 0, 0}
 #define INITDECEXTRA {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 typedef struct {
