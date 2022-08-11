@@ -1,6 +1,10 @@
 CC := gcc
 TARGET_EXEC := test
 TARGET_LIB := s21_decimal.a
+FLAGS  := -Wall -Werror -Wextra -std=c11 -g3
+#ifdef GCOV
+	FLAGS += --coverage
+#endif
 
 BUILD_DIR := ./build
 SRC_DIRS := ./
@@ -13,7 +17,7 @@ TEST_OBJS := $(TEST_SRCS:%=$(BUILD_DIR)/%.o)
 
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
-TEST_FLAGS := `pkg-config --cflags --libs check`
+TEST_FLAGS := $(shell pkg-config --libs check)
 
 $(TARGET_LIB): $(OBJS)
 	ar -rc $@ $(BUILD_DIR)/*/*.o
@@ -23,14 +27,19 @@ $(TARGET_EXEC): $(BUILD_DIR)/$(TARGET_EXEC)
 	-$(BUILD_DIR)/$(TARGET_EXEC)
     
 $(BUILD_DIR)/$(TARGET_EXEC): $(TARGET_LIB) $(TEST_OBJS)
-	$(CC) $(TEST_OBJS) $(TARGET_LIB) -o $@ $(TEST_FLAGS)
+	$(CC) $(FLAGS) $(TEST_OBJS) $(TARGET_LIB) -o $@ $(TEST_FLAGS)
     
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
-	$(CC) $(INC_FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) $(INC_FLAGS) -c $< -o $@
+
+gcov_report:
+	$(MAKE) $(TARGET_EXEC)
+	lcov -t "test" -o test.info -c -d . --rc lcov_branch_coverage=1
+	genhtml -o report test.info --rc lcov_branch_coverage=1
 
 clean:
 	rm -rf $(BUILD_DIR)
 
 fclean: clean
-	rm -rf $(TARGET_LIB) $(TARGET_EXEC)
+	rm -rf $(TARGET_LIB) $(TARGET_EXEC) ./report *.o *.info
