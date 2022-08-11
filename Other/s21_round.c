@@ -16,8 +16,8 @@ int s21_round(s21_decimal value, s21_decimal *result) {
     s21_truncate(value, &value_truncate);
     s21_decimal diff = INITDEC;
     s21_sub(value, value_truncate, &diff);
-    s21_decimal five = {5, 0, 0, 65536};
-    s21_decimal one = {1, 0, 0, 0};
+    s21_decimal five = {{5, 0, 0, 65536}};
+    s21_decimal one = {{1, 0, 0, 0}};
     if (s21_is_greater_or_equal(diff, five)) {
         s21_add(value_truncate, one, result);
     } else {
