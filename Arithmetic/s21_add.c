@@ -30,6 +30,8 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int scale_1 = s21_get_scale(value_1), scale_2 = s21_get_scale(value_2);
     if (scale_1 != scale_2) {
         dif_scale = s21_scale_equalize_extra(&value_1_extra, &value_2_extra, scale_1, scale_2);
+    } else {
+        dif_scale = scale_1;
     }
 
     s21_zero_bit(&value_1, 127);
