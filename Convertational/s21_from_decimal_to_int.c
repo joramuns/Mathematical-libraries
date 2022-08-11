@@ -14,7 +14,7 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
         scale--;
     }
 
-    s21_decimal min_int = {2147483648, 0, 0, 2147483648};
+    s21_decimal min_int = {{2147483648, 0, 0, 2147483648}};
 
     if (src.bits[2] != 0 \
         || src.bits[1] != 0 \
