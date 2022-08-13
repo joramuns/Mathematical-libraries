@@ -10,7 +10,7 @@ int s21_mul_ten_extra(s21_decimal_extra *value, int scale) {
     int ex_code = 0;
     s21_decimal_extra mul_2, mul_8, mul_res;
 
-    while (scale-- && !ex_code) {
+    while (scale-- > 0 && !ex_code) {
         s21_dec_copy_extra(*value, &mul_res);
         if (s21_last_non_zero_extra(mul_res) < 189) {
             s21_dec_copy_extra(mul_res, &mul_2);
