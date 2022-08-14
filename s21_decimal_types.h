@@ -6,9 +6,6 @@
 //
 //  Created by Joramun Sasin on 7/14/22.
 //
-
-#ifndef s21_decimal_types_h
-#define s21_decimal_types_h
 #define EXTRASIZE 10
 #define EXTRALASTBIT 319
 #define DECIMSIZE 4
