@@ -7,22 +7,25 @@
 
 #include "../s21_decimal.h"
 
-void s21_bank_rounding(s21_decimal *value) {
+int s21_bank_rounding(s21_decimal *value) {
+    int ex_code = 0;
     s21_decimal temp_dec = *value;
 
     s21_div_ten(&temp_dec);
     s21_mul_ten(&temp_dec);
     int check_round = value->bits[0] - temp_dec.bits[0];
     s21_div_ten(value);
-    if (check_round > 5) {
-        value->bits[0]++;
-    } else if ((check_round == 5) && (value->bits[0] & 1)) {
-            value->bits[0]++;
+    if ((check_round > 5) || ((check_round == 5) && (value->bits[0] & 1))) {
+        if (value->bits[0] != UINT_MAX || value->bits[1] != UINT_MAX || value->bits[2] != UINT_MAX) {
+            s21_decimal one = INITDECONE;
+            s21_add(*value, one, value);
+        } else {
+            ex_code = 1;
+        }
     }
+
+    return ex_code;
 }
-
-
-
 
 // 123
 // 12   // /10 - temp
