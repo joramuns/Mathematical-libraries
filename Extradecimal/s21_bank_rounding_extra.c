@@ -18,8 +18,9 @@ int s21_bank_rounding_extra(s21_decimal_extra *value) {
     s21_sub_extra(*value, temp_dec, &last);
     s21_div_ten_extra(value, 1);
     if ((check_round > 5) || ((check_round == 5) && (value->bits[0] & 1))) {
-        if (value->bits[0] != UINT_MAX) {
-            value->bits[0]++;
+        if (value->bits[0] != UINT_MAX || value->bits[1] != UINT_MAX || value->bits[2] != UINT_MAX) {
+            s21_decimal_extra one = INITDECONEEXTRA;
+            *value = s21_sum_dec_extra(*value, one);
         } else {
             ex_code = 1;
         }
