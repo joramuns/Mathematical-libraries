@@ -1,9 +1,9 @@
 CC=gcc -g
 GCOV=gcc --coverage
-CFLAGS=-std=c11 -Wall -Werror -Wextra -c
-OFLAGS=-std=c11 -Wall -Werror -Wextra -o
-CFLAGSan=-std=c11 -Wall -Werror -Wextra -fsanitize=address -c
-OFLAGSan=-std=c11 -Wall -Werror -Wextra -fsanitize=address -o
+CFLAGS=-std=c11 -pedantic -Wall -Werror -Wextra -c
+OFLAGS=-std=c11 -pedantic -Wall -Werror -Wextra -o
+CFLAGSan=-std=c11 -pedantic -Wall -Werror -Wextra -fsanitize=address -c
+OFLAGSan=-std=c11 -pedantic -Wall -Werror -Wextra -fsanitize=address -o
 LFLAG=-lcheck
 FUNCTIONS=Extradecimal/*.c Supportive/*.c Arithmetic/*.c Comparative/*.c Convertational/*.c Other/*.c
 TESTS=Executables/Tests/*.c
