@@ -87,6 +87,11 @@
 		B757EC3228A2B558007D2E39 /* s21_bitwise_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B757EC3128A2B558007D2E39 /* s21_bitwise_extra.c */; };
 		B757EC3328A2B558007D2E39 /* s21_bitwise_extra.c in Sources */ = {isa = PBXBuildFile; fileRef = B757EC3128A2B558007D2E39 /* s21_bitwise_extra.c */; };
 		B757EC3428A2E1AD007D2E39 /* s21_truncate_zero.c in Sources */ = {isa = PBXBuildFile; fileRef = B7108A9A289D588D00150E69 /* s21_truncate_zero.c */; };
+		B760970C28A64B31008868BA /* 1_3.c in Sources */ = {isa = PBXBuildFile; fileRef = B760970B28A64B31008868BA /* 1_3.c */; };
+		B760970F28A650A0008868BA /* 10_3.c in Sources */ = {isa = PBXBuildFile; fileRef = B760970E28A650A0008868BA /* 10_3.c */; };
+		B760971128A653B1008868BA /* 1_30.c in Sources */ = {isa = PBXBuildFile; fileRef = B760971028A653B1008868BA /* 1_30.c */; };
+		B760971328A67DB6008868BA /* 4_3.c in Sources */ = {isa = PBXBuildFile; fileRef = B760971228A67DB6008868BA /* 4_3.c */; };
+		B760971528A684ED008868BA /* 11_3.c in Sources */ = {isa = PBXBuildFile; fileRef = B760971428A684ED008868BA /* 11_3.c */; };
 		B764B48128A406FD005F0B93 /* check_main.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7BB02869DB89007CBBCF /* check_main.c */; };
 		B7741F57286B80C6002CAC6D /* s21_add.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B932869D282007CBBCF /* s21_add.c */; };
 		B7741F5C286B80F3002CAC6D /* s21_is_less.c in Sources */ = {isa = PBXBuildFile; fileRef = B77E7B982869D3A4007CBBCF /* s21_is_less.c */; };
@@ -203,6 +208,12 @@
 		B747690C28760CC20082D5CE /* s21_mul_ten.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_mul_ten.c; sourceTree = "<group>"; };
 		B747690E28760F6F0082D5CE /* s21_dec_copy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_dec_copy.c; sourceTree = "<group>"; };
 		B757EC3128A2B558007D2E39 /* s21_bitwise_extra.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_bitwise_extra.c; sourceTree = "<group>"; };
+		B760970B28A64B31008868BA /* 1_3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 1_3.c; sourceTree = "<group>"; };
+		B760970D28A64B6C008868BA /* check_main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = check_main.h; sourceTree = "<group>"; };
+		B760970E28A650A0008868BA /* 10_3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 10_3.c; sourceTree = "<group>"; };
+		B760971028A653B1008868BA /* 1_30.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 1_30.c; sourceTree = "<group>"; };
+		B760971228A67DB6008868BA /* 4_3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 4_3.c; sourceTree = "<group>"; };
+		B760971428A684ED008868BA /* 11_3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 11_3.c; sourceTree = "<group>"; };
 		B764B47A28A406ED005F0B93 /* check_main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = check_main; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7741F75286B8A9A002CAC6D /* s21_zero_bit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = s21_zero_bit.c; sourceTree = "<group>"; };
 		B77E7B922869C9D5007CBBCF /* s21_decimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = s21_decimal.h; sourceTree = "<group>"; };
@@ -371,6 +382,11 @@
 			isa = PBXGroup;
 			children = (
 				B7108A4A289D253B00150E69 /* test_ameeleon.c */,
+				B760970B28A64B31008868BA /* 1_3.c */,
+				B760970E28A650A0008868BA /* 10_3.c */,
+				B760971028A653B1008868BA /* 1_30.c */,
+				B760971228A67DB6008868BA /* 4_3.c */,
+				B760971428A684ED008868BA /* 11_3.c */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -435,6 +451,7 @@
 			children = (
 				B7CC6B1F2860F679003DB569 /* main.c */,
 				B77E7BB02869DB89007CBBCF /* check_main.c */,
+				B760970D28A64B6C008868BA /* check_main.h */,
 				B77E7BB22869DB91007CBBCF /* Tests */,
 			);
 			path = Executables;
@@ -615,7 +632,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B760971128A653B1008868BA /* 1_30.c in Sources */,
+				B760971328A67DB6008868BA /* 4_3.c in Sources */,
 				B764B48128A406FD005F0B93 /* check_main.c in Sources */,
+				B760971528A684ED008868BA /* 11_3.c in Sources */,
+				B760970F28A650A0008868BA /* 10_3.c in Sources */,
+				B760970C28A64B31008868BA /* 1_3.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
