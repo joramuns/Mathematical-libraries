@@ -46,7 +46,7 @@ int s21_div_get_no_dot(const s21_decimal value_1, const s21_decimal value_2, s21
     s21_mul_ten_extra(&value_1_extra, 56);
     s21_decimal_extra res_extra = s21_div_exdec(value_1_extra, value_2_extra);
     s21_exdec_to_dec(res_extra, result);
-    // Check check check
+    // Check check check 79... - 08...
     s21_decimal_extra check_this_shit = INITDECEXTRA;
     s21_dec_to_exdec(*result, &check_this_shit);
     s21_decimal_extra check_this_max = {{1}};
@@ -56,8 +56,8 @@ int s21_div_get_no_dot(const s21_decimal value_1, const s21_decimal value_2, s21
     return ex_code;
 }
 
-void s21_div_search_dot(s21_decimal value_1, s21_decimal value_2, s21_decimal *result, int bastard) {
-    int add_zeros = 0, nums_to_right = 0, scale = 28;
+int s21_div_search_dot(s21_decimal value_1, s21_decimal value_2, s21_decimal *result, int bastard) {
+    int add_zeros = 0, nums_to_right = 0, scale = 28, ex_code = 0;
     int divide_counter = 0;
     int scale_1 = s21_get_scale(value_1), scale_2 = s21_get_scale(value_2);
     int dif_scale = scale_1 - scale_2;
@@ -116,20 +116,24 @@ void s21_div_search_dot(s21_decimal value_1, s21_decimal value_2, s21_decimal *r
     }
     scale -= nums_to_right;
     if (bastard) scale--;
-    s21_set_scale(result, scale);
-    s21_truncate_zero(result);
+    if (scale < 0) {
+        ex_code = 1;
+    } else {
+        s21_set_scale(result, scale);
+        s21_truncate_zero(result);
+    }
+
+    return ex_code;
 }
 
 int s21_div_bit(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
-    int ex_code = 0; //, dif_scale = 0;
-//    int scale_1 = s21_get_scale(value_1);
-//    int scale_2 = s21_get_scale(value_2);
     int dif_sign = s21_get_sign(value_1) ^ s21_get_sign(value_2);
     int bastard = s21_div_get_no_dot(value_1, value_2, result);
-    s21_div_search_dot(value_1, value_2, result, bastard);
-
-//    s21_set_scale(result, dif_scale);
-    if (dif_sign) s21_set_sign(result);
+    int ex_code = s21_div_search_dot(value_1, value_2, result, bastard);
+    if (dif_sign) {
+        s21_set_sign(result);
+        if (ex_code) ex_code = 2;
+    }
 
     return ex_code;
 }
@@ -156,4 +160,3 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
 //  40/2
 //  4/20
 //  scales 0-1 1-0 1-1 10-10 28-28 28-0 0-28 0-0
-// 10166459.564362111294671419431496206928 !!!
