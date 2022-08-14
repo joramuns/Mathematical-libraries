@@ -3,7 +3,7 @@
 //  Decimal
 //
 
-#include "check_main.h"
+#include "../check_main.h"
 
 START_TEST(compare_01) {
     s21_decimal a = {{0, 0, 0, 0}};
@@ -204,7 +204,7 @@ START_TEST(floor_test_zero) {
     s21_decimal expected = {{0, 0, 0, 0}};
     s21_decimal result;
     s21_floor(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -217,7 +217,7 @@ START_TEST(floor_test_1) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_floor(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -229,7 +229,7 @@ START_TEST(floor_test_2) {
     s21_decimal expected = {{57296, 0, 0, 0}};
     s21_decimal result;
     s21_floor(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -243,7 +243,7 @@ START_TEST(floor_test_3) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_floor(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -255,7 +255,7 @@ START_TEST(floor_test_4) {
     s21_decimal expected = {{95023802, 2, 0, 0}};
     s21_decimal result;
     s21_floor(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -269,7 +269,7 @@ START_TEST(floor_test_5) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_floor(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -288,7 +288,7 @@ START_TEST(floor_test_6) {
     result.bits[1] = 232830643;
     result.bits[2] = 0;
     result.bits[3] = 0;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -307,7 +307,7 @@ START_TEST(floor_test_7) {
     result.bits[1] = 232830643;
     result.bits[2] = 0;
     result.bits[3] = 2147483648;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -326,7 +326,7 @@ START_TEST(floor_test_8) {
     result.bits[1] = 0;
     result.bits[2] = 0;
     result.bits[3] = 2147483648;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -345,7 +345,7 @@ START_TEST(floor_test_9) {
     result.bits[1] = 0;
     result.bits[2] = 0;
     result.bits[3] = 0;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -364,7 +364,7 @@ START_TEST(floor_test_10) {
     result.bits[1] = 0;
     result.bits[2] = 0;
     result.bits[3] = 2147483648;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -383,7 +383,7 @@ START_TEST(floor_test_11) {
     result.bits[1] = 0;
     result.bits[2] = 0;
     result.bits[3] = 0;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -402,7 +402,7 @@ START_TEST(floor_test_12) {
     result.bits[2] = 0;
     result.bits[1] = 530;
     result.bits[0] = 917933119;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -414,7 +414,7 @@ START_TEST(round_zero) {
     s21_decimal expected = {{0}};
     s21_decimal result;
     s21_round(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -427,7 +427,7 @@ START_TEST(round_1) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_round(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -439,7 +439,7 @@ START_TEST(round_2) {
     s21_decimal expected = {{5, 0, 0, 0}};
     s21_decimal result;
     s21_round(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -453,7 +453,7 @@ START_TEST(round_3) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_round(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -465,7 +465,7 @@ START_TEST(round_4) {
     s21_decimal expected = {{95023802, 2, 0, 0}};
     s21_decimal result;
     s21_round(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -479,7 +479,7 @@ START_TEST(round_5) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_round(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -499,7 +499,7 @@ START_TEST(round_6) {
     result.bits[3] = 2147483648;
     s21_decimal res1;
     s21_round(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -519,7 +519,7 @@ START_TEST(round_7) {
     result.bits[3] = 2147483648;
     s21_decimal res1;
     s21_round(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -539,7 +539,7 @@ START_TEST(round_8) {
     result.bits[3] = 0;
     s21_decimal res1;
     s21_round(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -559,7 +559,7 @@ START_TEST(round_9) {
     result.bits[3] = 2147483648;
     s21_decimal res1;
     s21_round(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -579,7 +579,7 @@ START_TEST(round_10) {
     result.bits[1] = 466537709;
     result.bits[2] = 54210;
     result.bits[3] = 0;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -599,7 +599,7 @@ START_TEST(round_11) {
     result.bits[2] = 0;
     result.bits[1] = 530;
     result.bits[0] = 917933120;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -619,7 +619,7 @@ START_TEST(round_12) {
     result.bits[2] = 0;
     result.bits[1] = 530;
     result.bits[0] = 917933120;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -631,7 +631,7 @@ START_TEST(truncate_zero) {
     s21_decimal expected = {{0}};
     s21_decimal result;
     s21_truncate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -644,7 +644,7 @@ START_TEST(truncate_1) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_truncate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -656,7 +656,7 @@ START_TEST(truncate_2) {
     s21_decimal expected = {{57296, 0, 0, 0}};
     s21_decimal result;
     s21_truncate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -670,7 +670,7 @@ START_TEST(truncate_3) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_truncate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -682,7 +682,7 @@ START_TEST(truncate_4) {
     s21_decimal expected = {{95023802, 2, 0, 0}};
     s21_decimal result;
     s21_truncate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -696,7 +696,7 @@ START_TEST(truncate_5) {
     s21_set_sign(&expected);
     s21_decimal result;
     s21_truncate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
 }
@@ -715,7 +715,7 @@ START_TEST(truncate_6) {
     result.bits[0] = 1844674407;
     s21_decimal res1;
     s21_truncate(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -734,7 +734,7 @@ START_TEST(truncate_7) {
     result.bits[0] = 18446744;
     s21_decimal res1;
     s21_truncate(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -753,7 +753,7 @@ START_TEST(truncate_8) {
     result.bits[0] = 4294967295;
     s21_decimal res1;
     s21_truncate(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -772,7 +772,7 @@ START_TEST(truncate_9) {
     result.bits[3] = 0;
     s21_decimal res1;
     s21_truncate(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -791,7 +791,7 @@ START_TEST(truncate_10) {
     result.bits[3] = 0;
     s21_decimal res1;
     s21_truncate(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -810,7 +810,7 @@ START_TEST(truncate_11) {
     res1.bits[2] = 0;
     res1.bits[1] = 4;
     res1.bits[0] = 1266850928;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -829,7 +829,7 @@ START_TEST(truncate_12) {
     result.bits[2] = 0;
     result.bits[1] = 0;
     result.bits[0] = 2277250590;
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -848,7 +848,7 @@ START_TEST(truncate_13) {
     result.bits[3] = 0;
     s21_decimal res1;
     s21_truncate(dec1, &res1);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], res1.bits[i]);
     }
 }
@@ -860,7 +860,7 @@ START_TEST(negate_1) {
     s21_decimal expected = {{1, 0, 0, 0}};
     s21_set_sign(&expected);
     int status = s21_negate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -872,7 +872,7 @@ START_TEST(negate_2) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{1}};
     int status = s21_negate(input, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -932,7 +932,7 @@ START_TEST(int_to_dec_1) {
     s21_set_sign(&expected);
     s21_decimal result;
     int status = s21_from_int_to_decimal(src, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -944,7 +944,7 @@ START_TEST(int_to_dec_2) {
     s21_decimal expected = {{INT_MAX, 0, 0, 0}};
     s21_decimal result;
     int status = s21_from_int_to_decimal(src, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -956,7 +956,7 @@ START_TEST(int_to_dec_3) {
     s21_decimal expected = {{0}};
     s21_decimal result;
     int status = s21_from_int_to_decimal(src, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -968,7 +968,7 @@ START_TEST(int_to_dec_4) {
     s21_decimal expected = {{1234567, 0, 0, 0}};
     s21_decimal result;
     int status = s21_from_int_to_decimal(src, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -981,7 +981,7 @@ START_TEST(int_to_dec_5) {
     s21_set_sign(&expected);
     s21_decimal result;
     int status = s21_from_int_to_decimal(src, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1251,11 +1251,10 @@ START_TEST(add_1) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{555616666, 0, 0, 262144}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
-
 }
 END_TEST
 
@@ -1265,7 +1264,7 @@ START_TEST(add_2) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{222166667, 0, 0, 2147811328}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1278,7 +1277,7 @@ START_TEST(add_3) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4294867297, 99898, 0, 655360}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1291,7 +1290,7 @@ START_TEST(add_4) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4294967285, 2761050406, 0, 2147811328}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1304,7 +1303,7 @@ START_TEST(add_5) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{567220544, 3456513655, 0, 458752}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1317,7 +1316,7 @@ START_TEST(add_6) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4153960755, 858993458, 785251635, 2149056512}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1329,7 +1328,7 @@ START_TEST(add_7) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{2701727008, 2450292888, UINT_MAX, 2148466688}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1343,7 +1342,7 @@ START_TEST(add_8) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4294967294, UINT_MAX, UINT_MAX}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1355,7 +1354,7 @@ START_TEST(add_9) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 1);
@@ -1368,7 +1367,7 @@ START_TEST(add_10) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 2);
@@ -1381,7 +1380,7 @@ START_TEST(add_11) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{9855525, 3768537931, 9022335, 2147614720}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1394,7 +1393,7 @@ START_TEST(add_12) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{172673693, 1558211807, 851910048, 327680}};
     int status = s21_add(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1407,7 +1406,7 @@ START_TEST(sub_1) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{555483334, 0, 0, 262144}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1420,7 +1419,7 @@ START_TEST(sub_2) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4060314835, 0, 0, 2147614720}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1433,7 +1432,7 @@ START_TEST(sub_3) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{0, 100, 0, 2147483648}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1446,7 +1445,7 @@ START_TEST(sub_4) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4271501950, 456000936, 0, 2148270080}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1459,7 +1458,7 @@ START_TEST(sub_5) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{234652459, 801975, 0, 2147876864}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1472,7 +1471,7 @@ START_TEST(sub_6) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{234652459, 801975, 0, 393216}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1485,7 +1484,7 @@ START_TEST(sub_7) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4153960755, 858993458, 785251635, 2149056512}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1497,7 +1496,7 @@ START_TEST(sub_8) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{1, 0, 0, 0}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1509,7 +1508,7 @@ START_TEST(sub_9) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4294967286, UINT_MAX, UINT_MAX, 2147483648}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1523,7 +1522,7 @@ START_TEST(sub_10) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4294967294, UINT_MAX, UINT_MAX}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1538,7 +1537,7 @@ START_TEST(sub_11) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{4100220690, 4294865142, 4294967295}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1550,7 +1549,7 @@ START_TEST(sub_12) {
     s21_decimal result = {{0}};
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_sub(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 2);
@@ -1566,7 +1565,7 @@ START_TEST(mul_1) {
     s21_set_scale(&expected, 5);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1584,7 +1583,7 @@ START_TEST(mul_2) {
     s21_set_scale(&expected, 4);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1600,7 +1599,7 @@ START_TEST(mul_3) {
     s21_set_scale(&expected, 28);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1618,7 +1617,7 @@ START_TEST(mul_4) {
     s21_set_scale(&expected, 28);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1636,7 +1635,7 @@ START_TEST(mul_5) {
     s21_set_scale(&expected, 28);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1653,7 +1652,7 @@ START_TEST(mul_6) {
     s21_set_scale(&expected, 2);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1670,7 +1669,7 @@ START_TEST(mul_7) {
     s21_set_scale(&expected, 6);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1685,7 +1684,7 @@ START_TEST(mul_8) {
     s21_set_scale(&expected, 8);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1701,7 +1700,7 @@ START_TEST(mul_9) {
     s21_set_scale(&expected, 17);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1717,7 +1716,7 @@ START_TEST(mul_10) {
     s21_set_scale(&expected, 17);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1735,7 +1734,7 @@ START_TEST(mul_11) {
     s21_set_scale(&expected, 27);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1753,7 +1752,7 @@ START_TEST(mul_12) {
     s21_set_scale(&expected, 13);
     s21_decimal result;
     int status = s21_mul(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1794,7 +1793,7 @@ START_TEST(div_2) {
     s21_decimal result;
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1812,7 +1811,7 @@ START_TEST(div_3) {
     s21_set_scale(&expected, 1);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1826,7 +1825,7 @@ START_TEST(div_4) {
     s21_set_scale(&expected, 28);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1840,7 +1839,7 @@ START_TEST(div_5) {
     s21_decimal expected = {{0, 0, 0, 0}};
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1854,7 +1853,7 @@ START_TEST(div_6) {
     s21_decimal expected = {{400000, 0, 0, 0}};
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1869,7 +1868,7 @@ START_TEST(div_7) {
     s21_set_scale(&expected, 20);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1886,7 +1885,7 @@ START_TEST(div_8) {
     s21_set_scale(&expected, 14);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1903,7 +1902,7 @@ START_TEST(div_9) {
     s21_decimal expected = {{1, 0, 0, 0}};
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1920,7 +1919,7 @@ START_TEST(div_10) {
     s21_set_scale(&expected, 27);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1957,7 +1956,7 @@ START_TEST(div_13) {
     s21_set_scale(&expected, 23);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1973,7 +1972,7 @@ START_TEST(div_14) {
     s21_set_scale(&expected, 27);
     s21_decimal result;
     int status = s21_div(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -1998,7 +1997,7 @@ START_TEST(mod_1) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{22222, 0, 0, 262144}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2011,7 +2010,7 @@ START_TEST(mod_2) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{3492319244, 50332, 0, 458752}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2024,7 +2023,7 @@ START_TEST(mod_3) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{565121299, 203145210, 1416, 1114112}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2037,7 +2036,7 @@ START_TEST(mod_4) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 3);
@@ -2050,7 +2049,7 @@ START_TEST(mod_5) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2063,7 +2062,7 @@ START_TEST(mod_6) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{1549492382, 670995, 0, 2148204544}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2077,7 +2076,7 @@ START_TEST(mod_7) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{1549492382, 670995, 0, 2148204544}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2090,7 +2089,7 @@ START_TEST(mod_8) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{2801328128, 3557, 0, 655360}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2103,7 +2102,7 @@ START_TEST(mod_9) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{604379640, 7, 0, 327680}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
@@ -2116,7 +2115,7 @@ START_TEST(mod_10) {
     s21_decimal result = {{0, 0, 0, 0}};
     s21_decimal expected = {{4044925088, 36789656, 0, 786432}};
     int status = s21_mod(value_1, value_2, &result);
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
     }
     ck_assert_int_eq(status, 0);
