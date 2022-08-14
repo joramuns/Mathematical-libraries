@@ -10,6 +10,8 @@
 int s21_bank_rounding(s21_decimal *value) {
     int ex_code = 0;
     s21_decimal temp_dec = *value;
+    int sign = s21_get_sign(*value);
+    if (sign) s21_zero_bit(value, 127);
 
     s21_div_ten(&temp_dec);
     s21_mul_ten(&temp_dec);
@@ -23,6 +25,7 @@ int s21_bank_rounding(s21_decimal *value) {
             ex_code = 1;
         }
     }
+    if (sign) s21_set_bit(value, 127);
 
     return ex_code;
 }

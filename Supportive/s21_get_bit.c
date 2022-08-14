@@ -8,5 +8,5 @@
 #include "../s21_decimal.h"
 
 int s21_get_bit(int block, int num_bit) {
-    return (block & (1 << num_bit)) ? 1 : 0;
+    return (block & (1U << num_bit)) ? 1 : 0;
 }

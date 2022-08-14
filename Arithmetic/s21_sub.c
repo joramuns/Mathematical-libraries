@@ -18,12 +18,6 @@ s21_decimal_extra s21_sub_bit_extra(s21_decimal_extra value_1_extra, s21_decimal
     return value_1_extra;
 }
 
-void s21_invert_bit_long(s21_decimal *value) {
-    value->LOWBIT = ~value->LOWBIT;
-    value->MEDBIT = ~value->MEDBIT;
-    value->HIGHBIT = ~value->HIGHBIT;
-}
-
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     // Convert to extradecimal
     s21_decimal_extra value_1_extra = INITDECEXTRA, value_2_extra = INITDECEXTRA;

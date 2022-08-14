@@ -19,7 +19,6 @@ int s21_left_shift_bit(s21_decimal *decimal, int step) {
     return 0;
 }
 
-// Not working yet, just prepared
 int s21_right_shift_bit(s21_decimal *decimal, int step) {
     int temp[3] = {0, 0, 0};
     for (; step > 0; step--) {

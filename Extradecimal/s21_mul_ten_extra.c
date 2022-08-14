@@ -8,7 +8,7 @@
 
 int s21_mul_ten_extra(s21_decimal_extra *value, int scale) {
     int ex_code = 0;
-    s21_decimal_extra mul_2, mul_8, mul_res;
+    s21_decimal_extra mul_2 = INITDECEXTRA, mul_8 = INITDECEXTRA, mul_res = INITDECEXTRA;
 
     while (scale-- > 0 && !ex_code) {
         s21_dec_copy_extra(*value, &mul_res);

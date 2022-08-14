@@ -83,8 +83,5 @@ int s21_div_ten(s21_decimal *value) {
     if (save_scale) s21_set_scale(value, --save_scale);
     if (save_sign) s21_set_sign(value);
 
-//    if (--scale && !ex_code) {
-//        s21_div_ten(value, scale);
-//    }
     return ex_code;
 }

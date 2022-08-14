@@ -51,7 +51,6 @@ int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     } else if (sign_2) {
         ex_code = s21_sub(value_1, value_2, result);
     }
-//    s21_set_scale(result, dif_scale);
     if (ex_code) {
         if (s21_get_sign(*result)) ex_code = 2;
         s21_dec_zero(result);

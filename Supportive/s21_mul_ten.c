@@ -33,4 +33,3 @@ int s21_mul_ten(s21_decimal *value) {
     s21_set_scale(value, scale);
     return ex_code;
 }
-

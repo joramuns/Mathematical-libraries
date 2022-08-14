@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <math.h>
+#include <string.h>
 #include "s21_decimal_types.h"
 #include "Extradecimal/s21_decimal_extra.h"
 

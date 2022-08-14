@@ -3,8 +3,6 @@
 //  Decimal
 //
 
-
-#include <stdio.h>
 #include "../s21_decimal.h"
 
 s21_decimal_extra s21_div_exdec(s21_decimal_extra value_1_extra, s21_decimal_extra value_2_extra) {
@@ -49,7 +47,7 @@ int s21_div_get_no_dot(const s21_decimal value_1, const s21_decimal value_2, s21
     // Check check check 79... - 08...
     s21_decimal_extra check_this_shit = INITDECEXTRA;
     s21_dec_to_exdec(*result, &check_this_shit);
-    s21_decimal_extra check_this_max = {{1}};
+    s21_decimal_extra check_this_max = {{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
     s21_mul_ten_extra(&check_this_max, 28);
     if (s21_is_greater_extra(check_this_max, check_this_shit)) ex_code = 1;
 
