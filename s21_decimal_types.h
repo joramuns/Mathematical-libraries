@@ -14,6 +14,7 @@
 #define INITDEC {{0, 0, 0, 0}}
 #define INITDECONE {{1, 0, 0, 0}}
 #define INITDECEXTRA {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
+#define INITDECONEEXTRA {{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
 
 typedef struct {
     unsigned int bits[DECIMSIZE];

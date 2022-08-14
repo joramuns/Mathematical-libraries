@@ -48,6 +48,7 @@ void    s21_set_sub_flag(s21_decimal *value);
 void    s21_zero_sub_flag(s21_decimal *value);
 int     s21_get_sub_flag(s21_decimal value);
 void    s21_bank_rounding(s21_decimal *value);
+s21_decimal_extra s21_sum_dec_extra(s21_decimal_extra value_1_extra, s21_decimal_extra value_2_extra);
 
 /*                      Simple arithmetic operations                            */
 /* Return codes:                                                                */
