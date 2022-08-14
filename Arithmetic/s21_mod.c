@@ -9,8 +9,7 @@
 int s21_mod(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
     int ex_code = 0;
     s21_decimal temp = INITDEC, temp2 = INITDEC;
-    int sign = s21_get_sign(value_2);
-    if (sign) sign = s21_get_sign(value_1);
+    int sign = s21_get_sign(value_1);
     s21_zero_bit(&value_1, 127);
     s21_zero_bit(&value_2, 127);
 
