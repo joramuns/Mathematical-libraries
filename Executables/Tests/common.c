@@ -3,7 +3,7 @@
 //  Decimal
 //
 
-#include "../check_main.h"
+#include "check_main.h"
 
 START_TEST(compare_01) {
     s21_decimal a = {{0, 0, 0, 0}};
