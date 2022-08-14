@@ -1,11 +1,9 @@
+#ifndef SRC_S21_DECIMAL_H_
+#define SRC_S21_DECIMAL_H_
 //
 //  s21_decimal.h
 //  Decimal
 //
-
-
-#ifndef s21_decimal_h
-#define s21_decimal_h
 #define LOWBIT bits[0]
 #define MEDBIT bits[1]
 #define HIGHBIT bits[2]
@@ -32,7 +30,6 @@ int     s21_left_shift_bit(s21_decimal *decimal, int step);
 int     s21_right_shift_bit(s21_decimal *decimal, int step);
 int     s21_last_non_zero(s21_decimal decimal);
 void    s21_zero_bit(s21_decimal *decimal, int bit_index);
-//void    s21_set_inf(s21_decimal *result);
 int     s21_sum_bit(int i, s21_decimal *result, int add_bit);
 void    s21_dec_zero(s21_decimal *decimal);
 int     s21_mul_ten(s21_decimal *value);
@@ -96,4 +93,4 @@ int s21_round(s21_decimal value, s21_decimal *result);
 int s21_truncate(s21_decimal value, s21_decimal *result);
 int s21_negate(s21_decimal value, s21_decimal *result);
 
-#endif /* s21_decimal_h */
+#endif  // SRC_S21_DECIMAL_H_

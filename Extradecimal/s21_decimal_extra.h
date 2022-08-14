@@ -5,8 +5,8 @@
 //  Created by Joramun Sasin on 7/14/22.
 //
 
-#ifndef s21_decimal_extra_h
-#define s21_decimal_extra_h
+#ifndef SRC_EXTRADECIMAL_S21_DECIMAL_EXTRA_H_
+#define SRC_EXTRADECIMAL_S21_DECIMAL_EXTRA_H_
 #include "../s21_decimal_types.h"
 #include "../s21_decimal.h"
 #include <stdlib.h>
@@ -40,6 +40,7 @@ s21_decimal_extra s21_dec_xor(s21_decimal_extra value_1, s21_decimal_extra value
 s21_decimal_extra s21_invert_dec_extra(s21_decimal_extra value);
 int    s21_bank_rounding_extra(s21_decimal_extra *value);
 s21_decimal_extra s21_sub_bit_extra(s21_decimal_extra value_1_extra, s21_decimal_extra value_2_extra);
-int s21_scale_equalize_extra(s21_decimal_extra *value_1, s21_decimal_extra *value_2, int scale_1, int scale_2);
+int s21_scale_equalize_extra(s21_decimal_extra *value_1, s21_decimal_extra *value_2, \
+                             int scale_1, int scale_2);
 
-#endif /* s21_decimal_extra_h */
+#endif  // SRC_EXTRADECIMAL_S21_DECIMAL_EXTRA_H_

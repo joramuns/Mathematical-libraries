@@ -1,3 +1,5 @@
+#ifndef SRC_S21_DECIMAL_TYPES_H_
+#define SRC_S21_DECIMAL_TYPES_H_
 //
 //  s21_decimal_types.h
 //  Decimal
@@ -24,4 +26,4 @@ typedef struct {
     unsigned int bits[EXTRASIZE];
 } s21_decimal_extra;
 
-#endif /* s21_decimal_types_h */
+#endif  // SRC_S21_DECIMAL_TYPES_H_
