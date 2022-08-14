@@ -39,8 +39,8 @@ sanit_s21_decimal.a:
 gcov_report: gcov-s21_decimal.a gcov-check_main.o
 	$(GCOV) $(OFLAGS) test *.o s21_decimal.a `pkg-config --cflags --libs check`
 	./test
-	lcov -t "test" -o test.info -c -d . --rc lcov_branch_coverage=1
-	genhtml -o report test.info --rc lcov_branch_coverage=1
+	lcov -t "test" -o test.info -c -d . --rc lcov_branch_coverage=0
+	genhtml -o report test.info --rc lcov_branch_coverage=0
 	$(MAKE) clean
 
 gcov-s21_decimal.a:
