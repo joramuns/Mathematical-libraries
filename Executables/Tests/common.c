@@ -1546,7 +1546,7 @@ START_TEST(sub_11) {
 START_TEST(sub_12) {
     s21_decimal value_1 = {{UINT_MAX, UINT_MAX, UINT_MAX, 2147483648}};
     s21_decimal value_2 = {{1, 0, 0, 0}};
-    s21_decimal result = {{0}};
+    s21_decimal result = INITDEC;
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_sub(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
@@ -1563,7 +1563,7 @@ START_TEST(mul_1) {
     s21_set_scale(&value_2, 1);
     s21_decimal expected = {{2820683977, 31, 0, 0}};
     s21_set_scale(&expected, 5);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1581,7 +1581,7 @@ START_TEST(mul_2) {
     s21_set_scale(&value_2, 2);
     s21_decimal expected = {{1048576, 0, 0, 0}};
     s21_set_scale(&expected, 4);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1597,7 +1597,7 @@ START_TEST(mul_3) {
     s21_set_scale(&value_2, 28);
     s21_decimal expected = {{0, 0, 0, 0}};
     s21_set_scale(&expected, 28);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1615,7 +1615,7 @@ START_TEST(mul_4) {
     s21_set_scale(&value_2, 14);
     s21_decimal expected = {{1, 0, 0, 0}};
     s21_set_scale(&expected, 28);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1633,7 +1633,7 @@ START_TEST(mul_5) {
     s21_set_scale(&value_2, 14);
     s21_decimal expected = {{1, 0, 0, 0}};
     s21_set_scale(&expected, 28);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1650,7 +1650,7 @@ START_TEST(mul_6) {
     s21_decimal expected = {{0, 0, 0, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 2);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1667,7 +1667,7 @@ START_TEST(mul_7) {
     s21_decimal expected = {{UINT_MAX, UINT_MAX, 0, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 6);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1682,7 +1682,7 @@ START_TEST(mul_8) {
     s21_decimal value_2 = {{100, 0, 0, 0}};
     s21_decimal expected = {{4078060204, 1500333801, 0, 0}};
     s21_set_scale(&expected, 8);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1698,7 +1698,7 @@ START_TEST(mul_9) {
     s21_set_scale(&value_2, 9);
     s21_decimal expected = {{3958225213, 2625355668, 3100638189, 0}};
     s21_set_scale(&expected, 17);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1714,7 +1714,7 @@ START_TEST(mul_10) {
     s21_set_scale(&value_2, 9);
     s21_decimal expected = {{2941190343, 3124007977, 3100638189, 0}};
     s21_set_scale(&expected, 17);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1732,7 +1732,7 @@ START_TEST(mul_11) {
     s21_decimal expected = {{158262358, 899300158, 3402823669, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 27);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1750,7 +1750,7 @@ START_TEST(mul_12) {
     s21_decimal expected = {{4288873668, 3635651073, 701595274, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 13);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1762,7 +1762,7 @@ END_TEST
 START_TEST(mul_13) {
     s21_decimal value_1 = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
     s21_decimal value_2 = {{2, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     ck_assert_int_eq(status, 1);
 }
@@ -1772,7 +1772,7 @@ START_TEST(mul_14) {
     s21_decimal value_1 = {{UINT_MAX, UINT_MAX, UINT_MAX, 0}};
     s21_set_sign(&value_1);
     s21_decimal value_2 = {{2, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_mul(value_1, value_2, &result);
     ck_assert_int_eq(status, 2);
 }
@@ -1781,7 +1781,7 @@ END_TEST
 START_TEST(div_1) {
     s21_decimal value_1 = {{895412, 0, 0, 0}};
     s21_decimal value_2 = {{0, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     ck_assert_int_eq(status, 3);
 }
@@ -1790,7 +1790,7 @@ END_TEST
 START_TEST(div_2) {
     s21_decimal value_1 = {{0, 0, 0, 0}};
     s21_decimal value_2 = {{75, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     s21_decimal expected = {{0, 0, 0, 0}};
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
@@ -1809,7 +1809,7 @@ START_TEST(div_3) {
     s21_decimal expected = {{15, 0, 0, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 1);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1823,7 +1823,7 @@ START_TEST(div_4) {
     s21_decimal value_2 = {{3, 0, 0, 0}};
     s21_decimal expected = {{178956971, 695075222, 361400724, 0}};
     s21_set_scale(&expected, 28);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1837,7 +1837,7 @@ START_TEST(div_5) {
     s21_set_scale(&value_1, 28);
     s21_decimal value_2 = {{5, 0, 0, 0}};
     s21_decimal expected = {{0, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1851,7 +1851,7 @@ START_TEST(div_6) {
     s21_decimal value_2 = {{5, 0, 0, 0}};
     s21_set_scale(&value_2, 5);
     s21_decimal expected = {{400000, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1866,7 +1866,7 @@ START_TEST(div_7) {
     s21_decimal value_2 = {{43764, 0, 0, 0}};
     s21_decimal expected = {{926677031, 1324446808, 551124877, 0}};
     s21_set_scale(&expected, 20);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1883,7 +1883,7 @@ START_TEST(div_8) {
     s21_decimal expected = {{1714336475, 602887423, 48737584, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 14);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1900,7 +1900,7 @@ START_TEST(div_9) {
     s21_set_sign(&value_2);
     s21_set_scale(&value_2, 19);
     s21_decimal expected = {{1, 0, 0, 0}};
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1917,7 +1917,7 @@ START_TEST(div_10) {
     s21_decimal expected = {{1392783818, 22080446, 0, 0}};
     s21_set_sign(&expected);
     s21_set_scale(&expected, 27);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1931,7 +1931,7 @@ START_TEST(div_11) {
     s21_set_sign(&value_1);
     s21_decimal value_2 = {{193289, 0, 0, 0}};
     s21_set_scale(&value_2, 14);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     ck_assert_int_eq(status, 2);
 }
@@ -1941,7 +1941,7 @@ START_TEST(div_12) {
     s21_decimal value_1 =  {{2833012231, 1194835434, 39, 0}};
     s21_decimal value_2 = {{193289, 0, 0, 0}};
     s21_set_scale(&value_2, 17);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     ck_assert_int_eq(status, 1);
 }
@@ -1954,7 +1954,7 @@ START_TEST(div_13) {
     s21_set_scale(&value_2, 5);
     s21_decimal expected = {{2535589114, 2456994201, 302858453, 0}};
     s21_set_scale(&expected, 23);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1970,7 +1970,7 @@ START_TEST(div_14) {
     s21_set_scale(&value_2, 1);
     s21_decimal expected = {{858993459, 858993459, 858993459, 0}};
     s21_set_scale(&expected, 27);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     for (int i = 0; i < 4; i++) {
         ck_assert_uint_eq(result.bits[i], expected.bits[i]);
@@ -1984,7 +1984,7 @@ START_TEST(div_15) {
     s21_set_scale(&value_1, 1);
     s21_decimal value_2 = {{1, 0, 0, 0}};
     s21_set_scale(&value_2, 2);
-    s21_decimal result;
+    s21_decimal result = INITDEC;
     int status = s21_div(value_1, value_2, &result);
     ck_assert_int_eq(status, 1);
 }
