@@ -28,8 +28,9 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
     if (exp <= -96) {
         ex_code = 1;
         s21_dec_zero(dst);
-    } else if (exp <= 0) {
+    } else if (exp < 0) {
         long double new_src = src * 10000000;
+        new_src = roundl(new_src);
         int scale = 7;
         s21_from_int_to_decimal(new_src, dst);
         s21_set_scale(dst, scale);
@@ -46,10 +47,10 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
             scale--;
         }
         new_src = src * pow(10, scale);
+        new_src = roundl(new_src);
         s21_from_int_to_decimal(new_src, dst);
         s21_set_scale(dst, scale);
         if (sign) s21_set_sign(dst);
-
     } else if (exp < 96) {
         int mantissa = s21_get_float_mantissa(src);
         dst->bits[0] = mantissa;
