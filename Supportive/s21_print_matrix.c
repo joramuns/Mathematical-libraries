@@ -7,13 +7,13 @@
 
 #include "../s21_matrix.h"
 
-int    s21_print_matrix(matrix_t matrix) {
+int    s21_print_matrix(matrix_t A) {
     int ex_code = OK;
 
-    if (matrix.matrix) {
-        for (int i_row = 0; i_row < matrix.rows; i_row++) {
-            for (int i_column = 0; i_column < matrix.columns; i_column++) {
-                printf("[%.0f]", matrix.matrix[i_row][i_column]);
+    if (A.matrix) {
+        for (int i_row = 0; i_row < A.rows; i_row++) {
+            for (int i_column = 0; i_column < A.columns; i_column++) {
+                printf("[%.0f]", A.matrix[i_row][i_column]);
             }
             printf("\n");
         }
