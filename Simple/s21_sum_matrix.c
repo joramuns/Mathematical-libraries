@@ -24,13 +24,9 @@ int     s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
     int ex_code = OK;
 
     if (s21_compare_matrix_sizes(*A, *B) == OK) {
-        if (!result->matrix || !result->matrix[0]) {
-            s21_create_matrix(A->rows, A->columns, result);
-        }
-        if (s21_compare_matrix_sizes(*A, *result) == OK) {
+        ex_code = s21_create_matrix(A->rows, A->columns, result);
+        if (ex_code == OK) {
             ex_code = s21_sum_matrix_elements(A, B, result);
-        } else {
-            ex_code = M_ERROR;
         }
     } else {
         ex_code = C_ERROR;
