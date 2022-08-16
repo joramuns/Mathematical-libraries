@@ -23,7 +23,7 @@ int s21_mult_matrix_go(matrix_t *A, matrix_t *B, matrix_t *result) {
 
 int     s21_mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
     int ex_code = s21_check_matrix(*A);
-    if (ex_code == OK) s21_check_matrix(*B);
+    if (ex_code == OK) ex_code = s21_check_matrix(*B);
 
     if (ex_code == OK) {
         if (A->columns == B->rows) {
