@@ -13,6 +13,8 @@
 #include <math.h>
 
 #define TOLERANCE 1e-07
+#define EVERY_ROW for (int i_row = 0; i_row < A->rows; i_row++) {
+#define EVERY_COLUMN for (int i_column = 0; i_column < A->columns; i_column++) {
 
 
 enum Comparison {
@@ -53,7 +55,7 @@ int     s21_inverse_matrix(matrix_t *A, matrix_t *result);
 int     s21_print_matrix(matrix_t A);
 int     s21_check_matrix(matrix_t A);
 int     s21_compare_matrix_sizes(matrix_t A, matrix_t B);
-void    s21_randomize_matrix (matrix_t *A, int range);
+void    s21_randomize_matrix(matrix_t *A, int range);
 
 
 #endif  // SRC_S21_MATRIX_H_
