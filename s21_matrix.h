@@ -8,6 +8,9 @@
 #ifndef SRC_S21_MATRIX_H_
 #define SRC_S21_MATRIX_H_
 
+#include <stdlib.h>
+#include <stdio.h>
+
 enum Comparison {
     FAILURE = 0,
     SUCCESS = 1
@@ -41,6 +44,9 @@ int     s21_transpose(matrix_t *A, matrix_t *result);
 int     s21_calc_complements(matrix_t *A, matrix_t *result);
 int     s21_determinant(matrix_t *A, double *result);
 int     s21_inverse_matrix(matrix_t *A, matrix_t *result);
+
+/*                Additional supportive functions                               */
+int     s21_print_matrix(matrix_t matrix);
 
 
 #endif  // SRC_S21_MATRIX_H_
