@@ -10,5 +10,15 @@
 int     s21_eq_matrix(matrix_t *A, matrix_t *B) {
     int ex_code = SUCCESS;
 
+    if (s21_compare_matrix_sizes(*A, *B) == OK) {
+        for (int i_row = 0; i_row < A->rows; i_row++) {
+            for (int i_column = 0; i_column < A->columns; i_column++) {
+                if (A->matrix[i_row][i_column] != B->matrix[i_row][i_column]) ex_code = FAILURE;
+            }
+        }
+    } else {
+        ex_code = FAILURE;
+    }
+
     return ex_code;
 }
