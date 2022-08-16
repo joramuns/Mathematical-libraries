@@ -12,7 +12,7 @@ int s21_compare_matrix_sizes(matrix_t A, matrix_t B) {
 
     if (ex_code == OK) ex_code = s21_check_matrix(B);
     if (ex_code == OK) {
-        if ((A.rows != B.rows || A.columns != B.columns)) ex_code = M_ERROR;
+        if ((A.rows != B.rows || A.columns != B.columns)) ex_code = C_ERROR;
     }
 
     return ex_code;
