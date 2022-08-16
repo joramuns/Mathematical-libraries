@@ -10,7 +10,7 @@
 int    s21_print_matrix(matrix_t A) {
     int ex_code = OK;
 
-    if (A.matrix && A.matrix[0]) {
+    if (A.matrix) {
         for (int i_row = 0; i_row < A.rows; i_row++) {
             for (int i_column = 0; i_column < A.columns; i_column++) {
                 printf("[%3.0f]", A.matrix[i_row][i_column]);

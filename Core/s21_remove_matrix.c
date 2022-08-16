@@ -8,7 +8,7 @@
 #include "../s21_matrix.h"
 
 void    s21_remove_matrix(matrix_t *A) {
-    if (A->matrix && A->matrix[0]) {
+    if (A->matrix) {
         for (int i_row = 0; i_row < A->rows; i_row++) {
             free(A->matrix[i_row]);
         }
