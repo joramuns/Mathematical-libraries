@@ -10,6 +10,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+
+#define TOLERANCE 1e-07
+
 
 enum Comparison {
     FAILURE = 0,
