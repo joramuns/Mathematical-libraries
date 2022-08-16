@@ -46,7 +46,8 @@ int     s21_determinant(matrix_t *A, double *result);
 int     s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
 /*                Additional supportive functions                               */
-int     s21_print_matrix(matrix_t matrix);
+int     s21_print_matrix(matrix_t A);
+int s21_check_matrix(matrix_t A);
 
 
 #endif  // SRC_S21_MATRIX_H_
