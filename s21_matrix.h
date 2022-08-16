@@ -47,7 +47,8 @@ int     s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
 /*                Additional supportive functions                               */
 int     s21_print_matrix(matrix_t A);
-int s21_check_matrix(matrix_t A);
+int     s21_check_matrix(matrix_t A);
+int     s21_compare_matrix_sizes(matrix_t A, matrix_t B);
 
 
 #endif  // SRC_S21_MATRIX_H_
