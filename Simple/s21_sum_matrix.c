@@ -11,8 +11,8 @@
 int s21_sum_matrix_elements(matrix_t *A, matrix_t *B, matrix_t *result) {
     int ex_code = OK;
 
-    for (int i_row = 0; i_row < A->rows; i_row++) {
-        for (int i_column = 0; i_column < A->columns; i_column++) {
+    EVERY_ROW
+        EVERY_COLUMN
             result->matrix[i_row][i_column] = A->matrix[i_row][i_column] + B->matrix[i_row][i_column];
         }
     }
