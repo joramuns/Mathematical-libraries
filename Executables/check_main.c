@@ -19,12 +19,13 @@ int main() {
         complements_matrix_suite(),
         determinant_matrix_suite(),
         inverse_matrix_suite(),
+        stolll_suite(),
     };
 
     SRunner *sr = srunner_create(suites_matrix[0]);
     srunner_set_fork_status(sr, CK_NOFORK);
 
-    for (size_t i = 1; i < 9; i++)
+    for (size_t i = 1; i < 10; i++)
         srunner_add_suite(sr, suites_matrix[i]);
 
     srunner_run_all(sr, CK_NORMAL);

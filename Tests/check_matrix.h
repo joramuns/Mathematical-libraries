@@ -26,6 +26,7 @@ Suite *transpose_matrix_suite(void);
 Suite *complements_matrix_suite(void);
 Suite *determinant_matrix_suite(void);
 Suite *inverse_matrix_suite(void);
+Suite *stolll_suite(void);
 
 
 #endif  // SRC_TESTS_CHECK_MATRIX_H_
