@@ -17,6 +17,7 @@ int s21_matrix_allocation(matrix_t *result) {
             }
         } else {
             ex_code = M_ERROR;
+            s21_remove_matrix(result);
         }
     }
     return ex_code;

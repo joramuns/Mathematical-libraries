@@ -10,7 +10,9 @@
 void    s21_remove_matrix(matrix_t *A) {
     if (A->matrix) {
         for (int i_row = 0; i_row < A->rows; i_row++) {
-            free(A->matrix[i_row]);
+            if (A->matrix[i_row]) {
+                free(A->matrix[i_row]);
+            }
         }
         free(A->matrix);
     }
