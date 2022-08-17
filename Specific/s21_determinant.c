@@ -7,7 +7,8 @@
 
 #include "../s21_matrix.h"
 
-void s21_determinant_cofactor(matrix_t *A, matrix_t *temp_matrix, int cross_row, int cross_column, int depth) {
+void s21_determinant_cofactor(matrix_t *A, matrix_t *temp_matrix, \
+                              int cross_row, int cross_column, int depth) {
     int i = 0, j = 0;
 
     for (int i_row = 0; i_row < depth; i_row++) {
@@ -33,7 +34,8 @@ double s21_determinant_go(matrix_t *A, int depth) {
         s21_create_matrix(A->rows, A->columns, &temp_matrix);
         for (int i_counter = 0; i_counter < depth; i_counter++) {
             s21_determinant_cofactor(A, &temp_matrix, 0, i_counter, depth);
-            result_determinant += sign * A->matrix[0][i_counter] * s21_determinant_go(&temp_matrix, depth - 1);
+            result_determinant += \
+                        sign * A->matrix[0][i_counter] * s21_determinant_go(&temp_matrix, depth - 1);
             sign = -sign;
         }
         s21_remove_matrix(&temp_matrix);
