@@ -31,7 +31,7 @@ int     s21_inverse_matrix(matrix_t *A, matrix_t *result) {
             }
         }
     } else if (ex_code == OK) {
-        ex_code = M_ERROR;
+        ex_code = C_ERROR;
     }
 
     return ex_code;

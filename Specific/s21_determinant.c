@@ -45,12 +45,14 @@ double s21_determinant_go(matrix_t *A, int depth) {
 }
 
 int     s21_determinant(matrix_t *A, double *result) {
-    int ex_code = OK;
+    int ex_code = s21_check_matrix(*A);
 
-    if (A->rows == A->columns) {
-            *result = s21_determinant_go(A, A->rows);
-    } else {
-        ex_code = C_ERROR;
+    if (ex_code == OK) {
+        if (A->rows == A->columns) {
+                *result = s21_determinant_go(A, A->rows);
+        } else {
+            ex_code = C_ERROR;
+        }
     }
 
     return ex_code;

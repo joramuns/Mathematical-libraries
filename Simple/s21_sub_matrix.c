@@ -21,15 +21,13 @@ int s21_sub_matrix_elements(matrix_t *A, matrix_t *B, matrix_t *result) {
 }
 
 int     s21_sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
-    int ex_code = OK;
+    int ex_code = s21_compare_matrix_sizes(*A, *B);
 
-    if (s21_compare_matrix_sizes(*A, *B) == OK) {
+    if (ex_code == OK) {
         ex_code = s21_create_matrix(A->rows, A->columns, result);
         if (ex_code == OK) {
             ex_code = s21_sub_matrix_elements(A, B, result);
         }
-    } else {
-        ex_code = C_ERROR;
     }
 
     return ex_code;
