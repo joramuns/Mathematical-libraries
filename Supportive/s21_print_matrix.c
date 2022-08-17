@@ -13,7 +13,7 @@ int    s21_print_matrix(matrix_t A) {
         printf("Matrix:\n");
         for (int i_row = 0; i_row < A.rows; i_row++) {
             for (int i_column = 0; i_column < A.columns; i_column++) {
-                printf("[%3.3f]", A.matrix[i_row][i_column]);
+                printf("[%3.8f]", A.matrix[i_row][i_column]);
             }
             printf("\n");
         }
