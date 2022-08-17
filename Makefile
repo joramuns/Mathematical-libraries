@@ -1,7 +1,7 @@
 CC=gcc -g
 GCOV=gcc --coverage
-CFLAGS=-c -std=c11 -pedantic -Wall -Werror -Wextra
-OFLAGS=-o -std=c11 -pedantic -Wall -Werror -Wextra
+CFLAGS=-std=c11 -pedantic -Wall -Werror -Wextra -c
+OFLAGS=-std=c11 -pedantic -Wall -Werror -Wextra -o
 CFLAGSan=-std=c11 -pedantic -Wall -Werror -Wextra -fsanitize=address -c
 OFLAGSan=-std=c11 -pedantic -Wall -Werror -Wextra -fsanitize=address -o
 LFLAG=-lcheck
