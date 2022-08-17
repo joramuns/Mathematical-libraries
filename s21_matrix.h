@@ -53,7 +53,6 @@ int     s21_inverse_matrix(matrix_t *A, matrix_t *result);
 int     s21_print_matrix(matrix_t A);
 int     s21_check_matrix(matrix_t A);
 int     s21_compare_matrix_sizes(matrix_t A, matrix_t B);
-void    s21_randomize_matrix(matrix_t *A, int range);
 void    s21_determinant_cofactor\
         (matrix_t *A, matrix_t *temp_matrix, int cross_row, int cross_column, int depth);
 
