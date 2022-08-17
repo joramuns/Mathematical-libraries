@@ -9,7 +9,7 @@
 
 int     s21_complements_go(matrix_t *A, matrix_t *result) {
     int ex_code = OK;
-    int sign = 1;
+    int sign = -1;
 
     EVERY_ROW
         EVERY_COLUMN
@@ -18,8 +18,8 @@ int     s21_complements_go(matrix_t *A, matrix_t *result) {
             s21_determinant_cofactor(A, &temp_matrix, i_row, i_column, A->rows);
             double det = 0.0;
             s21_determinant(&temp_matrix, &det);
-            result->matrix[i_row][i_column] = sign * det;
-            sign = -sign;
+            result->matrix[i_row][i_column] = powf(sign, (i_row + i_column)) * det;
+//            sign = -sign;
             s21_remove_matrix(&temp_matrix);
         }
     }
@@ -28,13 +28,21 @@ int     s21_complements_go(matrix_t *A, matrix_t *result) {
 }
 
 int     s21_calc_complements(matrix_t *A, matrix_t *result) {
-    int ex_code = OK;
+    int ex_code = s21_check_matrix(*A);
 
-    if (A->rows == A->columns) {
-        ex_code = s21_create_matrix(A->rows, A->columns, result);
-        if (ex_code == OK) ex_code = s21_complements_go(A, result);
-    } else {
-        ex_code = C_ERROR;
+    if (ex_code == OK) {
+        if (A->rows == A->columns) {
+            ex_code = s21_create_matrix(A->rows, A->columns, result);
+            if (ex_code == OK) {
+                if (A->rows == 1) {
+                    result->matrix[0][0] = 1;
+                } else {
+                    ex_code = s21_complements_go(A, result);
+                }
+            }
+        } else {
+            ex_code = C_ERROR;
+        }
     }
 
     return ex_code;
