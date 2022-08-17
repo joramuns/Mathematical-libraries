@@ -20,12 +20,13 @@ int     s21_inverse_matrix(matrix_t *A, matrix_t *result) {
         matrix_t calc_complement = {0};
         ex_code = s21_calc_complements(A, &calc_complement);
         if (ex_code == OK) {
-            ex_code = s21_create_matrix(A->rows, A->columns, result);
-            if (ex_code == OK) {
-                ex_code = s21_transpose(&calc_complement, result);
-            } else {
-                ex_code = M_ERROR;
+            EVERY_ROW
+                EVERY_COLUMN
+                    calc_complement.matrix[i_row][i_column] /= det;
+                }
             }
+            ex_code = s21_transpose(&calc_complement, result);
+            s21_remove_matrix(&calc_complement);
         }
     } else {
         ex_code = C_ERROR;
