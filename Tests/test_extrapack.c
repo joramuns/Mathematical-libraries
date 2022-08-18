@@ -157,7 +157,6 @@ START_TEST(inverse_test_1) {
     A.matrix[0][0] = 1.25;
     B.matrix[0][0] = 0.8;
 
-    
     s21_inverse_matrix(&A, &R);
     ck_assert_int_eq(s21_eq_matrix(&R, &B), 1);
 
