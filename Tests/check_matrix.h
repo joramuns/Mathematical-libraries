@@ -26,7 +26,9 @@ Suite *transpose_matrix_suite(void);
 Suite *complements_matrix_suite(void);
 Suite *determinant_matrix_suite(void);
 Suite *inverse_matrix_suite(void);
-Suite *stolll_suite(void);
+Suite *extrapack_suite(void);
+
+int     s21_print_matrix(matrix_t A);
 
 
 #endif  // SRC_TESTS_CHECK_MATRIX_H_

@@ -19,7 +19,7 @@ int main() {
         complements_matrix_suite(),
         determinant_matrix_suite(),
         inverse_matrix_suite(),
-        stolll_suite(),
+        extrapack_suite(),
     };
 
     SRunner *sr = srunner_create(suites_matrix[0]);

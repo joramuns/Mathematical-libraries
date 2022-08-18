@@ -51,10 +51,8 @@ START_TEST(complements_3) {
     A.matrix[0][0] = 5;
     s21_calc_complements(&A, &R);
 
-    B.matrix[0][0] = 5;
+    B.matrix[0][0] = 1;
 
-    s21_print_matrix(R);
-    s21_print_matrix(B);
     ck_assert_int_eq(s21_eq_matrix(&R, &B), 1);
     s21_remove_matrix(&A);
     s21_remove_matrix(&B);
@@ -161,8 +159,6 @@ START_TEST(inverse_test_1) {
 
     
     s21_inverse_matrix(&A, &R);
-    s21_print_matrix(R);
-    s21_print_matrix(B);
     ck_assert_int_eq(s21_eq_matrix(&R, &B), 1);
 
     s21_remove_matrix(&A);
@@ -779,7 +775,7 @@ START_TEST(mult_number_test_222) {
 } END_TEST
 
 
-Suite *stolll_suite(void) {
+Suite *extrapack_suite(void) {
     Suite *s1 = suite_create("Ch");
     TCase *tc1_1 = tcase_create("Core");
 

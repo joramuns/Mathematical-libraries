@@ -50,7 +50,6 @@ int     s21_determinant(matrix_t *A, double *result);
 int     s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
 /*                Additional supportive functions                               */
-int     s21_print_matrix(matrix_t A);
 int     s21_check_matrix(matrix_t A);
 int     s21_compare_matrix_sizes(matrix_t A, matrix_t B);
 void    s21_determinant_cofactor\
