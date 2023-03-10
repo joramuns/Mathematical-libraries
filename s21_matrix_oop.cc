@@ -55,10 +55,14 @@ double& S21Matrix::operator()(int i, int j) {
 void S21Matrix::PrintMatrix() {
   for (int rows = 0; rows < rows_; rows++) {
     for (int cols = 0; cols < cols_; cols++) {
-      std::cout << matrix_[cols + rows * cols_]; 
-      if (cols < cols_ - 1) { std::cout << " "; }
+      std::cout << matrix_[cols + rows * cols_];
+      if (cols < cols_ - 1) {
+        std::cout << " ";
+      }
     }
-    if (rows < rows_ - 1) { std::cout << std::endl; } 
+    if (rows < rows_ - 1) {
+      std::cout << std::endl;
+    }
   }
 }
 
