@@ -15,10 +15,11 @@ class S21Matrix {
 
   // Extra methods
   void PrintMatrix();
+
  private:
   double* matrix_;
   int rows_, cols_;
-  bool create_matrix();
+  void create_matrix();
   /* void swap(S21Matrix &other); */
 };
 #endif  // SRC_S21_MATRIX_OOP_H_
