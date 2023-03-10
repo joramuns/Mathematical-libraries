@@ -20,12 +20,9 @@ S21Matrix::S21Matrix(int rows, int cols) : rows_(rows), cols_(cols) {
 S21Matrix::S21Matrix(const S21Matrix& other) {
   rows_ = other.rows_;
   cols_ = other.cols_;
-  if (!create_matrix()) {
-    for (int i = 0; i < rows_ * cols_; i++) {
-      matrix_[i] = other.matrix_[i];
-    }
-  } else {
-    throw std::bad_alloc();
+  create_matrix();
+  for (int i = 0; i < rows_ * cols_; i++) {
+    matrix_[i] = other.matrix_[i];
   }
 }
 
@@ -43,13 +40,13 @@ S21Matrix::~S21Matrix() {
 
 /* Operators */
 double& S21Matrix::operator()(int i, int j) {
-  if (matrix_) {
-    if (i > rows_ || j > cols_) {
+  if (matrix_) {  // Perhaps unnecessary check due to exception in constructor
+    if (i > rows_ || j > cols_ || i < 0 || j < 0) {
       throw std::out_of_range("Wrong matrix index");
     }
     return matrix_[(j - 1) + (i - 1) * cols_];
   } else {
-    throw std::bad_alloc();
+    throw std::invalid_argument("Uninitialized matrix");
   }
 }
 
@@ -67,11 +64,12 @@ void S21Matrix::PrintMatrix() {
 
 /* Private methods */
 
-bool S21Matrix::create_matrix() {
-  bool ex_code = 0;
+void S21Matrix::create_matrix() {
+  if (rows_ <= 0 || cols_ <= 0) {
+    throw std::bad_array_new_length();
+  }
   matrix_ = new double[rows_ * cols_]();
   if (!matrix_) {
-    ex_code = 1;
+    throw std::bad_alloc();
   }
-  return ex_code;
 }
