@@ -20,10 +20,7 @@ S21Matrix::S21Matrix(int rows, int cols) : rows_(rows), cols_(cols) {
 S21Matrix::S21Matrix(const S21Matrix& other) {
   rows_ = other.rows_;
   cols_ = other.cols_;
-  create_matrix();
-  for (int i = 0; i < rows_ * cols_; i++) {
-    matrix_[i] = other.matrix_[i];
-  }
+  copy_matrix(other);
 }
 
 S21Matrix::S21Matrix(S21Matrix&& other) {
@@ -32,11 +29,7 @@ S21Matrix::S21Matrix(S21Matrix&& other) {
   std::swap(matrix_, other.matrix_);
 }
 
-S21Matrix::~S21Matrix() {
-  delete[] matrix_;
-  rows_ = 0;
-  cols_ = 0;
-}
+S21Matrix::~S21Matrix() { delete_matrix(); }
 
 /* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) {
@@ -77,7 +70,14 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
 
 bool S21Matrix::operator==(const S21Matrix& other) { return EqMatrix(other); }
 
-/* S21Matrix S21Matrix::operator=(S21Matrix& other) {} */
+void S21Matrix::operator=(const S21Matrix& other) {
+  if (matrix_) {
+    delete_matrix();
+  }
+  rows_ = other.rows_;
+  cols_ = other.cols_;
+  copy_matrix(other);
+}
 
 /* S21Matrix S21Matrix::operator+=(S21Matrix& other) {} */
 
@@ -125,5 +125,20 @@ void S21Matrix::create_matrix() {
   matrix_ = new double[rows_ * cols_]();
   if (!matrix_) {
     throw std::bad_alloc();
+  }
+}
+
+void S21Matrix::copy_matrix(const S21Matrix& other) {
+  create_matrix();
+  for (int i = 0; i < rows_ * cols_; i++) {
+    matrix_[i] = other.matrix_[i];
+  }
+}
+
+void S21Matrix::delete_matrix() {
+  if (matrix_) {
+    delete[] matrix_;
+    rows_ = 0;
+    cols_ = 0;
   }
 }

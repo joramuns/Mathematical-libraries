@@ -27,7 +27,7 @@ class S21Matrix {
   /* S21Matrix operator-(S21Matrix& other); */
   /* S21Matrix operator*(S21Matrix& other); */
   bool operator==(const S21Matrix& other);
-  /* S21Matrix operator=(S21Matrix& other); */
+  void operator=(const S21Matrix& other);
   /* S21Matrix operator+=(S21Matrix& other); */
   /* S21Matrix operator-=(S21Matrix& other); */
   /* S21Matrix operator*=(S21Matrix& other); */
@@ -42,6 +42,8 @@ class S21Matrix {
   double* matrix_;
   int rows_, cols_;
   void create_matrix();
+  void copy_matrix(const S21Matrix& other);
+  void delete_matrix();
 };
 
 /* S21Matrix operator*(S21Matrix& other, double& number); */
