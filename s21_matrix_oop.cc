@@ -59,9 +59,25 @@ void S21Matrix::SubMatrix(const S21Matrix& other) {
   }
 }
 
-/* void S21Matrix::MulNumber(const double num) {} */
+void S21Matrix::MulNumber(const double num) {
+  if (matrix_) {
+    for (int i = 0; i < rows_ * cols_; i++) {
+      matrix_[i] *= num; 
+    }
+  }
+}
 
-/* void S21Matrix::MulMatrix(const S21Matrix& other) {} */
+void S21Matrix::MulMatrix(const S21Matrix& other) {
+  if (cols_ == other.rows_ && matrix_ && other.matrix_) {
+    S21Matrix temp(rows_, other.cols_);
+    for (int rows = 0; rows < temp.rows_; rows++) {
+      for (int cols = 0; cols < temp.cols_; cols++) {
+        temp.matrix_[cols + rows * temp.cols_] = 1; 
+      }
+    }
+    *this = temp;
+  }
+}
 
 /* S21Matrix S21Matrix::Transpose() {} */
 
