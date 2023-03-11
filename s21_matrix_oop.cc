@@ -38,7 +38,7 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
     for (int i = 0; i < rows_ * cols_; i++) {
       if (matrix_[i] != other.matrix_[i]) result = false;
     }
-  } 
+  }
 
   return result;
 }
@@ -46,7 +46,7 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
 void S21Matrix::SumMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other)) {
     for (int i = 0; i < rows_ * cols_; i++) {
-      matrix_[i] += other.matrix_[i]; 
+      matrix_[i] += other.matrix_[i];
     }
   }
 }
@@ -54,7 +54,7 @@ void S21Matrix::SumMatrix(const S21Matrix& other) {
 void S21Matrix::SubMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other)) {
     for (int i = 0; i < rows_ * cols_; i++) {
-      matrix_[i] -= other.matrix_[i]; 
+      matrix_[i] -= other.matrix_[i];
     }
   }
 }
@@ -62,7 +62,7 @@ void S21Matrix::SubMatrix(const S21Matrix& other) {
 void S21Matrix::MulNumber(const double num) {
   if (matrix_) {
     for (int i = 0; i < rows_ * cols_; i++) {
-      matrix_[i] *= num; 
+      matrix_[i] *= num;
     }
   }
 }
@@ -72,7 +72,7 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
     S21Matrix temp(rows_, other.cols_);
     for (int rows = 0; rows < temp.rows_; rows++) {
       for (int cols = 0; cols < temp.cols_; cols++) {
-        temp.matrix_[cols + rows * temp.cols_] = 1; 
+        temp.matrix_[cols + rows * temp.cols_] = 1;
       }
     }
     *this = temp;
@@ -162,7 +162,10 @@ void S21Matrix::copy_matrix(const S21Matrix& other) {
 }
 
 bool S21Matrix::check_matrix_dimension(const S21Matrix& other) {
-  return (rows_ == other.rows_ && cols_ == other.cols_ && matrix_ && other.matrix_) ? true : false;
+  return (rows_ == other.rows_ && cols_ == other.cols_ && matrix_ &&
+          other.matrix_)
+             ? true
+             : false;
 }
 
 void S21Matrix::delete_matrix() {
