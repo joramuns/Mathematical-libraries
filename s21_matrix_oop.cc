@@ -82,7 +82,15 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
   }
 }
 
-/* S21Matrix S21Matrix::Transpose() {} */
+S21Matrix S21Matrix::Transpose() {
+  S21Matrix result(cols_, rows_);
+  for (int rows = 0; rows < result.rows_; rows++) {
+    for (int cols = 0; cols < result.cols_; cols++) {
+      result.matrix_[cols + rows * result.cols_] = matrix_[rows + cols * cols_];
+    }
+  }
+  return result;
+}
 
 /* S21Matrix S21Matrix::CalcComplements() {} */
 
