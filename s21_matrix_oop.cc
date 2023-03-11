@@ -33,33 +33,35 @@ S21Matrix::~S21Matrix() { delete_matrix(); }
 
 /* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) {
-  bool result = true;
-  if (rows_ == other.rows_ && cols_ == other.cols_) {
+  bool result = check_matrix_dimension(other);
+  if (result) {
     for (int i = 0; i < rows_ * cols_; i++) {
       if (matrix_[i] != other.matrix_[i]) result = false;
     }
-  } else {
-    result = false;
-  }
+  } 
 
   return result;
 }
 
-/* void SumMatrix(const S21Matrix& other) {} */
+void S21Matrix::SumMatrix(const S21Matrix& other) {
+  if (check_matrix_dimension(other)) {
 
-/* void SubMatrix(const S21Matrix& other) {} */
+  }
+}
 
-/* void MulNumber(const S21Matrix& other) {} */
+/* void S21Matrix::SubMatrix(const S21Matrix& other) {} */
 
-/* void MulMatrix(const S21Matrix& other) {} */
+/* void S21Matrix::MulNumber(const double num) {} */
 
-/* S21Matrix Transpose() {} */
+/* void S21Matrix::MulMatrix(const S21Matrix& other) {} */
 
-/* S21Matrix CalcComplements() {} */
+/* S21Matrix S21Matrix::Transpose() {} */
 
-/* double Determinant() {} */
+/* S21Matrix S21Matrix::CalcComplements() {} */
 
-/* S21Matrix InverseMatrix() {} */
+/* double S21Matrix::Determinant() {} */
+
+/* S21Matrix S21Matrix::InverseMatrix() {} */
 
 /* Operators */
 /* S21Matrix S21Matrix::operator+(S21Matrix& other) {} */
@@ -133,6 +135,10 @@ void S21Matrix::copy_matrix(const S21Matrix& other) {
   for (int i = 0; i < rows_ * cols_; i++) {
     matrix_[i] = other.matrix_[i];
   }
+}
+
+bool S21Matrix::check_matrix_dimension(const S21Matrix& other) {
+  return (rows_ == other.rows_ && cols_ == other.cols_ && matrix_ && other.matrix_) ? true : false;
 }
 
 void S21Matrix::delete_matrix() {

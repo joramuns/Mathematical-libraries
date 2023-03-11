@@ -13,9 +13,9 @@ class S21Matrix {
 
   /* Methods */
   bool EqMatrix(const S21Matrix& other);
-  /* void SumMatrix(const S21Matrix& other); */
+  void SumMatrix(const S21Matrix& other);
   /* void SubMatrix(const S21Matrix& other); */
-  /* void MulNumber(const S21Matrix& other); */
+  /* void MulNumber(const double num); */
   /* void MulMatrix(const S21Matrix& other); */
   /* S21Matrix Transpose(); */
   /* S21Matrix CalcComplements(); */
@@ -43,6 +43,7 @@ class S21Matrix {
   int rows_, cols_;
   void create_matrix();
   void copy_matrix(const S21Matrix& other);
+  bool check_matrix_dimension(const S21Matrix& other);
   void delete_matrix();
 };
 
