@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+/* Constructors and destructors */
 S21Matrix::S21Matrix() {
   rows_ = 3;
   cols_ = 3;
@@ -38,7 +39,57 @@ S21Matrix::~S21Matrix() {
   cols_ = 0;
 }
 
+/* Methods */
+bool S21Matrix::EqMatrix(const S21Matrix& other) {
+  bool result = true;
+  if (rows_ == other.rows_ && cols_ == other.cols_) {
+    for (int i = 0; i < rows_ * cols_; i++) {
+      if (matrix_[i] != other.matrix_[i]) result = false; 
+    }
+  } else {
+    result = false;
+  }
+
+  return result;
+}
+
+/* void SumMatrix(const S21Matrix& other) {} */
+
+/* void SubMatrix(const S21Matrix& other) {} */
+
+/* void MulNumber(const S21Matrix& other) {} */
+
+/* void MulMatrix(const S21Matrix& other) {} */
+
+/* S21Matrix Transpose() {} */
+
+/* S21Matrix CalcComplements() {} */
+
+/* double Determinant() {} */
+
+/* S21Matrix InverseMatrix() {} */
+
 /* Operators */
+/* S21Matrix S21Matrix::operator+(S21Matrix& other) {} */
+
+/* S21Matrix S21Matrix::operator-(S21Matrix& other) {} */
+
+/* S21Matrix S21Matrix::operator*(S21Matrix& other) {} */
+
+bool S21Matrix::operator==(const S21Matrix& other) { return EqMatrix(other); }
+
+/* S21Matrix S21Matrix::operator=(S21Matrix& other) {} */
+
+/* S21Matrix S21Matrix::operator+=(S21Matrix& other) {} */
+
+/* S21Matrix S21Matrix::operator-=(S21Matrix& other) {} */
+
+/* S21Matrix S21Matrix::operator*=(S21Matrix& other) {} */
+
+/* friend S21Matrix S21Matrix::operator*(S21Matrix& other, double& number) {} */
+
+/* friend S21Matrix S21Matrix::operator*(double& number, S21Matrix& other) {} */
+
 double& S21Matrix::operator()(int i, int j) {
   if (matrix_) {  // Perhaps unnecessary check due to exception in constructor
     if (i > rows_ || j > cols_ || i < 0 || j < 0) {
