@@ -94,7 +94,27 @@ S21Matrix S21Matrix::Transpose() {
 
 /* S21Matrix S21Matrix::CalcComplements() {} */
 
-/* double S21Matrix::Determinant() {} */
+double S21Matrix::Determinant() {
+  double result = 1.0;
+  for (int dimension = 1; dimension < cols_; dimension++) {
+    for (int rows = dimension; rows < rows_; rows++) {
+      double temp_el = matrix_[(dimension - 1) + rows * cols_] / matrix_[(dimension - 1) + (dimension - 1) * cols_];
+      for (int cols = (dimension - 1); cols < cols_; cols++) {
+        matrix_[cols + rows * cols_] -= matrix_[cols + (dimension - 1) * cols_] * temp_el;
+      }
+    }
+  }
+  /* for (int rows = 2; rows < cols_; rows++) { */
+  /*   double temp_el = matrix_[1 + rows * cols_] / matrix_[1 + 1 * cols_]; */
+  /*   for (int cols = 1; cols < cols_; cols++) { */
+  /*     matrix_[cols + rows * cols_] -= matrix_[cols + 1 * cols_] * temp_el; */
+  /*   } */
+  /* } */
+  for (int i = 0; i < cols_; i++) {
+    result *= matrix_[i + i * cols_];
+  }
+  return result;
+}
 
 /* S21Matrix S21Matrix::InverseMatrix() {} */
 
