@@ -45,11 +45,19 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
 
 void S21Matrix::SumMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other)) {
-
+    for (int i = 0; i < rows_ * cols_; i++) {
+      matrix_[i] += other.matrix_[i]; 
+    }
   }
 }
 
-/* void S21Matrix::SubMatrix(const S21Matrix& other) {} */
+void S21Matrix::SubMatrix(const S21Matrix& other) {
+  if (check_matrix_dimension(other)) {
+    for (int i = 0; i < rows_ * cols_; i++) {
+      matrix_[i] -= other.matrix_[i]; 
+    }
+  }
+}
 
 /* void S21Matrix::MulNumber(const double num) {} */
 
