@@ -72,7 +72,10 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
     S21Matrix temp(rows_, other.cols_);
     for (int rows = 0; rows < temp.rows_; rows++) {
       for (int cols = 0; cols < temp.cols_; cols++) {
-        temp.matrix_[cols + rows * temp.cols_] = 1;
+        for (int i = 0; i < cols_; i++) {
+          temp.matrix_[cols + rows * temp.cols_] +=
+              matrix_[cols + i * cols_] * other.matrix_[cols + i * other.cols_];
+        }
       }
     }
     *this = temp;
