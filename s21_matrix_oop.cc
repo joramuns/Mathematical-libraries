@@ -4,10 +4,9 @@
 
 /* Constructors and destructors */
 S21Matrix::S21Matrix() {
-  rows_ = 3;
-  cols_ = 3;
+  rows_ = 0;
+  cols_ = 0;
   matrix_ = nullptr;
-  S21Matrix::create_matrix();
 }
 
 S21Matrix::S21Matrix(int dimension) : rows_(dimension), cols_(dimension) {
@@ -34,7 +33,7 @@ S21Matrix::S21Matrix(S21Matrix&& other) {
 }
 
 S21Matrix::~S21Matrix() {
-  delete matrix_;
+  delete[] matrix_;
   rows_ = 0;
   cols_ = 0;
 }
@@ -44,7 +43,7 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
   bool result = true;
   if (rows_ == other.rows_ && cols_ == other.cols_) {
     for (int i = 0; i < rows_ * cols_; i++) {
-      if (matrix_[i] != other.matrix_[i]) result = false; 
+      if (matrix_[i] != other.matrix_[i]) result = false;
     }
   } else {
     result = false;
