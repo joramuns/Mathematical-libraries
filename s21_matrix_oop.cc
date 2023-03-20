@@ -97,10 +97,17 @@ S21Matrix S21Matrix::Transpose() {
 double S21Matrix::Determinant() {
   double result = 1.0;
   for (int dimension = 1; dimension < cols_; dimension++) {
+    int target_row = dimension - 1;
+    while (matrix_[target_row + target_row * cols_] == 0 || target_row == dimension) {
+      target_row++;
+      if (target_row == cols_) 
+        throw std::invalid_argument("Kek");
+ 
+    }
     for (int rows = dimension; rows < rows_; rows++) {
-      double temp_el = matrix_[(dimension - 1) + rows * cols_] / matrix_[(dimension - 1) + (dimension - 1) * cols_];
-      for (int cols = (dimension - 1); cols < cols_; cols++) {
-        matrix_[cols + rows * cols_] -= matrix_[cols + (dimension - 1) * cols_] * temp_el;
+      double temp_el = matrix_[target_row + rows * cols_] / matrix_[target_row + target_row * cols_];
+      for (int cols = target_row; cols < cols_; cols++) {
+        matrix_[cols + rows * cols_] -= matrix_[cols + target_row * cols_] * temp_el;
       }
     }
   }
@@ -148,10 +155,10 @@ void S21Matrix::operator=(const S21Matrix& other) {
 
 double& S21Matrix::operator()(int i, int j) {
   if (matrix_) {  // Perhaps unnecessary check due to exception in constructor
-    if (i > rows_ || j > cols_ || i < 0 || j < 0) {
+    if (i >= rows_ || j >= cols_ || i < 0 || j < 0) {
       throw std::out_of_range("Wrong matrix index");
     }
-    return matrix_[(j - 1) + (i - 1) * cols_];
+    return matrix_[j + i * cols_];
   } else {
     throw std::invalid_argument("Uninitialized matrix");
   }
@@ -204,5 +211,14 @@ void S21Matrix::delete_matrix() {
     delete[] matrix_;
     rows_ = 0;
     cols_ = 0;
+  }
+}
+
+void S21Matrix::swap_rows(int source, int dest) {
+  double temp[cols_];
+  for (int i = 0; i < cols_; i++) {
+    temp[i] = matrix_[i + dest * cols_];
+    matrix_[i + dest * cols_] = matrix_[i + source * cols_];
+    matrix_[i + source * cols_] = temp[i];
   }
 }
