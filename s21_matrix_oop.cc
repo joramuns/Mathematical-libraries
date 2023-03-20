@@ -96,12 +96,21 @@ S21Matrix S21Matrix::Transpose() {
 
 double S21Matrix::Determinant() {
   double result = 1.0;
+  if (null_det()) return 0;
   S21Matrix temp_matrix = *this;
+  if (matrix_[0] == 0) {
+    int check_row = 1;
+    while (matrix_[check_row * cols_] == 0) {
+      check_row++;
+    }
+    swap_rows(0, check_row);
+    /* result = -result; */
+  }
   for (int dimension = 1; dimension < cols_; dimension++) {
     int target_row = dimension - 1;
     while (matrix_[target_row + target_row * cols_] == 0 && target_row < cols_) {
       swap_rows(dimension, target_row);
-      result = -result;
+      /* result = -result; */
       /* target_row++; */
       /* if (target_row == dimension && target_row < cols_) target_row++; */
     }
@@ -218,7 +227,7 @@ void S21Matrix::swap_rows(int source, int dest) {
   for (int i = 0; i < cols_; i++) {
     temp[i] = matrix_[i + dest * cols_];
     matrix_[i + dest * cols_] = matrix_[i + source * cols_];
-    matrix_[i + source * cols_] = temp[i];
+    matrix_[i + source * cols_] = -temp[i];
   }
 }
 
