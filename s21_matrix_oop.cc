@@ -102,8 +102,8 @@ double S21Matrix::Determinant() {
     while (matrix_[target_row + target_row * cols_] == 0 && target_row < cols_) {
       swap_rows(dimension, target_row);
       result = -result;
-      target_row++;
-      if (target_row == dimension && target_row < cols_) target_row++;
+      /* target_row++; */
+      /* if (target_row == dimension && target_row < cols_) target_row++; */
     }
     for (int rows = dimension; rows < rows_; rows++) {
       double temp_el = matrix_[target_row + rows * cols_] / matrix_[target_row + target_row * cols_];
@@ -220,4 +220,21 @@ void S21Matrix::swap_rows(int source, int dest) {
     matrix_[i + dest * cols_] = matrix_[i + source * cols_];
     matrix_[i + source * cols_] = temp[i];
   }
+}
+
+bool S21Matrix::null_det() {
+  bool result = true;
+  for (int i = 0; i < cols_; i++) {
+    if (matrix_[i] == 0) {
+      result = true;
+      for (int j = 1; j < rows_ && result; j++) {
+        result = matrix_[i + j * cols_] ? false : true; 
+      }
+    } else {
+      result = false;
+    }
+    if (result) i = cols_;
+  }
+
+  return result;
 }

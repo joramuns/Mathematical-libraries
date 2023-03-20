@@ -3,8 +3,8 @@
 
 class S21Matrix {
  public:
-  void swap_rows(int source, int dest);
   /* Constructors and destructors */
+  bool null_det();
   S21Matrix();                        // basic constructor
   explicit S21Matrix(int dimension);  // constructor for square matrices
   S21Matrix(int rows, int cols);      // parametrized constructor
@@ -46,7 +46,8 @@ class S21Matrix {
   void copy_matrix(const S21Matrix& other);
   bool check_matrix_dimension(const S21Matrix& other);
   void delete_matrix();
-  /* void swap_rows(int source, int dest); */
+  void swap_rows(int source, int dest);
+  /* bool null_det(); */
 };
 
 /* S21Matrix operator*(S21Matrix& other, double& number); */
