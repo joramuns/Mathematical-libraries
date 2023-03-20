@@ -1,9 +1,16 @@
 all: style statanalyze vg
 
 build:
-	g++ -g main.cc s21_matrix_oop.cc
+	g++ -g -c s21_matrix_oop.cc
 
-test: build
+test: clean build
+	g++ -g -c main.cc
+	g++ -o a.out *.o
+	./a.out
+
+gtest: clean build
+	g++ -g -c tests_matrix_oop.cc
+	g++ -o a.out *.o -lgtest
 	./a.out
 
 vg: build
@@ -15,3 +22,6 @@ style:
 
 statanalyze:
 	cppcheck --enable=all --suppress=missingIncludeSystem .
+
+clean:
+	rm *.o
