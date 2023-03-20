@@ -10,22 +10,22 @@ int main() {
   /*     c(i, j) = content++; */
   /*   } */
   /* } */
-  c(1, 1) = 5;
-  c(2, 1) = 6;
-  c(3, 1) = 5;
-  c(4, 1) = 4;
-  c(1, 2) = 6;
-  c(2, 2) = 9;
-  c(3, 2) = 0;
-  c(4, 2) = 7;
-  c(1, 3) = 0;
-  c(2, 3) = 3;
-  c(3, 3) = 6;
-  c(4, 3) = 5;
-  c(1, 4) = 6;
-  c(2, 4) = 6;
-  c(3, 4) = 5;
-  c(4, 4) = 4;
+  c(0, 0) = 5;
+  c(1, 0) = 6;
+  c(2, 0) = 5;
+  c(3, 0) = 4;
+  c(0, 2) = 6;
+  c(1, 1) = 9;
+  c(2, 1) = 0;
+  c(3, 1) = 7;
+  c(0, 2) = 0;
+  c(1, 2) = 3;
+  c(2, 2) = 6;
+  c(3, 2) = 5;
+  c(0, 3) = 6;
+  c(1, 3) = 6;
+  c(2, 3) = 5;
+  c(3, 3) = 4;
   /* S21Matrix a(3, 5); */
   /* a(3, 5) = 3; */
   /* a(1, 3) = 8; */
@@ -40,6 +40,9 @@ int main() {
   /* b.PrintMatrix(); */
   std::cout << std::endl << "Matrix C:" << std::endl;
   c.PrintMatrix();
+  c.swap_rows(0, 2);
+  std::cout << std::endl << "Matrix C swapped:" << std::endl;
+  c.PrintMatrix();
   /* c.MulMatrix(b); */
   /* std::cout << std::endl << "Matrix C*B:" << std::endl; */
   /* c.PrintMatrix(); */
@@ -49,10 +52,10 @@ int main() {
   /* S21Matrix e = d.Transpose(); */
   /* std::cout << std::endl << "Matrix E, D transposed:" << std::endl; */
   /* e.PrintMatrix(); */
-  double edet = c.Determinant();
-  std::cout << std::endl << " Determinant matrix C test: " << edet << std::endl;
-  c.PrintMatrix();
-  std::cout << std::endl;
+  /* double edet = c.Determinant(); */
+  /* std::cout << std::endl << " Determinant matrix C test: " << edet << std::endl; */
+  /* c.PrintMatrix(); */
+  /* std::cout << std::endl; */
   /* std::cout << std::endl << "Method check: " << a.EqMatrix(b) << std::endl; */
   /* std::cout << std::endl << "Operator check: " << (a == b) << std::endl; */
   return 0;
