@@ -96,13 +96,14 @@ S21Matrix S21Matrix::Transpose() {
 
 double S21Matrix::Determinant() {
   double result = 1.0;
+  S21Matrix temp_matrix = *this;
   for (int dimension = 1; dimension < cols_; dimension++) {
     int target_row = dimension - 1;
-    while (matrix_[target_row + target_row * cols_] == 0 || target_row == dimension) {
+    while (matrix_[target_row + target_row * cols_] == 0 && target_row < cols_) {
+      swap_rows(dimension, target_row);
+      result = -result;
       target_row++;
-      if (target_row == cols_) 
-        throw std::invalid_argument("Kek");
- 
+      if (target_row == dimension && target_row < cols_) target_row++;
     }
     for (int rows = dimension; rows < rows_; rows++) {
       double temp_el = matrix_[target_row + rows * cols_] / matrix_[target_row + target_row * cols_];
@@ -111,15 +112,10 @@ double S21Matrix::Determinant() {
       }
     }
   }
-  /* for (int rows = 2; rows < cols_; rows++) { */
-  /*   double temp_el = matrix_[1 + rows * cols_] / matrix_[1 + 1 * cols_]; */
-  /*   for (int cols = 1; cols < cols_; cols++) { */
-  /*     matrix_[cols + rows * cols_] -= matrix_[cols + 1 * cols_] * temp_el; */
-  /*   } */
-  /* } */
   for (int i = 0; i < cols_; i++) {
     result *= matrix_[i + i * cols_];
   }
+  *this = temp_matrix;
   return result;
 }
 
@@ -215,6 +211,9 @@ void S21Matrix::delete_matrix() {
 }
 
 void S21Matrix::swap_rows(int source, int dest) {
+  if (source >= rows_ || source < 0 || dest >= rows_ || dest < 0) {
+    throw std::out_of_range("Wrong matrix index");
+  }
   double temp[cols_];
   for (int i = 0; i < cols_; i++) {
     temp[i] = matrix_[i + dest * cols_];
