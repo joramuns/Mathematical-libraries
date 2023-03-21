@@ -24,4 +24,4 @@ statanalyze:
 	cppcheck --enable=all --suppress=missingIncludeSystem .
 
 clean:
-	rm *.o
+	-rm *.o
