@@ -104,21 +104,15 @@ double S21Matrix::Determinant() {
   int k = 0; /* Initialization of the pivot column */
   while (h < rows_ && k < cols_) {
     /* Find the k-th pivot: */ 
-    /* i_max := argmax (i = h ... rows_, abs(A[i, k])) */
     int i_max = 0;
     double elem_max = 0;
     for (int i = h; i < rows_; i++) {
-      if (std::fabs(matrix_[k + i * cols_]) > elem_max) {
+      if (std::fabs(matrix_[k + i * cols_]) > std::fabs(elem_max)) {
         elem_max = matrix_[k + i * cols_];
         i_max = i;
       }
     }
-    PrintMatrix();
-    std::cout << std::endl << "Max elem: " << matrix_[i_max + k * cols_] << std::endl;
-    std::cout << "H: " << h << std::endl;
-    std::cout << "i_max: " << i_max << std::endl;
-    std::cout << "Pivot: " << matrix_[h + k * cols_] << std::endl;
-    if (matrix_[k + i_max * cols_] == 0) {
+    if (std::fabs(matrix_[k + i_max * cols_]) == 0) {
       /* No pivot in this column, pass to next column */
       k++;
     } else {
@@ -131,9 +125,6 @@ double S21Matrix::Determinant() {
                /* Do for all remaining elements in current row: */
         for (int j = k + 1; j < cols_; j++) {
           matrix_[j + i * cols_] = matrix_[j + i * cols_] - matrix_[j + h * cols_] * temp_el;
-          std::cout << "HELP" << std::endl;
-          PrintMatrix(); 
-          std::cout << "TEMP EL: " << temp_el << std::endl;
            /* Increase pivot row and column */
         }
       }
@@ -141,7 +132,6 @@ double S21Matrix::Determinant() {
       k++;
     }
   }
-  PrintMatrix();
   /* if (null_det()) return 0; */
   /* S21Matrix temp_matrix = *this; */
   /* if (matrix_[0] == 0) { */
@@ -167,6 +157,7 @@ double S21Matrix::Determinant() {
   /* std::cout << std::endl << "Iter: " << dimension << std::endl; */
   /* PrintMatrix(); */
   /* } */
+  /* PrintMatrix(); */
   for (int i = 0; i < cols_; i++) {
     result *= matrix_[i + i * cols_];
   }
@@ -225,9 +216,7 @@ void S21Matrix::PrintMatrix() {
         std::cout << " ";
       }
     }
-    if (rows < rows_ - 1) {
-      std::cout << std::endl;
-    }
+    std::cout << std::endl;
   }
 }
 
