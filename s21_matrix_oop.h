@@ -48,6 +48,7 @@ class S21Matrix {
   void delete_matrix();
   void swap_rows(int source, int dest);
   /* bool null_det(); */
+  bool null_row(int row);
 };
 
 /* S21Matrix operator*(S21Matrix& other, double& number); */

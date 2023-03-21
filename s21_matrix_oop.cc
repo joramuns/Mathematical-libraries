@@ -1,7 +1,9 @@
 #include "s21_matrix_oop.h"
 
 #include <iostream>
+#include <cmath>
 
+#define TOL 1e-06
 /* Constructors and destructors */
 S21Matrix::S21Matrix() {
   rows_ = 0;
@@ -96,31 +98,75 @@ S21Matrix S21Matrix::Transpose() {
 
 double S21Matrix::Determinant() {
   double result = 1.0;
-  if (null_det()) return 0;
+
   S21Matrix temp_matrix = *this;
-  if (matrix_[0] == 0) {
-    int check_row = 1;
-    while (matrix_[check_row * cols_] == 0) {
-      check_row++;
-    }
-    swap_rows(0, check_row);
-    /* result = -result; */
-  }
-  for (int dimension = 1; dimension < cols_; dimension++) {
-    int target_row = dimension - 1;
-    while (matrix_[target_row + target_row * cols_] == 0 && target_row < cols_) {
-      swap_rows(dimension, target_row);
-      /* result = -result; */
-      /* target_row++; */
-      /* if (target_row == dimension && target_row < cols_) target_row++; */
-    }
-    for (int rows = dimension; rows < rows_; rows++) {
-      double temp_el = matrix_[target_row + rows * cols_] / matrix_[target_row + target_row * cols_];
-      for (int cols = target_row; cols < cols_; cols++) {
-        matrix_[cols + rows * cols_] -= matrix_[cols + target_row * cols_] * temp_el;
+  int h = 0; /* Initialization of the pivot row */
+  int k = 0; /* Initialization of the pivot column */
+  while (h < rows_ && k < cols_) {
+    /* Find the k-th pivot: */ 
+    /* i_max := argmax (i = h ... rows_, abs(A[i, k])) */
+    int i_max = 0;
+    double elem_max = 0;
+    for (int i = h; i < rows_; i++) {
+      if (std::fabs(matrix_[k + i * cols_]) > elem_max) {
+        elem_max = matrix_[k + i * cols_];
+        i_max = i;
       }
     }
+    PrintMatrix();
+    std::cout << std::endl << "Max elem: " << matrix_[i_max + k * cols_] << std::endl;
+    std::cout << "H: " << h << std::endl;
+    std::cout << "i_max: " << i_max << std::endl;
+    std::cout << "Pivot: " << matrix_[h + k * cols_] << std::endl;
+    if (matrix_[k + i_max * cols_] == 0) {
+      /* No pivot in this column, pass to next column */
+      k++;
+    } else {
+      if (h != i_max) swap_rows(h, i_max);
+           /* Do for all rows below pivot: */
+      for (int i = h + 1; i < rows_; i++) {
+        double temp_el = matrix_[k + i * cols_] / matrix_[k + h * cols_];
+               /* Fill with zeros the lower part of pivot column: */
+        matrix_[k + i * cols_] = 0;
+               /* Do for all remaining elements in current row: */
+        for (int j = k + 1; j < cols_; j++) {
+          matrix_[j + i * cols_] = matrix_[j + i * cols_] - matrix_[j + h * cols_] * temp_el;
+          std::cout << "HELP" << std::endl;
+          PrintMatrix(); 
+          std::cout << "TEMP EL: " << temp_el << std::endl;
+           /* Increase pivot row and column */
+        }
+      }
+      h++;
+      k++;
+    }
   }
+  PrintMatrix();
+  /* if (null_det()) return 0; */
+  /* S21Matrix temp_matrix = *this; */
+  /* if (matrix_[0] == 0) { */
+  /*   int check_row = 1; */
+  /*   while (matrix_[check_row * cols_] == 0) { */
+  /*     check_row++; */
+  /*   } */
+  /*   swap_rows(0, check_row); */
+  /* } */
+  /* for (int dimension = 1; dimension < cols_; dimension++) { */
+  /*   int target_row = dimension - 1; */
+  /*   if (matrix_[target_row + target_row * cols_] == 0 && target_row < cols_) { */
+  /*     swap_rows(dimension, target_row); */
+  /*     if (null_row(dimension)) return 0; */
+  /*   } */
+  /*   for (int rows = dimension; rows < rows_; rows++) { */
+  /*     double temp_el = matrix_[target_row + rows * cols_] / matrix_[target_row + target_row * cols_]; */
+  /*     for (int cols = target_row; cols < cols_; cols++) { */
+  /*       matrix_[cols + rows * cols_] -= matrix_[cols + target_row * cols_] * temp_el; */
+  /*       if (std::fabs(matrix_[cols + rows * cols_]) < TOL) matrix_[cols + rows * cols_] = 0; */
+  /*     } */
+  /*   } */
+  /* std::cout << std::endl << "Iter: " << dimension << std::endl; */
+  /* PrintMatrix(); */
+  /* } */
   for (int i = 0; i < cols_; i++) {
     result *= matrix_[i + i * cols_];
   }
@@ -243,6 +289,15 @@ bool S21Matrix::null_det() {
       result = false;
     }
     if (result) i = cols_;
+  }
+
+  return result;
+}
+
+bool S21Matrix::null_row(int row) {
+  bool result = true;
+  for (int i = 0; i < cols_ && result; i++) {
+    result = matrix_[i + row * cols_] ? false : true;  
   }
 
   return result;
