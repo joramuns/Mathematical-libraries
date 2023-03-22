@@ -112,7 +112,7 @@ double S21Matrix::Determinant() {
         i_max = i;
       }
     }
-    if (std::fabs(matrix_[k + i_max * cols_]) == 0) {
+    if (std::fabs(matrix_[k + i_max * cols_]) < TOL) {
       /* No pivot in this column, pass to next column */
       k++;
     } else {
@@ -124,7 +124,7 @@ double S21Matrix::Determinant() {
         matrix_[k + i * cols_] = 0;
                /* Do for all remaining elements in current row: */
         for (int j = k + 1; j < cols_; j++) {
-          matrix_[j + i * cols_] = matrix_[j + i * cols_] - matrix_[j + h * cols_] * temp_el;
+          matrix_[j + i * cols_] -= matrix_[j + h * cols_] * temp_el;
            /* Increase pivot row and column */
         }
       }
@@ -132,35 +132,10 @@ double S21Matrix::Determinant() {
       k++;
     }
   }
-  /* if (null_det()) return 0; */
-  /* S21Matrix temp_matrix = *this; */
-  /* if (matrix_[0] == 0) { */
-  /*   int check_row = 1; */
-  /*   while (matrix_[check_row * cols_] == 0) { */
-  /*     check_row++; */
-  /*   } */
-  /*   swap_rows(0, check_row); */
-  /* } */
-  /* for (int dimension = 1; dimension < cols_; dimension++) { */
-  /*   int target_row = dimension - 1; */
-  /*   if (matrix_[target_row + target_row * cols_] == 0 && target_row < cols_) { */
-  /*     swap_rows(dimension, target_row); */
-  /*     if (null_row(dimension)) return 0; */
-  /*   } */
-  /*   for (int rows = dimension; rows < rows_; rows++) { */
-  /*     double temp_el = matrix_[target_row + rows * cols_] / matrix_[target_row + target_row * cols_]; */
-  /*     for (int cols = target_row; cols < cols_; cols++) { */
-  /*       matrix_[cols + rows * cols_] -= matrix_[cols + target_row * cols_] * temp_el; */
-  /*       if (std::fabs(matrix_[cols + rows * cols_]) < TOL) matrix_[cols + rows * cols_] = 0; */
-  /*     } */
-  /*   } */
-  /* std::cout << std::endl << "Iter: " << dimension << std::endl; */
-  /* PrintMatrix(); */
-  /* } */
-  /* PrintMatrix(); */
   for (int i = 0; i < cols_; i++) {
     result *= matrix_[i + i * cols_];
   }
+  PrintMatrix();
   *this = temp_matrix;
   return result;
 }
@@ -264,30 +239,4 @@ void S21Matrix::swap_rows(int source, int dest) {
     matrix_[i + dest * cols_] = matrix_[i + source * cols_];
     matrix_[i + source * cols_] = -temp[i];
   }
-}
-
-bool S21Matrix::null_det() {
-  bool result = true;
-  for (int i = 0; i < cols_; i++) {
-    if (matrix_[i] == 0) {
-      result = true;
-      for (int j = 1; j < rows_ && result; j++) {
-        result = matrix_[i + j * cols_] ? false : true; 
-      }
-    } else {
-      result = false;
-    }
-    if (result) i = cols_;
-  }
-
-  return result;
-}
-
-bool S21Matrix::null_row(int row) {
-  bool result = true;
-  for (int i = 0; i < cols_ && result; i++) {
-    result = matrix_[i + row * cols_] ? false : true;  
-  }
-
-  return result;
 }
