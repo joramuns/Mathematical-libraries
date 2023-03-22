@@ -110,7 +110,13 @@ double S21Matrix::Determinant() {
 /* S21Matrix S21Matrix::InverseMatrix() {} */
 
 /* Operators */
-/* S21Matrix S21Matrix::operator+(S21Matrix& other) {} */
+S21Matrix S21Matrix::operator+(S21Matrix& other) {
+  S21Matrix result = *this;
+
+  result.SumMatrix(other);
+
+  return result;
+}
 
 /* S21Matrix S21Matrix::operator-(S21Matrix& other) {} */
 

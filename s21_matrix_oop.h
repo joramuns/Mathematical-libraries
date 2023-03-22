@@ -24,7 +24,7 @@ class S21Matrix {
   /* S21Matrix InverseMatrix(); */
 
   /* Operators */
-  /* S21Matrix operator+(S21Matrix& other); */
+  S21Matrix operator+(S21Matrix& other);
   /* S21Matrix operator-(S21Matrix& other); */
   /* S21Matrix operator*(S21Matrix& other); */
   bool operator==(const S21Matrix& other);
