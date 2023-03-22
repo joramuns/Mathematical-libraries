@@ -47,6 +47,7 @@ class S21Matrix {
   bool check_matrix_dimension(const S21Matrix& other);
   void delete_matrix();
   void swap_rows(int source, int dest);
+  S21Matrix triangular();
 };
 
 /* S21Matrix operator*(S21Matrix& other, double& number); */

@@ -99,44 +99,11 @@ S21Matrix S21Matrix::Transpose() {
 double S21Matrix::Determinant() {
   double result = 1.0;
 
-  S21Matrix temp_matrix = *this;
-  int h = 0; /* Initialization of the pivot row */
-  int k = 0; /* Initialization of the pivot column */
-  while (h < rows_ && k < cols_) {
-    /* Find the k-th pivot: */ 
-    int i_max = 0;
-    double elem_max = 0;
-    for (int i = h; i < rows_; i++) {
-      if (std::fabs(matrix_[k + i * cols_]) > std::fabs(elem_max)) {
-        elem_max = matrix_[k + i * cols_];
-        i_max = i;
-      }
-    }
-    if (std::fabs(matrix_[k + i_max * cols_]) < TOL) {
-      /* No pivot in this column, pass to next column */
-      k++;
-    } else {
-      if (h != i_max) swap_rows(h, i_max);
-           /* Do for all rows below pivot: */
-      for (int i = h + 1; i < rows_; i++) {
-        double temp_el = matrix_[k + i * cols_] / matrix_[k + h * cols_];
-               /* Fill with zeros the lower part of pivot column: */
-        matrix_[k + i * cols_] = 0;
-               /* Do for all remaining elements in current row: */
-        for (int j = k + 1; j < cols_; j++) {
-          matrix_[j + i * cols_] -= matrix_[j + h * cols_] * temp_el;
-           /* Increase pivot row and column */
-        }
-      }
-      h++;
-      k++;
-    }
-  }
+  S21Matrix triangular_matrix = *this;
+  triangular_matrix.triangular();
   for (int i = 0; i < cols_; i++) {
-    result *= matrix_[i + i * cols_];
+    result *= triangular_matrix.matrix_[i + i * cols_];
   }
-  PrintMatrix();
-  *this = temp_matrix;
   return result;
 }
 
@@ -239,4 +206,41 @@ void S21Matrix::swap_rows(int source, int dest) {
     matrix_[i + dest * cols_] = matrix_[i + source * cols_];
     matrix_[i + source * cols_] = -temp[i];
   }
+}
+
+S21Matrix S21Matrix::triangular() {
+  S21Matrix result(rows_);
+  int h = 0; /* Initialization of the pivot row */
+  int k = 0; /* Initialization of the pivot column */
+  while (h < rows_ && k < cols_) {
+    /* Find the k-th pivot: */ 
+    int i_max = 0;
+    double elem_max = 0;
+    for (int i = h; i < rows_; i++) {
+      if (std::fabs(matrix_[k + i * cols_]) > std::fabs(elem_max)) {
+        elem_max = matrix_[k + i * cols_];
+        i_max = i;
+      }
+    }
+    if (std::fabs(matrix_[k + i_max * cols_]) < TOL) {
+      /* No pivot in this column, pass to next column */
+      k++;
+    } else {
+      if (h != i_max) swap_rows(h, i_max);
+           /* Do for all rows below pivot: */
+      for (int i = h + 1; i < rows_; i++) {
+        double temp_el = matrix_[k + i * cols_] / matrix_[k + h * cols_];
+               /* Fill with zeros the lower part of pivot column: */
+        matrix_[k + i * cols_] = 0;
+               /* Do for all remaining elements in current row: */
+        for (int j = k + 1; j < cols_; j++) {
+          matrix_[j + i * cols_] -= matrix_[j + h * cols_] * temp_el;
+           /* Increase pivot row and column */
+        }
+      }
+      h++;
+      k++;
+    }
+  }
+  return result;
 }
