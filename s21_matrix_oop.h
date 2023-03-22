@@ -36,6 +36,12 @@ class S21Matrix {
   /* friend S21Matrix operator*(double& number, S21Matrix& other); */
   double& operator()(int i, int j);
 
+  /* Accessors and mutators */
+  int getRows();
+  int getCols();
+  void setRows(int n);
+  void setCols(int n);
+
   /* Extra methods */
   void PrintMatrix();
 

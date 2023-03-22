@@ -148,6 +148,34 @@ double& S21Matrix::operator()(int i, int j) {
   }
 }
 
+/* Accessors and mutators */
+int S21Matrix::getRows() { return rows_; }
+
+int S21Matrix::getCols() { return cols_; }
+
+void S21Matrix::setRows(int n) {
+  S21Matrix new_matrix(n, cols_);
+  for (int i = 0; i < cols_; i++) {
+     for (int j = 0; j < n; j++) {
+       new_matrix.matrix_[i + j * cols_] = matrix_[i + j * cols_];
+     }
+  }
+  
+  *this = new_matrix;
+}
+
+void S21Matrix::setCols(int n) {
+  S21Matrix new_matrix(rows_, n);
+  for (int i = 0; i < n; i++) {
+     for (int j = 0; j < rows_; j++) {
+       new_matrix.matrix_[i + j * n] = matrix_[i + j * cols_];
+     }
+  }
+  
+  *this = new_matrix;
+}
+
+
 /* Extra methods */
 
 void S21Matrix::PrintMatrix() {
