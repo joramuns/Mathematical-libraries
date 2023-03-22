@@ -9,9 +9,9 @@ test: clean build
 	./a.out
 
 gtest: clean build
-	g++ -g -c tests_matrix_oop.cc
+	g++ -g -c ../tests/tests_matrix_oop.cc
 	g++ -o a.out *.o -lgtest
-	./a.out --gtest_brief=1
+	./a.out #--gtest_brief=1
 
 vg: build
 	valgrind --trace-children=yes --track-fds=all  --leak-check=full --show-leak-kinds=all --track-origins=yes ./a.out
