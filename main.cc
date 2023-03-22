@@ -86,10 +86,13 @@ int main() {
   /* std::cout << std::endl << "Matrix B:" << std::endl; */
   /* b.PrintMatrix(); */
   /* std::cout << std::endl << "Matrix C:" << std::endl; */
+  S21Matrix b(c.getCols());
   c.PrintMatrix();
-  c.setRows(2);
-  c.setCols(2);
+  b=c+c;
+  std::cout << "C:" << std::endl;
   c.PrintMatrix();
+  std::cout << "B:" << std::endl;
+  b.PrintMatrix();
   /* c.MulMatrix(b); */
   /* std::cout << std::endl << "Matrix C*B:" << std::endl; */
   /* c.PrintMatrix(); */
