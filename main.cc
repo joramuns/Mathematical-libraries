@@ -85,7 +85,10 @@ int main() {
   /* a.PrintMatrix(); */
   /* std::cout << std::endl << "Matrix B:" << std::endl; */
   /* b.PrintMatrix(); */
-  std::cout << std::endl << "Matrix C:" << std::endl;
+  /* std::cout << std::endl << "Matrix C:" << std::endl; */
+  c.PrintMatrix();
+  c.setRows(2);
+  c.setCols(2);
   c.PrintMatrix();
   /* c.MulMatrix(b); */
   /* std::cout << std::endl << "Matrix C*B:" << std::endl; */
@@ -96,9 +99,8 @@ int main() {
   /* S21Matrix e = d.Transpose(); */
   /* std::cout << std::endl << "Matrix E, D transposed:" << std::endl; */
   /* e.PrintMatrix(); */
-  double edet = c.Determinant();
-  std::cout << std::endl << " Determinant matrix C test: " << edet << std::endl;
-  std::cout << sizeof(float);
+  /* double edet = c.Determinant(); */
+  /* std::cout << std::endl << " Determinant matrix C test: " << edet << std::endl; */
   /* c.PrintMatrix(); */
   /* std::cout << std::endl; */
   /* std::cout << std::endl << "Method check: " << a.EqMatrix(b) << std::endl; */
