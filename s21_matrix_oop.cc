@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include <cstring>
 
 #define TOL std::numeric_limits<double>::epsilon()
 /* Constructors and destructors */
@@ -47,19 +48,11 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
 }
 
 void S21Matrix::SumMatrix(const S21Matrix& other) {
-  if (check_matrix_dimension(other)) {
-    for (int i = 0; i < rows_ * cols_; i++) {
-      matrix_[i] += other.matrix_[i];
-    }
-  }
+  if (check_matrix_dimension(other)) simple_math(other, SUM);
 }
 
 void S21Matrix::SubMatrix(const S21Matrix& other) {
-  if (check_matrix_dimension(other)) {
-    for (int i = 0; i < rows_ * cols_; i++) {
-      matrix_[i] -= other.matrix_[i];
-    }
-  }
+  if (check_matrix_dimension(other)) simple_math(other, SUB);
 }
 
 void S21Matrix::MulNumber(const double num) {
@@ -111,7 +104,7 @@ double S21Matrix::Determinant() {
 /* S21Matrix S21Matrix::InverseMatrix() {} */
 
 /* Operators */
-S21Matrix S21Matrix::operator+(S21Matrix& other) {
+S21Matrix S21Matrix::operator+(const S21Matrix& other) {
   S21Matrix result = *this;
 
   result.SumMatrix(other);
@@ -162,22 +155,14 @@ int S21Matrix::getCols() { return cols_; }
 
 void S21Matrix::setRows(int n) {
   S21Matrix new_matrix(n, cols_);
-  for (int i = 0; i < cols_; i++) {
-     for (int j = 0; j < n; j++) {
-       new_matrix.matrix_[i + j * cols_] = matrix_[i + j * cols_];
-     }
-  }
+  new_matrix.fill_content(*this);
   
   *this = new_matrix;
 }
 
 void S21Matrix::setCols(int n) {
   S21Matrix new_matrix(rows_, n);
-  for (int i = 0; i < n; i++) {
-     for (int j = 0; j < rows_; j++) {
-       new_matrix.matrix_[i + j * n] = matrix_[i + j * cols_];
-     }
-  }
+  new_matrix.fill_content(*this);
   
   *this = new_matrix;
 }
@@ -209,11 +194,20 @@ void S21Matrix::create_matrix() {
   }
 }
 
+void S21Matrix::fill_content(const S21Matrix& other) {
+  for (int i = 0; i < cols_ && i < other.cols_; i++) {
+     for (int j = 0; j < rows_ && j < other.rows_; j++) {
+       matrix_[i + j * cols_] = other.matrix_[i + j * other.cols_];
+     }
+  }
+}
+
 void S21Matrix::copy_matrix(const S21Matrix& other) {
   create_matrix();
-  for (int i = 0; i < rows_ * cols_; i++) {
-    matrix_[i] = other.matrix_[i];
-  }
+  std::memcpy(matrix_, other.matrix_, sizeof (double) * rows_ * cols_);
+  /* for (int i = 0; i < rows_ * cols_; i++) { */
+  /*   matrix_[i] = other.matrix_[i]; */
+  /* } */
 }
 
 bool S21Matrix::check_matrix_dimension(const S21Matrix& other) {
@@ -221,6 +215,13 @@ bool S21Matrix::check_matrix_dimension(const S21Matrix& other) {
           other.matrix_)
              ? true
              : false;
+}
+
+void S21Matrix::simple_math(const S21Matrix& other, int option) {
+  for (int i = 0; i < rows_ * cols_; i++) {
+    if (option == SUM) matrix_[i] += other.matrix_[i];
+    else if (option == SUB) matrix_[i] -= other.matrix_[i];
+  }
 }
 
 void S21Matrix::delete_matrix() {

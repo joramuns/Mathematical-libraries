@@ -23,16 +23,16 @@ class S21Matrix {
   /* S21Matrix InverseMatrix(); */
 
   /* Operators */
-  S21Matrix operator+(S21Matrix& other);
-  /* S21Matrix operator-(S21Matrix& other); */
-  /* S21Matrix operator*(S21Matrix& other); */
+  S21Matrix operator+(const S21Matrix& other);
+  /* S21Matrix operator-(const S21Matrix& other); */
+  /* S21Matrix operator*(const S21Matrix& other); */
   bool operator==(const S21Matrix& other);
   void operator=(const S21Matrix& other);
-  /* S21Matrix operator+=(S21Matrix& other); */
-  /* S21Matrix operator-=(S21Matrix& other); */
-  /* S21Matrix operator*=(S21Matrix& other); */
-  /* friend S21Matrix operator*(S21Matrix& other, double& number); */
-  /* friend S21Matrix operator*(double& number, S21Matrix& other); */
+  /* S21Matrix operator+=(const S21Matrix& other); */
+  /* S21Matrix operator-=(const S21Matrix& other); */
+  /* S21Matrix operator*=(const S21Matrix& other); */
+  /* friend S21Matrix operator*(const S21Matrix& other, const double& number); */
+  /* friend S21Matrix operator*(const double& number, const S21Matrix& other); */
   double& operator()(int i, int j);
 
   /* Accessors and mutators */
@@ -45,11 +45,17 @@ class S21Matrix {
   void PrintMatrix();
 
  private:
+  enum {
+    SUM,
+    SUB
+  };
   double* matrix_;
   int rows_, cols_;
   void create_matrix();
+  void fill_content(const S21Matrix& other);
   void copy_matrix(const S21Matrix& other);
   bool check_matrix_dimension(const S21Matrix& other);
+  void simple_math(const S21Matrix& other, int option);
   void delete_matrix();
   void swap_rows(int source, int dest);
   S21Matrix triangular();
