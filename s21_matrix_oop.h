@@ -18,7 +18,7 @@ class S21Matrix {
   void MulNumber(const double num);
   void MulMatrix(const S21Matrix& other);
   S21Matrix Transpose();
-  /* S21Matrix CalcComplements(); */
+  S21Matrix CalcComplements();
   double Determinant();
   /* S21Matrix InverseMatrix(); */
 
@@ -57,6 +57,7 @@ class S21Matrix {
   void delete_matrix();
   void swap_rows(int source, int dest);
   S21Matrix triangular();
+  S21Matrix minor(const int x_i, const int x_j);
 };
 
 #endif  // SRC_S21_MATRIX_OOP_H_

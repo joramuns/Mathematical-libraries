@@ -88,7 +88,16 @@ S21Matrix S21Matrix::Transpose() {
   return result;
 }
 
-/* S21Matrix S21Matrix::CalcComplements() {} */
+S21Matrix S21Matrix::CalcComplements() {
+  S21Matrix result(cols_);
+  for (int i = 0; i < rows_; i++) {
+    for (int j = 0; j < cols_; j++) {
+      int sign = (i + j) % 2 ? -1 : 1;
+      result.matrix_[j + i * cols_] = sign * minor(i, j).Determinant();      
+    }
+  }
+  return result;
+}
 
 double S21Matrix::Determinant() {
   double result = 1.0;
@@ -306,6 +315,20 @@ S21Matrix S21Matrix::triangular() {
       }
       h++;
       k++;
+    }
+  }
+  return result;
+}
+
+S21Matrix S21Matrix::minor(const int x_i, const int x_j) {
+  S21Matrix result(rows_ - 1, cols_ - 1);
+  int new_i = 0;
+  for (int i = 0; i < rows_; i++) {
+    for (int j = 0; j < cols_; j++) {
+      if (i != x_i && j != x_j) {
+        result.matrix_[new_i] = matrix_[j + i * cols_];
+        new_i++;
+      }
     }
   }
   return result;
