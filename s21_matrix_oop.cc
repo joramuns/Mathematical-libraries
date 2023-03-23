@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <cmath>
+#include <limits>
 
-#define TOL 1e-06
+#define TOL std::numeric_limits<double>::epsilon()
 /* Constructors and destructors */
 S21Matrix::S21Matrix() {
   rows_ = 0;
@@ -249,7 +250,7 @@ S21Matrix S21Matrix::triangular() {
   while (h < rows_ && k < cols_) {
     /* Find the k-th pivot: */ 
     int i_max = 0;
-    double elem_max = 0;
+    double elem_max = 0.0;
     for (int i = h; i < rows_; i++) {
       if (std::fabs(matrix_[k + i * cols_]) > std::fabs(elem_max)) {
         elem_max = matrix_[k + i * cols_];
@@ -264,11 +265,13 @@ S21Matrix S21Matrix::triangular() {
            /* Do for all rows below pivot: */
       for (int i = h + 1; i < rows_; i++) {
         double temp_el = matrix_[k + i * cols_] / matrix_[k + h * cols_];
+        if (std::fabs(temp_el) < TOL) temp_el = 0.0;
                /* Fill with zeros the lower part of pivot column: */
-        matrix_[k + i * cols_] = 0;
+        matrix_[k + i * cols_] = 0.0;
                /* Do for all remaining elements in current row: */
         for (int j = k + 1; j < cols_; j++) {
           matrix_[j + i * cols_] -= matrix_[j + h * cols_] * temp_el;
+          if (std::fabs(matrix_[j + i * cols_]) < TOL) matrix_[j + i * cols_] = 0.0;
            /* Increase pivot row and column */
         }
       }

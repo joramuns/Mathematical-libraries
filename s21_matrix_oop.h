@@ -4,7 +4,6 @@
 class S21Matrix {
  public:
   /* Constructors and destructors */
-  bool null_det();
   S21Matrix();                        // basic constructor
   explicit S21Matrix(int dimension);  // constructor for square matrices
   S21Matrix(int rows, int cols);      // parametrized constructor
