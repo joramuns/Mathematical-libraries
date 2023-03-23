@@ -93,7 +93,7 @@ S21Matrix S21Matrix::Transpose() {
 double S21Matrix::Determinant() {
   double result = 1.0;
 
-  S21Matrix triangular_matrix = *this;
+  S21Matrix triangular_matrix(*this);
   triangular_matrix.triangular();
   for (int i = 0; i < cols_; i++) {
     result *= triangular_matrix.matrix_[i + i * cols_];
@@ -105,16 +105,28 @@ double S21Matrix::Determinant() {
 
 /* Operators */
 S21Matrix S21Matrix::operator+(const S21Matrix& other) {
-  S21Matrix result = *this;
-
+  S21Matrix result(*this);
   result.SumMatrix(other);
-
   return result;
 }
 
-/* S21Matrix S21Matrix::operator-(S21Matrix& other) {} */
+S21Matrix S21Matrix::operator*(const double num) {
+  S21Matrix result(*this);
+  result.MulNumber(num);
+  return result;
+}
 
-/* S21Matrix S21Matrix::operator*(S21Matrix& other) {} */
+S21Matrix S21Matrix::operator-(const S21Matrix& other) {
+  S21Matrix result(*this);
+  result.SubMatrix(other);
+  return result;
+}
+
+S21Matrix S21Matrix::operator*(const S21Matrix& other) {
+  S21Matrix result(*this);
+  result.MulMatrix(other);
+  return result;
+}
 
 bool S21Matrix::operator==(const S21Matrix& other) { return EqMatrix(other); }
 
@@ -127,11 +139,20 @@ void S21Matrix::operator=(const S21Matrix& other) {
   copy_matrix(other);
 }
 
-/* S21Matrix S21Matrix::operator+=(S21Matrix& other) {} */
+S21Matrix S21Matrix::operator+=(S21Matrix& other) {
+  SumMatrix(other);
+  return *this;
+}
 
-/* S21Matrix S21Matrix::operator-=(S21Matrix& other) {} */
+S21Matrix S21Matrix::operator-=(S21Matrix& other) {
+  SubMatrix(other);
+  return *this;
+}
 
-/* S21Matrix S21Matrix::operator*=(S21Matrix& other) {} */
+S21Matrix S21Matrix::operator*=(S21Matrix& other) {
+  MulMatrix(other);
+  return *this;
+}
 
 /* friend S21Matrix S21Matrix::operator*(S21Matrix& other, double& number) {} */
 
