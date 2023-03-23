@@ -70,7 +70,7 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
       for (int cols = 0; cols < temp.cols_; cols++) {
         for (int i = 0; i < cols_; i++) {
           temp.matrix_[cols + rows * temp.cols_] +=
-              matrix_[cols + i * cols_] * other.matrix_[cols + i * other.cols_];
+              matrix_[i + rows * cols_] * other.matrix_[cols + i * other.cols_];
         }
       }
     }
@@ -110,7 +110,7 @@ S21Matrix S21Matrix::operator+(const S21Matrix& other) {
   return result;
 }
 
-S21Matrix S21Matrix::operator*(const double num) {
+S21Matrix S21Matrix::operator*(const double& num) {
   S21Matrix result(*this);
   result.MulNumber(num);
   return result;
@@ -149,7 +149,7 @@ S21Matrix S21Matrix::operator-=(const S21Matrix& other) {
   return *this;
 }
 
-S21Matrix S21Matrix::operator*=(const double num) {
+S21Matrix S21Matrix::operator*=(const double& num) {
   MulNumber(num);
   return *this;
 }
