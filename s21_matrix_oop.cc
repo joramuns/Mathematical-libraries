@@ -128,6 +128,12 @@ S21Matrix S21Matrix::operator*(const S21Matrix& other) {
   return result;
 }
 
+S21Matrix operator*(const double& number, const S21Matrix& other) {
+  S21Matrix result(other);
+  result.MulNumber(number);
+  return result;
+}
+
 bool S21Matrix::operator==(const S21Matrix& other) { return EqMatrix(other); }
 
 void S21Matrix::operator=(const S21Matrix& other) {
@@ -159,10 +165,6 @@ S21Matrix S21Matrix::operator*=(const S21Matrix& other) {
   return *this;
 }
 
-/* friend S21Matrix S21Matrix::operator*(S21Matrix& other, double& number) {} */
-
-/* friend S21Matrix S21Matrix::operator*(double& number, S21Matrix& other) {} */
-
 double& S21Matrix::operator()(int i, int j) {
   if (matrix_) {  // Perhaps unnecessary check due to exception in constructor
     if (i >= rows_ || j >= cols_ || i < 0 || j < 0) {
@@ -182,17 +184,14 @@ int S21Matrix::getCols() { return cols_; }
 void S21Matrix::setRows(int n) {
   S21Matrix new_matrix(n, cols_);
   new_matrix.fill_content(*this);
-  
   *this = new_matrix;
 }
 
 void S21Matrix::setCols(int n) {
   S21Matrix new_matrix(rows_, n);
   new_matrix.fill_content(*this);
-  
   *this = new_matrix;
 }
-
 
 /* Extra methods */
 
