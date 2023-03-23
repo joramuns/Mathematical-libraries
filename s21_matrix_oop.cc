@@ -110,7 +110,16 @@ double S21Matrix::Determinant() {
   return result;
 }
 
-/* S21Matrix S21Matrix::InverseMatrix() {} */
+S21Matrix S21Matrix::InverseMatrix() {
+  double det = Determinant();
+  if (!det)
+    throw std::invalid_argument("The determinant is 0, the matrix is not invertible");
+  S21Matrix result = CalcComplements().Transpose();
+  for (int i = 0; i < cols_ * rows_; i++) {
+    result.matrix_[i] /= det; 
+  }
+  return result;
+}
 
 /* Operators */
 S21Matrix S21Matrix::operator+(const S21Matrix& other) {

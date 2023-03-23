@@ -20,7 +20,7 @@ class S21Matrix {
   S21Matrix Transpose();
   S21Matrix CalcComplements();
   double Determinant();
-  /* S21Matrix InverseMatrix(); */
+  S21Matrix InverseMatrix();
 
   /* Operators */
   S21Matrix operator+(const S21Matrix& other);
