@@ -5,10 +5,10 @@
 #include "s21_matrix_oop.h"
 
 int main() {
-  S21Matrix c(5);
+  S21Matrix c(3);
   /* const double array[9] = {1, 2, 1, 6, -1, 0, -1, -2 , -1}; */
-  const double array[25] = {9, 3, 9, 7, 2, 9, 2, 6, 7, 1, 4, 1, 0, 8, 7, 2, 4, 9, 0, 1, 8, 4, 1, 2, 0};
-  std::memcpy(c.matrix_, array, sizeof(double) * 25);
+  /* const double array[25] = {9, 3, 9, 7, 2, 9, 2, 6, 7, 1, 4, 1, 0, 8, 7, 2, 4, 9, 0, 1, 8, 4, 1, 2, 0}; */
+  /* std::memcpy(c.matrix_, array, sizeof(double) * 25); */
   /* double content = 9; */
   /* for (int i = 1; i <= 3; i++) { */
   /*   for (int j = 1; j <= 3; j++) { */
@@ -146,36 +146,36 @@ int main() {
   /* c(9, 10) = 1; */
   /* c(10, 10) = 0; */
 
+  c(0, 0) = 9;
+  c(1, 0) = 8;
+  c(2, 0) = 7;
+  c(0, 1) = 7;
+  c(1, 1) = 7;
+  c(2, 1) = 7;
+  c(0, 2) = 9;
+  c(1, 2) = 2;
+  c(2, 2) = 6;
+  c(0, 0) = 2;
+  c(1, 0) = 1;
+  c(2, 0) = 1;
+  c(0, 1) = 2;
+  c(1, 1) = 1;
+  c(2, 1) = 1;
+  c(0, 2) = 7;
+  c(1, 2) = 7;
+  c(2, 2) = 6;
+  c(0, 0) = 1;
+  c(1, 0) = 3;
+  c(2, 0) = 2;
+  c(0, 1) = 2;
+  c(1, 1) = 2;
+  c(2, 1) = 4;
+  c(0, 2) = 3;
+  c(1, 2) = 8;
+  c(2, 2) = 9;
   S21Matrix copy_m = c;
   std::cout << "Copied matrix" << std::endl;
   copy_m.PrintMatrix();
-  /* c(0, 0) = 9; */
-  /* c(1, 0) = 8; */
-  /* c(2, 0) = 7; */
-  /* c(0, 1) = 7; */
-  /* c(1, 1) = 7; */
-  /* c(2, 1) = 7; */
-  /* c(0, 2) = 9; */
-  /* c(1, 2) = 2; */
-  /* c(2, 2) = 6; */
-  /* c(0, 0) = 2; */
-  /* c(1, 0) = 1; */
-  /* c(2, 0) = 1; */
-  /* c(0, 1) = 2; */
-  /* c(1, 1) = 1; */
-  /* c(2, 1) = 1; */
-  /* c(0, 2) = 7; */
-  /* c(1, 2) = 7; */
-  /* c(2, 2) = 6; */
-  /* c(0, 0) = 1; */
-  /* c(1, 0) = 3; */
-  /* c(2, 0) = 2; */
-  /* c(0, 1) = 2; */
-  /* c(1, 1) = 2; */
-  /* c(2, 1) = 4; */
-  /* c(0, 2) = 3; */
-  /* c(1, 2) = 8; */
-  /* c(2, 2) = 9; */
   /* S21Matrix a(3, 5); */
   /* a(3, 5) = 3; */
   /* a(1, 3) = 8; */
@@ -201,8 +201,8 @@ int main() {
   std::cout << "C:" << std::endl;
   c.PrintMatrix();
 
-  S21Matrix mult_m = c.CalcComplements();
-  std::cout << "Mult by num overload:" << std::endl;
+  S21Matrix mult_m = c.InverseMatrix();
+  std::cout << "Inverse matrix:" << std::endl;
   mult_m.PrintMatrix();
   /* std::cout << "B:" << std::endl; */
   /* b.PrintMatrix(); */
