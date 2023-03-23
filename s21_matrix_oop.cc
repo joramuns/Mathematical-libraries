@@ -93,7 +93,7 @@ S21Matrix S21Matrix::CalcComplements() {
   for (int i = 0; i < rows_; i++) {
     for (int j = 0; j < cols_; j++) {
       int sign = (i + j) % 2 ? -1 : 1;
-      result.matrix_[j + i * cols_] = sign * minor(i, j).Determinant();      
+      result.matrix_[j + i * cols_] = sign * minor(i, j).Determinant();
     }
   }
   return result;
@@ -113,10 +113,11 @@ double S21Matrix::Determinant() {
 S21Matrix S21Matrix::InverseMatrix() {
   double det = Determinant();
   if (!det)
-    throw std::invalid_argument("The determinant is 0, the matrix is not invertible");
+    throw std::invalid_argument(
+        "The determinant is 0, the matrix is not invertible");
   S21Matrix result = CalcComplements().Transpose();
   for (int i = 0; i < cols_ * rows_; i++) {
-    result.matrix_[i] /= det; 
+    result.matrix_[i] /= det;
   }
   return result;
 }

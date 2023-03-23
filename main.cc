@@ -1,13 +1,14 @@
+#include <cstring>
 #include <iostream>
 #include <limits>
-#include <cstring>
 
 #include "s21_matrix_oop.h"
 
 int main() {
   S21Matrix c(3);
   /* const double array[9] = {1, 2, 1, 6, -1, 0, -1, -2 , -1}; */
-  /* const double array[25] = {9, 3, 9, 7, 2, 9, 2, 6, 7, 1, 4, 1, 0, 8, 7, 2, 4, 9, 0, 1, 8, 4, 1, 2, 0}; */
+  /* const double array[25] = {9, 3, 9, 7, 2, 9, 2, 6, 7, 1, 4, 1, 0, 8, 7, 2,
+   * 4, 9, 0, 1, 8, 4, 1, 2, 0}; */
   /* std::memcpy(c.matrix_, array, sizeof(double) * 25); */
   /* double content = 9; */
   /* for (int i = 1; i <= 3; i++) { */
