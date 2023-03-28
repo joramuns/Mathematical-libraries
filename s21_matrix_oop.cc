@@ -5,7 +5,8 @@
 #include <iostream>
 #include <limits>
 
-#define TOL std::numeric_limits<double>::epsilon()
+/* #define TOL std::numeric_limits<double>::epsilon() */
+#define TOL 1e-6
 /* Constructors and destructors */
 S21Matrix::S21Matrix() {
   rows_ = 0;
@@ -38,8 +39,8 @@ S21Matrix::~S21Matrix() { delete_matrix(); }
 /* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) {
   bool result = check_matrix_dimension(other);
-  for (int i = 0; i < rows_ * cols_; i++) {
-    if (std::fabs(matrix_[i] - other.matrix_[i]) > TOL) result = false;
+  for (int i = 0; i < rows_ * cols_ && result; i++) {
+    if (std::fabs(matrix_[i] - other.matrix_[i]) >= TOL) result = false;
   }
 
   return result;
@@ -47,10 +48,12 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) {
 
 void S21Matrix::SumMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other)) simple_math(other, SUM);
+    else throw std::invalid_argument("No mathematical operations on matrices with different sizes");
 }
 
 void S21Matrix::SubMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other)) simple_math(other, SUB);
+    else throw std::invalid_argument("No mathematical operations on matrices with different sizes");
 }
 
 void S21Matrix::MulNumber(const double num) {
@@ -73,6 +76,8 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
       }
     }
     *this = temp;
+  } else {
+    throw std::invalid_argument("Incompatible sizes of matrices");
   }
 }
 
