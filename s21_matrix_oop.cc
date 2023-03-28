@@ -38,10 +38,8 @@ S21Matrix::~S21Matrix() { delete_matrix(); }
 /* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) {
   bool result = check_matrix_dimension(other);
-  if (result) {
-    for (int i = 0; i < rows_ * cols_; i++) {
-      if (matrix_[i] != other.matrix_[i]) result = false;
-    }
+  for (int i = 0; i < rows_ * cols_ && result; i++) {
+    if (std::fabs(matrix_[i] - other.matrix_[i]) > 1) result = false;
   }
 
   return result;
@@ -89,6 +87,9 @@ S21Matrix S21Matrix::Transpose() {
 }
 
 S21Matrix S21Matrix::CalcComplements() {
+  if (!check_square_matrix())
+    throw std::invalid_argument(
+        "The matrix size is not compatible with CalcCompelements");
   S21Matrix result(cols_);
   for (int i = 0; i < rows_; i++) {
     for (int j = 0; j < cols_; j++) {
@@ -100,6 +101,9 @@ S21Matrix S21Matrix::CalcComplements() {
 }
 
 double S21Matrix::Determinant() {
+  if (!check_square_matrix())
+    throw std::invalid_argument(
+        "The matrix size is not compatible with Determinant");
   double result = 1.0;
 
   S21Matrix triangular_matrix(*this);
@@ -259,6 +263,10 @@ bool S21Matrix::check_matrix_dimension(const S21Matrix& other) {
           other.matrix_)
              ? true
              : false;
+}
+
+bool S21Matrix::check_square_matrix() {
+  return (rows_ == cols_ && matrix_) ? true : false;
 }
 
 void S21Matrix::simple_math(const S21Matrix& other, int option) {
