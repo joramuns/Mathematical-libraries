@@ -38,8 +38,8 @@ S21Matrix::~S21Matrix() { delete_matrix(); }
 /* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) {
   bool result = check_matrix_dimension(other);
-  for (int i = 0; i < rows_ * cols_ && result; i++) {
-    if (std::fabs(matrix_[i] - other.matrix_[i]) > 1) result = false;
+  for (int i = 0; i < rows_ * cols_; i++) {
+    if (std::fabs(matrix_[i] - other.matrix_[i]) > TOL) result = false;
   }
 
   return result;
