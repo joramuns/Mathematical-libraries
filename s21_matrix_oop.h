@@ -53,6 +53,7 @@ class S21Matrix {
   void fill_content(const S21Matrix& other);
   void copy_matrix(const S21Matrix& other);
   bool check_matrix_dimension(const S21Matrix& other);
+  bool check_square_matrix();
   void simple_math(const S21Matrix& other, int option);
   void delete_matrix();
   void swap_rows(int source, int dest);
