@@ -9,7 +9,7 @@ test: clean build
 	./a.out
 
 gtest: clean build
-	g++ -g -c ../tests/tests_matrix_oop.cc
+	g++ -g -c ../tests/*.cc
 	g++ -o a.out *.o -lgtest
 	./a.out #--gtest_brief=1
 
