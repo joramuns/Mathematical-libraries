@@ -223,17 +223,17 @@ void S21Matrix::setCols(int n) {
 
 /* Extra methods */
 
-void S21Matrix::PrintMatrix() {
-  for (int rows = 0; rows < rows_; rows++) {
-    for (int cols = 0; cols < cols_; cols++) {
-      std::cout << matrix_[cols + rows * cols_];
-      if (cols < cols_ - 1) {
-        std::cout << " ";
-      }
-    }
-    std::cout << std::endl;
-  }
-}
+/* void S21Matrix::PrintMatrix() { */
+/*   for (int rows = 0; rows < rows_; rows++) { */
+/*     for (int cols = 0; cols < cols_; cols++) { */
+/*       std::cout << matrix_[cols + rows * cols_]; */
+/*       if (cols < cols_ - 1) { */
+/*         std::cout << " "; */
+/*       } */
+/*     } */
+/*     std::cout << std::endl; */
+/*   } */
+/* } */
 
 /* Private methods */
 
@@ -295,12 +295,13 @@ void S21Matrix::swap_rows(int source, int dest) {
   if (source >= rows_ || source < 0 || dest >= rows_ || dest < 0) {
     throw std::out_of_range("Wrong matrix index");
   }
-  double temp[cols_];
+  double *temp = new double[cols_]();
   for (int i = 0; i < cols_; i++) {
     temp[i] = matrix_[i + dest * cols_];
     matrix_[i + dest * cols_] = matrix_[i + source * cols_];
     matrix_[i + source * cols_] = -temp[i];
   }
+  delete[] temp;
 }
 
 S21Matrix S21Matrix::triangular() {
