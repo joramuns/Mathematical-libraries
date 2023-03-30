@@ -17,9 +17,9 @@ s21_matrix_oop.a: $(OBJ)
 	$(STATLIB_BUILD) $@ $(OBJ)
 	ranlib $@
 
-mtest: clean build
+mtest: s21_matrix_oop.a
 	$(CC) -g -c main.cc
-	$(CC) -o a.out *.o
+	$(CC) -o a.out main.o $<
 	./a.out
 
 test: s21_matrix_oop.a $(TESTS_OBJ)
@@ -31,7 +31,7 @@ vg: build
 
 gcov_report:FLAGS+=$(GCOV)
 gcov_report: clean test
-	lcov -t "S21 Matrix OOP" -o coverage.info -c -d . --rc lcov_branch_coverage=0
+	lcov -t "S21 Matrix OOP" -o coverage.info -c -d . --rc lcov_branch_coverage=0 --no-external
 	genhtml -o report coverage.info --rc lcov_branc_coverage=0
 	open ./report/index.html
 
