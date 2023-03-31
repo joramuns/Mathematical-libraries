@@ -2,7 +2,7 @@ CC=g++
 GCOV=--coverage
 GCOV_FLAG=
 STATLIB_BUILD=ar rcs
-FLAGS=-g -Wall -Werror -Wextra -std=c++17 -pedantic -I/usr/local/include -L/usr/local/lib/ -lgtest
+FLAGS=-g -O0 -Wall -Werror -Wextra -std=c++17 -pedantic -I/usr/local/include -L/usr/local/lib/ -lgtest
 SOURCE=s21_matrix_oop.cc
 TESTS_SOURCE=$(shell find ../tests -name '*.cc')
 OBJ=$(SOURCE:.cc=.o)
@@ -11,7 +11,7 @@ TESTS_OBJ=$(TESTS_SOURCE:.cc=.o)
 all: style statanalyze vg
 
 %.o: %.cc
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) -c $< -o $@ $(FLAGS)
 
 s21_matrix_oop.a: $(OBJ)
 	$(STATLIB_BUILD) $@ $(OBJ)
@@ -23,11 +23,11 @@ mtest: s21_matrix_oop.a
 	./a.out
 
 test: s21_matrix_oop.a $(TESTS_OBJ)
-	$(CC) $(FLAGS) $< $(TESTS_OBJ) -o $@
+	$(CC) $(TESTS_OBJ) $< -o $@ $(FLAGS)
 	./test
 
-vg: build
-	valgrind --trace-children=yes --track-fds=all  --leak-check=full --show-leak-kinds=all --track-origins=yes ./a.out
+vg: test
+	valgrind --trace-children=yes --track-fds=all  --leak-check=full --show-leak-kinds=all --track-origins=yes ./test
 
 gcov_report:FLAGS+=$(GCOV)
 gcov_report: clean test
