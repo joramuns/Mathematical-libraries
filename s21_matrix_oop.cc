@@ -211,13 +211,13 @@ int S21Matrix::get_cols() const { return cols_; }
 void S21Matrix::set_rows(const int n) {
   S21Matrix new_matrix(n, cols_);
   FillContent(new_matrix);
-  *this = new_matrix;
+  *this = std::move(new_matrix);
 }
 
 void S21Matrix::set_cols(const int n) {
   S21Matrix new_matrix(rows_, n);
   FillContent(new_matrix);
-  *this = new_matrix;
+  *this = std::move(new_matrix);
 }
 
 void S21Matrix::CreateMatrix() {
