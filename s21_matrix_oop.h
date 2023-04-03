@@ -39,7 +39,8 @@ class S21Matrix {
   S21Matrix operator-=(const S21Matrix& other);
   S21Matrix operator*=(const double& num);
   S21Matrix operator*=(const S21Matrix& other);
-  double& operator()(const int& i, const int& j) const;
+  double& operator()(const int i, const int j);
+  double operator()(const int i, const int j) const;
 
   /* Accessors and mutators */
   int getRows() const;

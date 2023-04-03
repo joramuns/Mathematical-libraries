@@ -191,7 +191,14 @@ S21Matrix S21Matrix::operator*=(const S21Matrix& other) {
   return *this;
 }
 
-double& S21Matrix::operator()(const int& i, const int& j) const {
+double& S21Matrix::operator()(const int i, const int j) {
+  if (i >= rows_ || j >= cols_ || i < 0 || j < 0) {
+    throw std::out_of_range("Wrong matrix index");
+  }
+  return matrix_[j + i * cols_];
+}
+
+double S21Matrix::operator()(const int i, const int j) const {
   if (i >= rows_ || j >= cols_ || i < 0 || j < 0) {
     throw std::out_of_range("Wrong matrix index");
   }
