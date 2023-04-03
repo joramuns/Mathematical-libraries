@@ -2,7 +2,8 @@ CC=g++
 GCOV=--coverage
 GCOV_FLAG=
 STATLIB_BUILD=ar rcs
-FLAGS=-g -O0 -Wall -Werror -Wextra -std=c++17 -pedantic -I/usr/local/include -L/usr/local/lib/ -lgtest
+FLAGS=-g -O0 -Wall -Werror -Wextra -std=c++17 -pedantic 
+GTEST_FLAGS=$(shell pkg-config --libs gtest)
 SOURCE=s21_matrix_oop.cc
 TESTS_SOURCE=$(shell find ../tests -name '*.cc')
 OBJ=$(SOURCE:.cc=.o)
@@ -11,7 +12,7 @@ TESTS_OBJ=$(TESTS_SOURCE:.cc=.o)
 all: style statanalyze vg
 
 %.o: %.cc
-	$(CC) -c $< -o $@ $(FLAGS)
+	$(CC) -c $< -o $@ $(FLAGS) $(GTEST_FLAGS)
 
 s21_matrix_oop.a: $(OBJ)
 	$(STATLIB_BUILD) $@ $(OBJ)
@@ -23,7 +24,7 @@ mtest: s21_matrix_oop.a
 	./a.out
 
 test: s21_matrix_oop.a $(TESTS_OBJ)
-	$(CC) $(TESTS_OBJ) $< -o $@ $(FLAGS)
+	$(CC) $(TESTS_OBJ) $< -o $@ $(FLAGS) $(GTEST_FLAGS)
 	./test
 
 vg: test
@@ -44,6 +45,8 @@ statanalyze:
 
 clean:
 	-@rm -rf *.o *.gcno *.gcda *.info report/
+	@echo "[Clean]"
 
 fclean: clean
-	-@rm ../tests/*.gcno ../tests/*.gcda ../tests/*.o *.a test
+	-@rm -f ../tests/*.gcno ../tests/*.gcda ../tests/*.o *.a test
+	@echo "[Full clean]"
