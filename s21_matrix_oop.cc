@@ -205,17 +205,17 @@ double S21Matrix::operator()(const int i, const int j) const {
 }
 
 /* Accessors and mutators */
-int S21Matrix::getRows() const { return rows_; }
+int S21Matrix::get_rows() const { return rows_; }
 
-int S21Matrix::getCols() const { return cols_; }
+int S21Matrix::get_cols() const { return cols_; }
 
-void S21Matrix::setRows(const int n) {
+void S21Matrix::set_rows(const int n) {
   S21Matrix new_matrix(n, cols_);
   new_matrix.fill_content(*this);
   *this = new_matrix;
 }
 
-void S21Matrix::setCols(const int n) {
+void S21Matrix::set_cols(const int n) {
   S21Matrix new_matrix(rows_, n);
   new_matrix.fill_content(*this);
   *this = new_matrix;

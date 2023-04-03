@@ -43,10 +43,10 @@ class S21Matrix {
   double operator()(const int i, const int j) const;
 
   /* Accessors and mutators */
-  int getRows() const;
-  int getCols() const;
-  void setRows(const int n);
-  void setCols(const int n);
+  int get_rows() const;
+  int get_cols() const;
+  void set_rows(const int n);
+  void set_cols(const int n);
 
   /* Extra methods */
   void PrintMatrix();
