@@ -210,13 +210,13 @@ int S21Matrix::get_cols() const { return cols_; }
 
 void S21Matrix::set_rows(const int n) {
   S21Matrix new_matrix(n, cols_);
-  new_matrix.FillContent(*this);
+  FillContent(new_matrix);
   *this = new_matrix;
 }
 
 void S21Matrix::set_cols(const int n) {
   S21Matrix new_matrix(rows_, n);
-  new_matrix.FillContent(*this);
+  FillContent(new_matrix);
   *this = new_matrix;
 }
 
@@ -233,7 +233,7 @@ void S21Matrix::CreateMatrix() {
 void S21Matrix::FillContent(const S21Matrix& other) {
   for (int i = 0; i < cols_ && i < other.cols_; i++) {
     for (int j = 0; j < rows_ && j < other.rows_; j++) {
-      matrix_[i + j * cols_] = other.matrix_[i + j * other.cols_];
+      other.matrix_[i + j * other.cols_] = matrix_[i + j * cols_];
     }
   }
 }
