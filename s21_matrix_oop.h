@@ -9,12 +9,12 @@
 class S21Matrix {
  public:
   /* Constructors and destructors */
-  S21Matrix();                               // basic constructor
-  explicit S21Matrix(const int dimension);  // constructor for square matrices
+  S21Matrix();                                // basic constructor
+  explicit S21Matrix(const int dimension);    // constructor for square matrices
   S21Matrix(const int rows, const int cols);  // parametrized constructor
-  S21Matrix(const S21Matrix& other);            // copy constructor
-  S21Matrix(S21Matrix&& other) noexcept;        // move constructor
-  ~S21Matrix();                                 // destructor
+  S21Matrix(const S21Matrix& other);          // copy constructor
+  S21Matrix(S21Matrix&& other) noexcept;      // move constructor
+  ~S21Matrix();                               // destructor
 
   /* Methods */
   bool EqMatrix(const S21Matrix& other) noexcept;

@@ -4,8 +4,7 @@
 /* Constructors and destructors */
 S21Matrix::S21Matrix() : matrix_(nullptr), rows_(0), cols_(0) {}
 
-S21Matrix::S21Matrix(const int dimension)
-    : rows_(dimension), cols_(dimension) {
+S21Matrix::S21Matrix(const int dimension) : rows_(dimension), cols_(dimension) {
   S21Matrix::create_matrix();
 }
 
