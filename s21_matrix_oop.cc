@@ -4,12 +4,12 @@
 /* Constructors and destructors */
 S21Matrix::S21Matrix() : matrix_(nullptr), rows_(0), cols_(0) {}
 
-S21Matrix::S21Matrix(const int& dimension)
+S21Matrix::S21Matrix(const int dimension)
     : rows_(dimension), cols_(dimension) {
   S21Matrix::create_matrix();
 }
 
-S21Matrix::S21Matrix(const int& rows, const int& cols)
+S21Matrix::S21Matrix(const int rows, const int cols)
     : rows_(rows), cols_(cols) {
   S21Matrix::create_matrix();
 }
@@ -54,7 +54,7 @@ void S21Matrix::SubMatrix(const S21Matrix& other) {
         "No mathematical operations on matrices with different sizes");
 }
 
-void S21Matrix::MulNumber(const double& num) {
+void S21Matrix::MulNumber(const double num) {
   if (!matrix_)
     throw std::invalid_argument("Empty matrix cannot be multiplied");
   for (int i = 0; i < rows_ * cols_; i++) {
@@ -134,7 +134,7 @@ S21Matrix S21Matrix::operator+(const S21Matrix& other) {
   return result;
 }
 
-S21Matrix S21Matrix::operator*(const double& num) {
+S21Matrix S21Matrix::operator*(const double num) {
   S21Matrix result(*this);
   result.MulNumber(num);
   return result;
@@ -152,7 +152,7 @@ S21Matrix S21Matrix::operator*(const S21Matrix& other) {
   return result;
 }
 
-S21Matrix operator*(const double& number, const S21Matrix& other) {
+S21Matrix operator*(const double number, const S21Matrix& other) {
   S21Matrix result(other);
   result.MulNumber(number);
   return result;
@@ -181,7 +181,7 @@ S21Matrix S21Matrix::operator-=(const S21Matrix& other) {
   return *this;
 }
 
-S21Matrix S21Matrix::operator*=(const double& num) {
+S21Matrix S21Matrix::operator*=(const double num) {
   MulNumber(num);
   return *this;
 }
@@ -210,13 +210,13 @@ int S21Matrix::getRows() const { return rows_; }
 
 int S21Matrix::getCols() const { return cols_; }
 
-void S21Matrix::setRows(const int& n) {
+void S21Matrix::setRows(const int n) {
   S21Matrix new_matrix(n, cols_);
   new_matrix.fill_content(*this);
   *this = new_matrix;
 }
 
-void S21Matrix::setCols(const int& n) {
+void S21Matrix::setCols(const int n) {
   S21Matrix new_matrix(rows_, n);
   new_matrix.fill_content(*this);
   *this = new_matrix;
@@ -256,7 +256,7 @@ bool S21Matrix::check_square_matrix() {
   return (rows_ == cols_ && matrix_) ? true : false;
 }
 
-void S21Matrix::simple_math(const S21Matrix& other, int option) {
+void S21Matrix::simple_math(const S21Matrix& other, const int option) {
   for (int i = 0; i < rows_ * cols_; i++) {
     if (option == SUM)
       matrix_[i] += other.matrix_[i];
@@ -274,7 +274,7 @@ void S21Matrix::delete_matrix() {
   }
 }
 
-void S21Matrix::swap_rows(int source, int dest) {
+void S21Matrix::swap_rows(const int source, const int dest) {
   if (source >= rows_ || source < 0 || dest >= rows_ || dest < 0) {
     throw std::out_of_range("Wrong matrix index");
   }
