@@ -53,7 +53,7 @@ class S21Matrix {
   void PrintMatrix() const;
 
  private:
-  enum { SUM, SUB };
+  enum { kSum, kSub };
   double* matrix_;
   int rows_, cols_;
   void create_matrix();

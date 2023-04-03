@@ -39,7 +39,7 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) noexcept {
 
 void S21Matrix::SumMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other))
-    simple_math(other, SUM);
+    simple_math(other, kSum);
   else
     throw std::invalid_argument(
         "No mathematical operations on matrices with different sizes");
@@ -47,7 +47,7 @@ void S21Matrix::SumMatrix(const S21Matrix& other) {
 
 void S21Matrix::SubMatrix(const S21Matrix& other) {
   if (check_matrix_dimension(other))
-    simple_math(other, SUB);
+    simple_math(other, kSub);
   else
     throw std::invalid_argument(
         "No mathematical operations on matrices with different sizes");
@@ -257,9 +257,9 @@ bool S21Matrix::check_square_matrix() {
 
 void S21Matrix::simple_math(const S21Matrix& other, const int option) {
   for (int i = 0; i < rows_ * cols_; i++) {
-    if (option == SUM)
+    if (option == kSum)
       matrix_[i] += other.matrix_[i];
-    else if (option == SUB)
+    else if (option == kSub)
       matrix_[i] -= other.matrix_[i];
   }
 }
