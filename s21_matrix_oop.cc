@@ -5,17 +5,17 @@
 S21Matrix::S21Matrix() : matrix_(nullptr), rows_(0), cols_(0) {}
 
 S21Matrix::S21Matrix(const int dimension) : rows_(dimension), cols_(dimension) {
-  S21Matrix::create_matrix();
+  S21Matrix::CreateMatrix();
 }
 
 S21Matrix::S21Matrix(const int rows, const int cols)
     : rows_(rows), cols_(cols) {
-  S21Matrix::create_matrix();
+  S21Matrix::CreateMatrix();
 }
 
 S21Matrix::S21Matrix(const S21Matrix& other)
     : rows_(other.rows_), cols_(other.cols_) {
-  copy_matrix(other);
+  CopyMatrix(other);
 }
 
 S21Matrix::S21Matrix(S21Matrix&& other) noexcept
@@ -25,11 +25,11 @@ S21Matrix::S21Matrix(S21Matrix&& other) noexcept
   other.matrix_ = nullptr;
 }
 
-S21Matrix::~S21Matrix() { delete_matrix(); }
+S21Matrix::~S21Matrix() { DeleteMatrix(); }
 
 /* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) noexcept {
-  bool result = check_matrix_dimension(other);
+  bool result = CheckMatrixDimension(other);
   for (int i = 0; i < rows_ * cols_ && result; i++) {
     if (std::fabs(matrix_[i] - other.matrix_[i]) >= TOL) result = false;
   }
@@ -38,16 +38,16 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) noexcept {
 }
 
 void S21Matrix::SumMatrix(const S21Matrix& other) {
-  if (check_matrix_dimension(other))
-    simple_math(other, kSum);
+  if (CheckMatrixDimension(other))
+    SimpleMath(other, kSum);
   else
     throw std::invalid_argument(
         "No mathematical operations on matrices with different sizes");
 }
 
 void S21Matrix::SubMatrix(const S21Matrix& other) {
-  if (check_matrix_dimension(other))
-    simple_math(other, kSub);
+  if (CheckMatrixDimension(other))
+    SimpleMath(other, kSub);
   else
     throw std::invalid_argument(
         "No mathematical operations on matrices with different sizes");
@@ -87,27 +87,27 @@ S21Matrix S21Matrix::Transpose() {
 }
 
 S21Matrix S21Matrix::CalcComplements() {
-  if (!check_square_matrix())
+  if (!CheckSquareMatrix())
     throw std::invalid_argument(
         "The matrix size is not compatible with CalcCompelements");
   S21Matrix result(cols_);
   for (int i = 0; i < rows_; i++) {
     for (int j = 0; j < cols_; j++) {
       int sign = (i + j) % 2 ? -1 : 1;
-      result.matrix_[j + i * cols_] = sign * minor(i, j).Determinant();
+      result.matrix_[j + i * cols_] = sign * Minor(i, j).Determinant();
     }
   }
   return result;
 }
 
 double S21Matrix::Determinant() {
-  if (!check_square_matrix())
+  if (!CheckSquareMatrix())
     throw std::invalid_argument(
         "The matrix size is not compatible with Determinant");
   double result = 1.0;
 
   S21Matrix triangular_matrix(*this);
-  triangular_matrix.triangular();
+  triangular_matrix.Triangular();
   for (int i = 0; i < cols_; i++) {
     result *= triangular_matrix.matrix_[i + i * cols_];
   }
@@ -163,11 +163,11 @@ bool S21Matrix::operator==(const S21Matrix& other) noexcept {
 
 void S21Matrix::operator=(const S21Matrix& other) {
   if (matrix_) {
-    delete_matrix();
+    DeleteMatrix();
   }
   rows_ = other.rows_;
   cols_ = other.cols_;
-  copy_matrix(other);
+  CopyMatrix(other);
 }
 
 S21Matrix S21Matrix::operator+=(const S21Matrix& other) {
@@ -211,17 +211,17 @@ int S21Matrix::get_cols() const { return cols_; }
 
 void S21Matrix::set_rows(const int n) {
   S21Matrix new_matrix(n, cols_);
-  new_matrix.fill_content(*this);
+  new_matrix.FillContent(*this);
   *this = new_matrix;
 }
 
 void S21Matrix::set_cols(const int n) {
   S21Matrix new_matrix(rows_, n);
-  new_matrix.fill_content(*this);
+  new_matrix.FillContent(*this);
   *this = new_matrix;
 }
 
-void S21Matrix::create_matrix() {
+void S21Matrix::CreateMatrix() {
   if (rows_ <= 0 || cols_ <= 0) {
     throw std::bad_array_new_length();
   }
@@ -231,7 +231,7 @@ void S21Matrix::create_matrix() {
   }
 }
 
-void S21Matrix::fill_content(const S21Matrix& other) {
+void S21Matrix::FillContent(const S21Matrix& other) {
   for (int i = 0; i < cols_ && i < other.cols_; i++) {
     for (int j = 0; j < rows_ && j < other.rows_; j++) {
       matrix_[i + j * cols_] = other.matrix_[i + j * other.cols_];
@@ -239,23 +239,23 @@ void S21Matrix::fill_content(const S21Matrix& other) {
   }
 }
 
-void S21Matrix::copy_matrix(const S21Matrix& other) {
-  create_matrix();
+void S21Matrix::CopyMatrix(const S21Matrix& other) {
+  CreateMatrix();
   std::memcpy(matrix_, other.matrix_, sizeof(double) * rows_ * cols_);
 }
 
-bool S21Matrix::check_matrix_dimension(const S21Matrix& other) {
+bool S21Matrix::CheckMatrixDimension(const S21Matrix& other) {
   return (rows_ == other.rows_ && cols_ == other.cols_ && matrix_ &&
           other.matrix_)
              ? true
              : false;
 }
 
-bool S21Matrix::check_square_matrix() {
+bool S21Matrix::CheckSquareMatrix() {
   return (rows_ == cols_ && matrix_) ? true : false;
 }
 
-void S21Matrix::simple_math(const S21Matrix& other, const int option) {
+void S21Matrix::SimpleMath(const S21Matrix& other, const int option) {
   for (int i = 0; i < rows_ * cols_; i++) {
     if (option == kSum)
       matrix_[i] += other.matrix_[i];
@@ -264,7 +264,7 @@ void S21Matrix::simple_math(const S21Matrix& other, const int option) {
   }
 }
 
-void S21Matrix::delete_matrix() {
+void S21Matrix::DeleteMatrix() {
   if (matrix_) {
     delete[] matrix_;
     matrix_ = nullptr;
@@ -273,7 +273,7 @@ void S21Matrix::delete_matrix() {
   }
 }
 
-void S21Matrix::swap_rows(const int source, const int dest) {
+void S21Matrix::SwapRows(const int source, const int dest) {
   if (source >= rows_ || source < 0 || dest >= rows_ || dest < 0) {
     throw std::out_of_range("Wrong matrix index");
   }
@@ -286,7 +286,7 @@ void S21Matrix::swap_rows(const int source, const int dest) {
   delete[] temp;
 }
 
-S21Matrix S21Matrix::triangular() {
+S21Matrix S21Matrix::Triangular() {
   S21Matrix result(rows_);
   int h = 0;                       /* Initialization of the pivot row */
   int k = 0;                       /* Initialization of the pivot column */
@@ -303,7 +303,7 @@ S21Matrix S21Matrix::triangular() {
         TOL) { /* No pivot in this column, pass to next column */
       k++;
     } else {
-      if (h != i_max) swap_rows(h, i_max); /* Do for all rows below pivot: */
+      if (h != i_max) SwapRows(h, i_max); /* Do for all rows below pivot: */
       for (int i = h + 1; i < rows_; i++) {
         double temp_el = matrix_[k + i * cols_] / matrix_[k + h * cols_];
         if (std::fabs(temp_el) < TOL)
@@ -323,7 +323,7 @@ S21Matrix S21Matrix::triangular() {
   return result;
 }
 
-S21Matrix S21Matrix::minor(const int x_i, const int x_j) {
+S21Matrix S21Matrix::Minor(const int x_i, const int x_j) {
   S21Matrix result(rows_ - 1, cols_ - 1);
   int new_i = 0;
   for (int i = 0; i < rows_; i++) {

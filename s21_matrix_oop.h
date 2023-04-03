@@ -56,16 +56,16 @@ class S21Matrix {
   enum { kSum, kSub };
   double* matrix_;
   int rows_, cols_;
-  void create_matrix();
-  void fill_content(const S21Matrix& other);
-  void copy_matrix(const S21Matrix& other);
-  bool check_matrix_dimension(const S21Matrix& other);
-  bool check_square_matrix();
-  void simple_math(const S21Matrix& other, const int option);
-  void delete_matrix();
-  void swap_rows(const int source, const int dest);
-  S21Matrix triangular();
-  S21Matrix minor(const int x_i, const int x_j);
+  void CreateMatrix();
+  void FillContent(const S21Matrix& other);
+  void CopyMatrix(const S21Matrix& other);
+  bool CheckMatrixDimension(const S21Matrix& other);
+  bool CheckSquareMatrix();
+  void SimpleMath(const S21Matrix& other, const int option);
+  void DeleteMatrix();
+  void SwapRows(const int source, const int dest);
+  S21Matrix Triangular();
+  S21Matrix Minor(const int x_i, const int x_j);
 };
 
 #endif  // SRC_S21_MATRIX_OOP_H_
