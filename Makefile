@@ -1,9 +1,14 @@
+OS=$(shell uname)
+ifeq ($(OS), Darwin)
+	GTEST_FLAGS=-I/usr/local/include -L/usr/local/lib/ -lgtest
+else
+	GTEST_FLAGS=$(shell pkg-config --libs gtest)
+endif
 CC=g++
 GCOV=--coverage
 GCOV_FLAG=
 STATLIB_BUILD=ar rcs
 FLAGS=-g -O0 -Wall -Werror -Wextra -std=c++17 -pedantic 
-GTEST_FLAGS=$(shell pkg-config --libs gtest)
 SOURCE=s21_matrix_oop.cc
 TESTS_SOURCE=$(shell find ../tests -name '*.cc')
 OBJ=$(SOURCE:.cc=.o)
