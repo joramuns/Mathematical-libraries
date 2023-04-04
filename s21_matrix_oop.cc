@@ -1,7 +1,6 @@
 #include "s21_matrix_oop.h"
 #define TOL 1e-06
 
-/* Constructors and destructors */
 S21Matrix::S21Matrix() : matrix_(nullptr), rows_(0), cols_(0) {}
 
 S21Matrix::S21Matrix(const int dimension) : rows_(dimension), cols_(dimension) {
@@ -27,7 +26,6 @@ S21Matrix::S21Matrix(S21Matrix&& other) noexcept
 
 S21Matrix::~S21Matrix() { DeleteMatrix(); }
 
-/* Methods */
 bool S21Matrix::EqMatrix(const S21Matrix& other) noexcept {
   bool result = CheckMatrixDimension(other);
   for (int i = 0; i < rows_ * cols_ && result; i++) {
@@ -125,7 +123,6 @@ S21Matrix S21Matrix::InverseMatrix() {
   return result;
 }
 
-/* Operators */
 S21Matrix S21Matrix::operator+(const S21Matrix& other) {
   S21Matrix result(*this);
   result.SumMatrix(other);
@@ -203,7 +200,6 @@ double S21Matrix::operator()(const int i, const int j) const {
   return matrix_[j + i * cols_];
 }
 
-/* Accessors and mutators */
 int S21Matrix::get_rows() const { return rows_; }
 
 int S21Matrix::get_cols() const { return cols_; }
@@ -230,17 +226,26 @@ void S21Matrix::CreateMatrix() {
   }
 }
 
+void S21Matrix::CopyMatrix(const S21Matrix& other) {
+  CreateMatrix();
+  std::memcpy(matrix_, other.matrix_, sizeof(double) * rows_ * cols_);
+}
+
+void S21Matrix::DeleteMatrix() {
+  if (matrix_) {
+    delete[] matrix_;
+    matrix_ = nullptr;
+    rows_ = 0;
+    cols_ = 0;
+  }
+}
+
 void S21Matrix::FillContent(const S21Matrix& other) {
   for (int i = 0; i < cols_ && i < other.cols_; i++) {
     for (int j = 0; j < rows_ && j < other.rows_; j++) {
       other.matrix_[i + j * other.cols_] = matrix_[i + j * cols_];
     }
   }
-}
-
-void S21Matrix::CopyMatrix(const S21Matrix& other) {
-  CreateMatrix();
-  std::memcpy(matrix_, other.matrix_, sizeof(double) * rows_ * cols_);
 }
 
 bool S21Matrix::CheckMatrixDimension(const S21Matrix& other) {
@@ -260,15 +265,6 @@ void S21Matrix::SimpleMath(const S21Matrix& other, const int option) {
       matrix_[i] += other.matrix_[i];
     else if (option == kSub)
       matrix_[i] -= other.matrix_[i];
-  }
-}
-
-void S21Matrix::DeleteMatrix() {
-  if (matrix_) {
-    delete[] matrix_;
-    matrix_ = nullptr;
-    rows_ = 0;
-    cols_ = 0;
   }
 }
 
