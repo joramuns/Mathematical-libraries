@@ -272,10 +272,34 @@ void S21Matrix::DeleteMatrix() {
   }
 }
 
-void S21Matrix::SwapRows(const int source, const int dest) {
-  if (source >= rows_ || source < 0 || dest >= rows_ || dest < 0) {
-    throw std::out_of_range("Wrong matrix index");
+S21Matrix S21Matrix::Triangular() {
+  S21Matrix result(*this);
+  int target_row = 0, target_col = 0;
+  while (target_row < rows_ && target_col < cols_) {
+    int i_max = result.FindMaxElem(target_row, target_col);
+    if (std::fabs(result.matrix_[target_col + i_max * cols_]) >= TOL) {
+      if (target_row != i_max) result.SwapRows(target_row, i_max);
+      result.BalanceRow(target_row, target_col);
+      target_row++;
+    }
+    target_col++;
   }
+  return result;
+}
+
+int S21Matrix::FindMaxElem(const int h, const int k) {
+  int i_max = 0;
+  double elem_max = 0.0;
+  for (int i = h; i < rows_; i++) {
+    if (std::fabs(matrix_[k + i * cols_]) > std::fabs(elem_max)) {
+      elem_max = matrix_[k + i * cols_];
+      i_max = i;
+    }
+  }
+  return i_max;
+}
+
+void S21Matrix::SwapRows(const int source, const int dest) {
   double* temp = new double[cols_]();
   for (int i = 0; i < cols_; i++) {
     temp[i] = matrix_[i + dest * cols_];
@@ -285,45 +309,17 @@ void S21Matrix::SwapRows(const int source, const int dest) {
   delete[] temp;
 }
 
-S21Matrix S21Matrix::Triangular() {
-  S21Matrix result(*this);
-  int h = 0;                       /* Initialization of the pivot row */
-  int k = 0;                       /* Initialization of the pivot column */
-  while (h < rows_ && k < cols_) { /* Find the k-th pivot: */
-    int i_max = 0;
-    double elem_max = 0.0;
-    for (int i = h; i < rows_; i++) {
-      if (std::fabs(result.matrix_[k + i * cols_]) > std::fabs(elem_max)) {
-        elem_max = result.matrix_[k + i * cols_];
-        i_max = i;
-      }
-    }
-    if (std::fabs(result.matrix_[k + i_max * cols_]) <
-        TOL) { /* No pivot in this column, pass to next column */
-      k++;
-    } else {
-      if (h != i_max)
-        result.SwapRows(h, i_max); /* Do for all rows below pivot: */
-      for (int i = h + 1; i < rows_; i++) {
-        double temp_el =
-            result.matrix_[k + i * cols_] / result.matrix_[k + h * cols_];
-        if (std::fabs(temp_el) < TOL)
-          temp_el = 0.0; /* Fill with zeros the lower part of pivot column: */
-        result.matrix_[k + i * cols_] =
-            0.0; /* Do for all remaining elements in current row: */
-        for (int j = k + 1; j < cols_; j++) {
-          result.matrix_[j + i * cols_] -=
-              result.matrix_[j + h * cols_] * temp_el;
-          if (std::fabs(result.matrix_[j + i * cols_]) < TOL)
-            result.matrix_[j + i * cols_] =
-                0.0; /* Increase pivot row and column */
-        }
-      }
-      h++;
-      k++;
+void S21Matrix::BalanceRow(const int h, const int k) {
+  for (int i = h + 1; i < rows_; i++) {
+    double temp_el = matrix_[k + i * cols_] / matrix_[k + h * cols_];
+    if (std::fabs(temp_el) < TOL)
+      temp_el = 0.0; /* Fill with zeros the lower part of pivot column: */
+    matrix_[k + i * cols_] = 0.0;
+    for (int j = k + 1; j < cols_; j++) {
+      matrix_[j + i * cols_] -= matrix_[j + h * cols_] * temp_el;
+      if (std::fabs(matrix_[j + i * cols_]) < TOL) matrix_[j + i * cols_] = 0.0;
     }
   }
-  return result;
 }
 
 S21Matrix S21Matrix::Minor(const int x_i, const int x_j) {

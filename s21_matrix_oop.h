@@ -63,8 +63,10 @@ class S21Matrix {
   bool CheckSquareMatrix();
   void SimpleMath(const S21Matrix& other, const int option);
   void DeleteMatrix();
-  void SwapRows(const int source, const int dest);
   S21Matrix Triangular();
+  int FindMaxElem(const int h, const int k);
+  void SwapRows(const int source, const int dest);
+  void BalanceRow(const int h, const int k);
   S21Matrix Minor(const int x_i, const int x_j);
 };
 
