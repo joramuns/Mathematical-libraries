@@ -4,7 +4,6 @@
 #include <cmath>
 #include <cstring>
 #include <iostream>
-#include <limits>
 
 class S21Matrix {
  public:
@@ -47,10 +46,6 @@ class S21Matrix {
   int get_cols() const;
   void set_rows(const int n);
   void set_cols(const int n);
-
-  /* Extra methods */
-  void PrintMatrix();
-  void PrintMatrix() const;
 
  private:
   double* matrix_;
