@@ -249,8 +249,7 @@ void S21Matrix::FillContent(const S21Matrix& other) {
 }
 
 bool S21Matrix::CheckMatrixDimension(const S21Matrix& other) {
-  return (rows_ == other.rows_ && cols_ == other.cols_ && matrix_ &&
-          other.matrix_)
+  return (rows_ == other.rows_ && cols_ == other.cols_)
              ? true
              : false;
 }
