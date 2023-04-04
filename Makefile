@@ -30,10 +30,10 @@ mtest: s21_matrix_oop.a
 
 test: s21_matrix_oop.a $(TESTS_OBJ)
 	$(CC) $(TESTS_OBJ) $< -o $@ $(FLAGS) $(GTEST_FLAGS)
-	./test
+	./$@
 
 vg: test
-	valgrind --trace-children=yes --track-fds=all  --leak-check=full --show-leak-kinds=all --track-origins=yes ./test
+	valgrind --trace-children=yes --track-fds=all  --leak-check=full --show-leak-kinds=all --track-origins=yes ./$<
 
 gcov_report:FLAGS+=$(GCOV)
 gcov_report: clean test
